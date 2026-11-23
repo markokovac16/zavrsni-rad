@@ -1,4 +1,4 @@
-"""Korak 2b: srodne slike preostale s obje strane podjele."""
+"""Korak 3: srodne slike preostale s obje strane podjele."""
 import json
 
 import numpy as np
@@ -6,7 +6,7 @@ import pandas as pd
 
 import config as c
 import slicnost as s
-from k2_ciscenje_i_podjela import PRAG_DUPLIKAT, PRAG_SLICNE, PRAG_ZAKRENUTE, RAZMAK_SERIJE
+from k02_ciscenje_i_podjela import PRAG_DUPLIKAT, PRAG_SLICNE, PRAG_ZAKRENUTE, RAZMAK_SERIJE
 
 SEKUNDE = [RAZMAK_SERIJE, 60, 120, 300]
 
@@ -72,7 +72,8 @@ def main():
               f"različite oznake {x['parova_razlicite_oznake']:3d}; {x['po_izvoru']}")
     u = rez["uzastopne"]
     print(f"uzastopne snimke: od {u['test_s_vremenom']} testnih slika s vremenom u imenu, sliku za učenje istog izvora ima "
-          + ", ".join(f"unutar {x} s: {u[f'do_{x}_s']}" for x in SEKUNDE) + f" (medijan razmaka {u['medijan_sekundi']:.0f} s)")
+          + ", ".join(f"unutar {x} s: {u[f'do_{x}_s']}" for x in SEKUNDE)
+          + f" (medijan razmaka {u['medijan_sekundi']:.0f} s)")
     for izvor, red in u["po_izvoru"].items():
         print(f"  {izvor:24s} {red}")
 

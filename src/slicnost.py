@@ -4,7 +4,9 @@ import re
 from datetime import datetime
 from multiprocessing import Pool
 
+import imagehash
 import numpy as np
+from PIL import Image
 
 import config as c
 
@@ -50,8 +52,6 @@ class Skupine:
 
 
 def _sazeci_jedne(kopija):
-    import imagehash
-    from PIL import Image
     with Image.open(c.PREDMEMORIJA / kopija) as im:
         im = im.convert("RGB")
         ph, dh = [], []

@@ -1,4 +1,4 @@
-"""Korak 4b: odabir glavnog modela prema prosječnom makro F1 na validaciji."""
+"""Korak 6: odabir glavnog modela prema prosječnom makro F1 na validaciji."""
 import json
 
 import config as c

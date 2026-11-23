@@ -20,16 +20,17 @@ PREDNOST = ["houseplant_health", "plantdoc", "indoor_plant_disease", "money_plan
             "combined_medicinal", "indoor_leaf_health", "healthy_wilted", "plantvita_aloevera"]
 
 
-def skupine(n, parovi, prag):
-    sk = s.Skupine(n)
-    udalj = np.maximum(parovi[:, 2], parovi[:, 3])
-    for a, b in parovi[udalj <= prag][:, :2]:
+def spoji_do_praga(sk, parovi, prag):
+    for a, b in parovi[np.maximum(parovi[:, 2], parovi[:, 3]) <= prag][:, :2]:
         sk.spoji(a, b)
-    return sk.oznake()
+    return sk
+
+
+def skupine(n, parovi, prag):
+    return spoji_do_praga(s.Skupine(n), parovi, prag).oznake()
 
 
 def podijeli(df, stupac_skupine, rng, udjeli=None, sloj=None):
-    dio = pd.Series("", index=df.index)
     udjeli = udjeli or UDJELI
     sloj = df.izvor + "|" + df.oznaka if sloj is None else sloj
     sloj_skupine = sloj.groupby(df[stupac_skupine]).agg(lambda v: v.mode().iloc[0])
@@ -66,20 +67,17 @@ def main():
     df["skupina_duplikata"] = skupine(len(df), parovi, PRAG_DUPLIKAT)
     samo_slicne = skupine(len(df), parovi, PRAG_SLICNE)
 
-    sk = s.Skupine(len(df))
-    for a, b in parovi[np.maximum(parovi[:, 2], parovi[:, 3]) <= PRAG_DUPLIKAT][:, :2]:
-        sk.spoji(a, b)
+    sk = spoji_do_praga(s.Skupine(len(df)), parovi, PRAG_DUPLIKAT)
     ph_i, dh_i = s.sazeci_inacica(df)
     zakrenuti = np.concatenate([
         s.parovi_ispod_praga(ph, dh, PRAG_SLICNE, ph2=ph_i[:, k], dh2=dh_i[:, k]) for k in range(ph_i.shape[1])])
-    for a, b in zakrenuti[np.maximum(zakrenuti[:, 2], zakrenuti[:, 3]) <= PRAG_ZAKRENUTE][:, :2]:
-        sk.spoji(a, b)
-    s_zakrenutima = sk.oznake()
+    s_zakrenutima = spoji_do_praga(sk, zakrenuti, PRAG_ZAKRENUTE).oznake()
     serije = s.parovi_iste_serije(df, RAZMAK_SERIJE)
     for a, b in serije:
         sk.spoji(a, b)
     df["skupina"] = sk.oznake()
-    print(f"skupina: slične do {PRAG_SLICNE} bitova {len(set(samo_slicne))}; za podjelu: duplikati i zakrenute {len(set(s_zakrenutima))}, "
+    print(f"skupina: slične do {PRAG_SLICNE} bitova {len(set(samo_slicne))}; "
+          f"za podjelu: duplikati i zakrenute {len(set(s_zakrenutima))}, "
           f"sa serijama snimanja {df.skupina.nunique()}; parova u serijama {len(serije)}")
     print("najveće skupine:", df.skupina.value_counts().head(8).tolist())
 
@@ -129,7 +127,8 @@ def main():
         skupine_medu_izvorima=medu_izvorima,
         po_izvoru=po_izvoru.reset_index().to_dict(orient="records"),
         podjela=cist.groupby(["dio", "oznaka"]).size().unstack(fill_value=0).reset_index().to_dict(orient="records"),
-        podjela_po_izvoru=cist[cist.uloga == "skup"].groupby(["izvor", "dio"]).size().unstack(fill_value=0).reset_index().to_dict(orient="records"),
+        podjela_po_izvoru=cist[cist.uloga == "skup"].groupby(["izvor", "dio"]).size().unstack(fill_value=0)
+        .reset_index().to_dict(orient="records"),
         naivna_test_slika=int(len(test_n)),
         naivna_test_s_duplikatom_u_treningu=int(test_n.skupina_duplikata.isin(u_treningu).sum()),
         cista_test_slika=int(len(test_c)),
@@ -148,7 +147,8 @@ def main():
     )
     c.REZULTATI.mkdir(exist_ok=True)
     (c.REZULTATI / "ciscenje.json").write_text(json.dumps(statistika, indent=1, ensure_ascii=False))
-    print(f"naivna podjela: {statistika['naivna_test_s_duplikatom_u_treningu']} od {len(test_n)} testnih slika ima duplikat u treningu")
+    print(f"naivna podjela: {statistika['naivna_test_s_duplikatom_u_treningu']} od {len(test_n)} "
+          "testnih slika ima duplikat u treningu")
 
 
 if __name__ == "__main__":

@@ -1,0 +1,40 @@
+{
+ "prijedloga": 3458,
+ "po_prijedlogu": {
+  "healthy": 1965,
+  "unusable": 882,
+  "unhealthy": 578,
+  "unclear": 33
+ },
+ "upotrebljivih": 2543,
+ "autora": 831,
+ "kopija_iz_ostalih_skupova": 0,
+ "po_vrsti": {
+  "aloja": 906,
+  "sansevierija": 751,
+  "zelenčica": 453,
+  "zlatni puzavac": 433
+ },
+ "po_licenci": {
+  "cc-by": 1609,
+  "cc0": 516,
+  "cc-by-sa": 418
+ },
+ "podjela": {
+  "inat_test": {
+   "slika": 635,
+   "autora": 202,
+   "nezdravih": 143
+  },
+  "inat_train": {
+   "slika": 1537,
+   "autora": 497,
+   "nezdravih": 347
+  },
+  "inat_val": {
+   "slika": 371,
+   "autora": 132,
+   "nezdravih": 88
+  }
+ }
+}

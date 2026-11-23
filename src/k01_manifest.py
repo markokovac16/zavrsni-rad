@@ -2,7 +2,6 @@
 import hashlib
 import os
 from multiprocessing import Pool
-from pathlib import Path
 
 import imagehash
 import pandas as pd
@@ -53,7 +52,7 @@ def obradi(arg):
     )
 
 
-if __name__ == "__main__":
+def main():
     c.PREDMEMORIJA.mkdir(parents=True, exist_ok=True)
     datoteke = popis_datoteka()
     print(f"datoteka: {len(datoteke)}")
@@ -67,3 +66,7 @@ if __name__ == "__main__":
     df = df[df.greska == ""].drop(columns="greska")
     df.to_csv(c.PODACI / "manifest_sirovi.csv", index=False)
     print(df.groupby(["uloga", "izvor", "oznaka"]).size().unstack(fill_value=0))
+
+
+if __name__ == "__main__":
+    main()

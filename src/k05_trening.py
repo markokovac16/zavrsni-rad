@@ -1,4 +1,4 @@
-"""Korak 4: učenje klasifikatora zdrava / nezdrava."""
+"""Korak 5: učenje klasifikatora zdrava / nezdrava."""
 import argparse
 import json
 import time
