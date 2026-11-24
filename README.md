@@ -15,6 +15,7 @@ daje samo opće savjete.
 | `web/` | sučelje (Vue + Vite) |
 | `znanje/` | baza činjenica o njezi s izvorima (`cinjenice.json`) |
 | `alati/` | alat za ručnu provjeru oznaka fotografija |
+| `oznake/` | slabe oznake stvarnih fotografija (prijedlozi jezičnog modela) i ručno provjerene oznake |
 
 ## Pokretanje sučelja
 
@@ -53,6 +54,27 @@ CC BY-SA) nemaju oznaku zdravlja. Oznake u `oznake/prijedlozi_modela.csv` predlo
 (`claude-haiku-5-5`, 6. 11. 2026.) gledajući svaku fotografiju: zdrava, nezdrava, nejasna ili neupotrebljiva.
 To su **slabe oznake**, a ne provjerene; nejasne i neupotrebljive fotografije se izostavljaju.
 
+Oznake su nastale jednokratno i skripta nije dio repozitorija; izvor oznaka je sama datoteka. Postupak: svaka
+fotografija smanjena je na najviše 768 px i poslana modelu s uputom ispod, a odgovor je strukturiran (oznaka i
+kratko obrazloženje, stupci `label` i `reason`). Fotografije za koje model nije vratio odgovor poslane su
+ponovno.
+
+<details>
+<summary>Uputa jezičnom modelu</summary>
+
+```text
+This photo should show a cultivated {species}. Judge the plant's health from what is visible.
+- healthy: no visible problems. Natural leaf spots or variegation, naturally light or lime-green varieties (e.g. 'Neon' pothos) and a single old dry leaf at the base are normal.
+- unhealthy: clear signs such as yellow or brown leaves, dry brown tips, spots or lesions, rot, wilting or drooping, pests, sunburn, or stretched pale growth.
+- unclear: the plant is too small, blurry or hidden to judge.
+- unusable: the {species} is not clearly the main subject (e.g. many plants, a different species, a drawing).
+In "reason", name the visible signs in a few words.
+```
+
+`{species}`: pothos (*Epipremnum aureum*), snake plant (*Dracaena trifasciata*), spider plant
+(*Chlorophytum comosum*), aloe vera.
+</details>
+
 ```bash
 uv run src/k04_stvarne_fotografije.py
 ```
@@ -66,9 +88,9 @@ oznake jezičnog modela se u alatu ne vide). Izvezena datoteka `provjerene.csv` 
 Učenje klasifikatora (oko 17 min po modelu na Apple M5); svaka inačica uči se s tri sjemena:
 
 ```bash
-uv run src/k05_trening.py --naziv osnovni
-uv run src/k05_trening.py --naziv osnovni_s1 --sjeme 1
-uv run src/k05_trening.py --naziv osnovni_s2 --sjeme 2
+uv run src/k05_trening.py --naziv osnovna
+uv run src/k05_trening.py --naziv osnovna_s1 --sjeme 1
+uv run src/k05_trening.py --naziv osnovna_s2 --sjeme 2
 uv run src/k05_trening.py --naziv jaka --augmentacija jaka         # i jaka_s1, jaka_s2
 ```
 
@@ -77,4 +99,14 @@ Odabir glavnog modela (inačica s većim prosječnim makro F1 na validaciji) i e
 ```bash
 uv run src/k06_odabir_modela.py
 uv run src/k07_evaluacija.py    # metrike, kalibracija, prag pouzdanosti, slike primjera
+```
+
+Učinak curenja podataka: isti model učen na podjeli bez uklanjanja duplikata (`manifest_naivni.csv`, stvara
+ga korak 2). Točnost na testu računa se posebno za slike koje imaju duplikat u skupu za učenje i za one koje ga
+nemaju:
+
+```bash
+uv run src/k05_trening.py --naziv naivni --manifest manifest_naivni.csv
+uv run src/k07_evaluacija.py --naziv naivni --manifest manifest_naivni.csv
+uv run src/k08_curenje.py
 ```

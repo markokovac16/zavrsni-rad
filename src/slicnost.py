@@ -83,10 +83,17 @@ def vrijeme_snimanja(ime):
             return "lokalno", datetime.strptime(m.group(1) + m.group(2), "%Y%m%d%H%M%S").timestamp()
         except ValueError:
             return None
-    m = re.fullmatch(r"(\d{13})\.\w+", ime)
-    if m:
-        return "epoha", int(m.group(1)) / 1000
     return None
+
+
+def parovi_istog_imena(df):
+    ime = df.putanja.str.split("/").str[-1].str.rsplit(".", n=1).str[0]
+    t = df.assign(red=np.arange(len(df)), ime=ime)
+    parovi = []
+    for _, g in t.groupby(["ime", "sirina", "visina"]):
+        if g.izvor.nunique() > 1:
+            parovi += [(g.red.iloc[0], r) for r in g.red.iloc[1:]]
+    return parovi
 
 
 def parovi_iste_serije(df, najveci_razmak):

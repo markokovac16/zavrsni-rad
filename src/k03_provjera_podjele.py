@@ -46,6 +46,9 @@ def main():
     rez["uspravne_iznad_praga"] = sazetak(uspravni[udalj > PRAG_DUPLIKAT], svi)
     rez["slicne_test_id"] = sorted(int(x) for x in set(svi.id.to_numpy()[uspravni[udalj > PRAG_DUPLIKAT][:, 0]]))
 
+    isto_ime = np.array([(a, b, 0, 0) for a, b in s.parovi_istog_imena(svi)], dtype=int).reshape(-1, 4)
+    rez["isto_ime"] = sazetak(test_ucenje(isto_ime, dio), svi)
+
     v = svi.putanja.str.split("/").str[-1].map(s.vrijeme_snimanja)
     t = svi[v.notna()].assign(zapis=[x[0] for x in v.dropna()], t=[x[1] for x in v.dropna()], dio=dio[v.notna()])
     razmaci, po_izvoru = [], {}
@@ -66,7 +69,7 @@ def main():
                             **{f"do_{x}_s": int((r <= x).sum()) for x in SEKUNDE}, po_izvoru=po_izvoru)
 
     (c.REZULTATI / "provjera_podjele.json").write_text(json.dumps(rez, indent=1, ensure_ascii=False))
-    for k in ["zakrenute_do_praga", "zakrenute_iznad_praga", "uspravne_do_praga", "uspravne_iznad_praga"]:
+    for k in ["zakrenute_do_praga", "zakrenute_iznad_praga", "uspravne_do_praga", "uspravne_iznad_praga", "isto_ime"]:
         x = rez[k]
         print(f"{k:24s} testnih slika {x['testnih_slika']:4d}, parova {x['parova']:4d}, "
               f"različite oznake {x['parova_razlicite_oznake']:3d}; {x['po_izvoru']}")

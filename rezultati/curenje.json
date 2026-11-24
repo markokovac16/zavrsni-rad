@@ -1,0 +1,490 @@
+{
+ "naivni": {
+  "test_svi": {
+   "n": 2601,
+   "udio_nezdravih": 0.5982314494425222,
+   "tocnost": 0.9565551710880431,
+   "tocnost_interval": [
+    0.9476724508466619,
+    0.9647155650385665
+   ],
+   "preciznost": 0.9787657597876576,
+   "odziv": 0.9479434447300771,
+   "f1": 0.9631080639895527,
+   "makro_f1": 0.955139819746062,
+   "makro_f1_interval": [
+    0.9459253609781163,
+    0.963581933630143
+   ],
+   "skupina": 2091,
+   "roc_auc": 0.9921529255482713,
+   "osnovica_najcesci_razred": 0.5982314494425222,
+   "matrica": {
+    "tn": 1013,
+    "fp": 32,
+    "fn": 81,
+    "tp": 1475
+   }
+  },
+  "test_s_duplikatom_u_ucenju": {
+   "n": 778,
+   "udio_nezdravih": 0.6272493573264781,
+   "tocnost": 0.9717223650385605,
+   "tocnost_interval": [
+    0.95804971514993,
+    0.9835616438356164
+   ],
+   "preciznost": 0.9874476987447699,
+   "odziv": 0.9672131147540983,
+   "f1": 0.9772256728778468,
+   "makro_f1": 0.9699687686423133,
+   "makro_f1_interval": [
+    0.9555950920529825,
+    0.9823012277059564
+   ],
+   "skupina": 587,
+   "roc_auc": 0.9977459016393443,
+   "osnovica_najcesci_razred": 0.6272493573264781,
+   "matrica": {
+    "tn": 284,
+    "fp": 6,
+    "fn": 16,
+    "tp": 472
+   }
+  },
+  "test_s_duplikatom_iste_oznake": {
+   "n": 763,
+   "udio_nezdravih": 0.6330275229357798,
+   "tocnost": 0.9764089121887287,
+   "tocnost_interval": [
+    0.963855421686747,
+    0.987136447256248
+   ],
+   "preciznost": 0.9957356076759062,
+   "odziv": 0.9668737060041408,
+   "f1": 0.9810924369747899,
+   "makro_f1": 0.9748667759786842,
+   "makro_f1_interval": [
+    0.9616566272730341,
+    0.9859787169732785
+   ],
+   "skupina": 579,
+   "roc_auc": 0.998639455782313,
+   "osnovica_najcesci_razred": 0.6330275229357798,
+   "matrica": {
+    "tn": 278,
+    "fp": 2,
+    "fn": 16,
+    "tp": 467
+   }
+  },
+  "test_bez_duplikata_u_ucenju": {
+   "n": 1823,
+   "udio_nezdravih": 0.5858475041140977,
+   "tocnost": 0.950082281952825,
+   "tocnost_interval": [
+    0.9387300150070844,
+    0.9608236045008836
+   ],
+   "preciznost": 0.9747327502429544,
+   "odziv": 0.9391385767790262,
+   "f1": 0.9566046733428708,
+   "makro_f1": 0.9489285471297957,
+   "makro_f1_interval": [
+    0.937440448361894,
+    0.9598091125320432
+   ],
+   "skupina": 1507,
+   "roc_auc": 0.9898163305801523,
+   "osnovica_najcesci_razred": 0.5858475041140977,
+   "matrica": {
+    "tn": 729,
+    "fp": 26,
+    "fn": 65,
+    "tp": 1003
+   }
+  },
+  "vanjski_stvarni": {
+   "n": 87,
+   "udio_nezdravih": 0.27586206896551724,
+   "tocnost": 0.6781609195402298,
+   "tocnost_interval": [
+    0.5747126436781609,
+    0.7701149425287356
+   ],
+   "preciznost": 0.45,
+   "odziv": 0.75,
+   "f1": 0.5625,
+   "makro_f1": 0.6539772727272728,
+   "makro_f1_interval": [
+    0.5433826675728057,
+    0.7532888093375301
+   ],
+   "skupina": 87,
+   "roc_auc": 0.7182539682539683,
+   "osnovica_najcesci_razred": 0.7241379310344828,
+   "matrica": {
+    "tn": 41,
+    "fp": 22,
+    "fn": 6,
+    "tp": 18
+   }
+  },
+  "vanjski_usjevi": {
+   "n": 2504,
+   "udio_nezdravih": 0.6637380191693291,
+   "tocnost": 0.7563897763578274,
+   "tocnost_interval": [
+    0.7400085890519281,
+    0.7726791606579914
+   ],
+   "preciznost": 0.8474240422721269,
+   "odziv": 0.7719614921780987,
+   "f1": 0.8079345088161209,
+   "makro_f1": 0.7374825382508552,
+   "makro_f1_interval": [
+    0.7199397296821815,
+    0.7552488322320001
+   ],
+   "skupina": 2493,
+   "roc_auc": 0.8476372798705736,
+   "osnovica_najcesci_razred": 0.6637380191693291,
+   "matrica": {
+    "tn": 611,
+    "fp": 231,
+    "fn": 379,
+    "tp": 1283
+   }
+  },
+  "test_bez_duplikata_izvan_izvora_s_duplikatima": {
+   "n": 1571,
+   "udio_nezdravih": 0.5639719923615532,
+   "tocnost": 0.962444302991725,
+   "tocnost_interval": [
+    0.9529615408991042,
+    0.9718526847235098
+   ],
+   "preciznost": 0.9824970828471412,
+   "odziv": 0.9503386004514672,
+   "f1": 0.9661503155479059,
+   "makro_f1": 0.9619886674237028,
+   "makro_f1_interval": [
+    0.9524335059664601,
+    0.9715257189712617
+   ],
+   "skupina": 1299,
+   "roc_auc": 0.9929635366034503,
+   "osnovica_najcesci_razred": 0.5639719923615532,
+   "matrica": {
+    "tn": 670,
+    "fp": 15,
+    "fn": 44,
+    "tp": 842
+   }
+  }
+ },
+ "osnovna": {
+  "test_cisti": {
+   "n": 1991,
+   "udio_nezdravih": 0.5876443997990959,
+   "tocnost": 0.9402310396785535,
+   "tocnost_interval": [
+    0.9202269170579029,
+    0.9575941947105298
+   ],
+   "preciznost": 0.961369622475856,
+   "odziv": 0.9358974358974359,
+   "f1": 0.9484625378951927,
+   "makro_f1": 0.9386664153911111,
+   "makro_f1_interval": [
+    0.918033718692534,
+    0.9564551214131768
+   ],
+   "skupina": 1655,
+   "roc_auc": 0.9881945095099783,
+   "osnovica_najcesci_razred": 0.5876443997990959,
+   "matrica": {
+    "tn": 777,
+    "fp": 44,
+    "fn": 75,
+    "tp": 1095
+   }
+  },
+  "vanjski_stvarni": {
+   "n": 87,
+   "udio_nezdravih": 0.27586206896551724,
+   "tocnost": 0.5977011494252874,
+   "tocnost_interval": [
+    0.4942528735632184,
+    0.7011494252873564
+   ],
+   "preciznost": 0.3333333333333333,
+   "odziv": 0.4583333333333333,
+   "f1": 0.38596491228070173,
+   "makro_f1": 0.5434098065677013,
+   "makro_f1_interval": [
+    0.4361111111111111,
+    0.65379513633014
+   ],
+   "skupina": 87,
+   "roc_auc": 0.5806878306878307,
+   "osnovica_najcesci_razred": 0.7241379310344828,
+   "matrica": {
+    "tn": 41,
+    "fp": 22,
+    "fn": 13,
+    "tp": 11
+   }
+  },
+  "vanjski_usjevi": {
+   "n": 2504,
+   "udio_nezdravih": 0.6637380191693291,
+   "tocnost": 0.7675718849840255,
+   "tocnost_interval": [
+    0.7519036554931677,
+    0.7837196095809784
+   ],
+   "preciznost": 0.859520639147803,
+   "odziv": 0.7767749699157641,
+   "f1": 0.816055625790139,
+   "makro_f1": 0.7502187022660023,
+   "makro_f1_interval": [
+    0.7331003125170611,
+    0.7674064066366589
+   ],
+   "skupina": 2493,
+   "roc_auc": 0.8513545766626365,
+   "osnovica_najcesci_razred": 0.6637380191693291,
+   "matrica": {
+    "tn": 631,
+    "fp": 211,
+    "fn": 371,
+    "tp": 1291
+   }
+  }
+ },
+ "po_izvoru": {
+  "aloe_vera_diseases": {
+   "s_duplikatom": {
+    "n": 11,
+    "udio_nezdravih": 0.9090909090909091,
+    "tocnost": 1.0,
+    "tocnost_interval": [
+     1.0,
+     1.0
+    ]
+   },
+   "bez_duplikata": {
+    "n": 339,
+    "udio_nezdravih": 0.7256637168141593,
+    "tocnost": 0.9970501474926253,
+    "tocnost_interval": [
+     0.9882352941176471,
+     1.0
+    ]
+   }
+  },
+  "aloe_vera_leaf_disease": {
+   "s_duplikatom": {
+    "n": 222,
+    "udio_nezdravih": 0.6261261261261262,
+    "tocnost": 0.9459459459459459,
+    "tocnost_interval": [
+     0.9144144144144144,
+     0.9729760029087384
+    ]
+   },
+   "bez_duplikata": {
+    "n": 153,
+    "udio_nezdravih": 0.7777777777777778,
+    "tocnost": 0.8758169934640523,
+    "tocnost_interval": [
+     0.8223684210526315,
+     0.9276315789473685
+    ]
+   }
+  },
+  "combined_medicinal": {
+   "s_duplikatom": {
+    "n": 1,
+    "udio_nezdravih": 0.0,
+    "tocnost": 1.0,
+    "tocnost_interval": [
+     1.0,
+     1.0
+    ]
+   },
+   "bez_duplikata": {
+    "n": 83,
+    "udio_nezdravih": 0.7228915662650602,
+    "tocnost": 0.9879518072289156,
+    "tocnost_interval": [
+     0.959445575712699,
+     1.0
+    ]
+   }
+  },
+  "epipremnum_aureum": {
+   "s_duplikatom": {
+    "n": 6,
+    "udio_nezdravih": 0.16666666666666666,
+    "tocnost": 1.0,
+    "tocnost_interval": [
+     1.0,
+     1.0
+    ]
+   },
+   "bez_duplikata": {
+    "n": 547,
+    "udio_nezdravih": 0.44424131627056673,
+    "tocnost": 0.9323583180987203,
+    "tocnost_interval": [
+     0.9119184956155912,
+     0.9526411657559198
+    ]
+   }
+  },
+  "healthy_wilted": {
+   "s_duplikatom": {
+    "n": 16,
+    "udio_nezdravih": 0.375,
+    "tocnost": 1.0,
+    "tocnost_interval": [
+     1.0,
+     1.0
+    ]
+   },
+   "bez_duplikata": {
+    "n": 120,
+    "udio_nezdravih": 0.5166666666666667,
+    "tocnost": 0.9,
+    "tocnost_interval": [
+     0.8429424931129477,
+     0.95
+    ]
+   }
+  },
+  "indoor_leaf_health": {
+   "s_duplikatom": {
+    "n": 0
+   },
+   "bez_duplikata": {
+    "n": 136,
+    "udio_nezdravih": 0.38235294117647056,
+    "tocnost": 0.9779411764705882,
+    "tocnost_interval": [
+     0.9485294117647058,
+     1.0
+    ]
+   }
+  },
+  "indoor_plant_disease": {
+   "s_duplikatom": {
+    "n": 16,
+    "udio_nezdravih": 0.9375,
+    "tocnost": 1.0,
+    "tocnost_interval": [
+     1.0,
+     1.0
+    ]
+   },
+   "bez_duplikata": {
+    "n": 102,
+    "udio_nezdravih": 0.6078431372549019,
+    "tocnost": 0.9607843137254902,
+    "tocnost_interval": [
+     0.9134191176470589,
+     0.9902935959671396
+    ]
+   }
+  },
+  "medicinal_leaf_disease": {
+   "s_duplikatom": {
+    "n": 11,
+    "udio_nezdravih": 1.0,
+    "tocnost": 1.0,
+    "tocnost_interval": [
+     1.0,
+     1.0
+    ]
+   },
+   "bez_duplikata": {
+    "n": 114,
+    "udio_nezdravih": 0.7280701754385965,
+    "tocnost": 1.0,
+    "tocnost_interval": [
+     1.0,
+     1.0
+    ]
+   }
+  },
+  "medicinal_leaf_health": {
+   "s_duplikatom": {
+    "n": 0
+   },
+   "bez_duplikata": {
+    "n": 96,
+    "udio_nezdravih": 0.625,
+    "tocnost": 1.0,
+    "tocnost_interval": [
+     1.0,
+     1.0
+    ]
+   }
+  },
+  "money_plant_atlas": {
+   "s_duplikatom": {
+    "n": 271,
+    "udio_nezdravih": 0.6273062730627307,
+    "tocnost": 1.0,
+    "tocnost_interval": [
+     1.0,
+     1.0
+    ]
+   },
+   "bez_duplikata": {
+    "n": 10,
+    "udio_nezdravih": 0.6,
+    "tocnost": 1.0,
+    "tocnost_interval": [
+     1.0,
+     1.0
+    ]
+   }
+  },
+  "multiclass_medicinal": {
+   "s_duplikatom": {
+    "n": 0
+   },
+   "bez_duplikata": {
+    "n": 34,
+    "udio_nezdravih": 0.5294117647058824,
+    "tocnost": 0.9705882352941176,
+    "tocnost_interval": [
+     0.9552238805970149,
+     1.0
+    ]
+   }
+  },
+  "plantvita_aloevera": {
+   "s_duplikatom": {
+    "n": 224,
+    "udio_nezdravih": 0.6071428571428571,
+    "tocnost": 0.9553571428571429,
+    "tocnost_interval": [
+     0.9269406392694064,
+     0.9780725695242474
+    ]
+   },
+   "bez_duplikata": {
+    "n": 89,
+    "udio_nezdravih": 0.6404494382022472,
+    "tocnost": 0.8539325842696629,
+    "tocnost_interval": [
+     0.7752808988764045,
+     0.9213483146067416
+    ]
+   }
+  }
+ }
+}

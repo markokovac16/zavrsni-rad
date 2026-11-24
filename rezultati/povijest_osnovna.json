@@ -1,0 +1,66 @@
+[
+ {
+  "epoha": 1,
+  "gubitak_train": 0.4097544443729806,
+  "gubitak_val": 0.19035615026950836,
+  "tocnost_val": 0.9227861771058316,
+  "makro_f1_val": 0.9216911698393497,
+  "sekundi": 136
+ },
+ {
+  "epoha": 2,
+  "gubitak_train": 0.16955410288519238,
+  "gubitak_val": 0.17437313497066498,
+  "tocnost_val": 0.9211663066954644,
+  "makro_f1_val": 0.9200170382947506,
+  "sekundi": 134
+ },
+ {
+  "epoha": 3,
+  "gubitak_train": 0.1217118742531293,
+  "gubitak_val": 0.1511203646659851,
+  "tocnost_val": 0.9379049676025918,
+  "makro_f1_val": 0.9365049836343369,
+  "sekundi": 132
+ },
+ {
+  "epoha": 4,
+  "gubitak_train": 0.09265726099224532,
+  "gubitak_val": 0.1739288866519928,
+  "tocnost_val": 0.9271058315334774,
+  "makro_f1_val": 0.9262369733851836,
+  "sekundi": 132
+ },
+ {
+  "epoha": 5,
+  "gubitak_train": 0.07181763721068632,
+  "gubitak_val": 0.1294778734445572,
+  "tocnost_val": 0.9497840172786177,
+  "makro_f1_val": 0.948844383102216,
+  "sekundi": 133
+ },
+ {
+  "epoha": 6,
+  "gubitak_train": 0.05399397320803,
+  "gubitak_val": 0.1411326378583908,
+  "tocnost_val": 0.9476241900647948,
+  "makro_f1_val": 0.9467219957868489,
+  "sekundi": 132
+ },
+ {
+  "epoha": 7,
+  "gubitak_train": 0.03910025256073536,
+  "gubitak_val": 0.14444902539253235,
+  "tocnost_val": 0.9541036717062635,
+  "makro_f1_val": 0.9532725122035564,
+  "sekundi": 134
+ },
+ {
+  "epoha": 8,
+  "gubitak_train": 0.03855395901067923,
+  "gubitak_val": 0.14070425927639008,
+  "tocnost_val": 0.9514038876889849,
+  "makro_f1_val": 0.9504421200354409,
+  "sekundi": 135
+ }
+]

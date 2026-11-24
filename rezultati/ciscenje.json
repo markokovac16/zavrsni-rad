@@ -113,18 +113,18 @@
  "podjela": [
   {
    "dio": "test",
-   "nezdrava": 1202,
-   "zdrava": 753
+   "nezdrava": 1170,
+   "zdrava": 821
   },
   {
    "dio": "train",
-   "nezdrava": 5407,
-   "zdrava": 3883
+   "nezdrava": 5508,
+   "zdrava": 3881
   },
   {
    "dio": "val",
-   "nezdrava": 1139,
-   "zdrava": 848
+   "nezdrava": 1070,
+   "zdrava": 782
   },
   {
    "dio": "vanjski_stvarni",
@@ -152,8 +152,8 @@
   },
   {
    "izvor": "combined_medicinal",
-   "test": 104,
-   "train": 409,
+   "test": 38,
+   "train": 475,
    "val": 39
   },
   {
@@ -182,15 +182,15 @@
   },
   {
    "izvor": "medicinal_leaf_disease",
-   "test": 84,
-   "train": 512,
-   "val": 153
+   "test": 188,
+   "train": 494,
+   "val": 67
   },
   {
    "izvor": "medicinal_leaf_health",
-   "test": 90,
-   "train": 435,
-   "val": 114
+   "test": 103,
+   "train": 456,
+   "val": 80
   },
   {
    "izvor": "money_plant_atlas",
@@ -200,9 +200,9 @@
   },
   {
    "izvor": "multiclass_medicinal",
-   "test": 19,
-   "train": 184,
-   "val": 19
+   "test": 4,
+   "train": 214,
+   "val": 4
   },
   {
    "izvor": "plantvita_aloevera",
@@ -213,90 +213,94 @@
  ],
  "naivna_test_slika": 2601,
  "naivna_test_s_duplikatom_u_treningu": 778,
- "cista_test_slika": 1955,
- "cista_test_sa_slicnom_u_treningu": 127,
- "parova_test_ucenje_slicnih": 165,
+ "cista_test_slika": 1991,
+ "cista_test_sa_slicnom_u_treningu": 124,
+ "parova_test_ucenje_slicnih": 166,
  "parova_test_ucenje_slicnih_razlicita_oznaka": 47,
  "prag_zakrenute": 4,
  "razmak_serije_s": 30,
+ "parova_istog_imena": 82,
+ "parova_istog_imena_po_izvorima": {
+  "combined_medicinal + multiclass_medicinal": 82
+ },
  "uspravni_po_udaljenosti": [
   {
    "od": 0,
    "do": 2,
-   "parova": 19461,
-   "razlicita_oznaka": 0.002004008016032064,
-   "razlicit_izvor": 0.10991213195622013
+   "parova": 141,
+   "razlicita_oznaka": 0.0,
+   "razlicit_izvor": 0.0
   },
   {
    "od": 3,
    "do": 4,
-   "parova": 1309,
-   "razlicita_oznaka": 0.006111535523300229,
-   "razlicit_izvor": 0.868601986249045
+   "parova": 135,
+   "razlicita_oznaka": 0.014814814814814815,
+   "razlicit_izvor": 0.0962962962962963
   },
   {
    "od": 5,
    "do": 6,
-   "parova": 1587,
-   "razlicita_oznaka": 0.029615626969124134,
-   "razlicit_izvor": 0.3163201008191556
+   "parova": 174,
+   "razlicita_oznaka": 0.08045977011494253,
+   "razlicit_izvor": 0.06321839080459771
   },
   {
    "od": 7,
    "do": 8,
-   "parova": 911,
-   "razlicita_oznaka": 0.38199780461031835,
-   "razlicit_izvor": 0.38748627881448955
+   "parova": 402,
+   "razlicita_oznaka": 0.22885572139303484,
+   "razlicit_izvor": 0.022388059701492536
   },
   {
    "od": 9,
    "do": 10,
-   "parova": 2377,
-   "razlicita_oznaka": 0.31299957930164074,
-   "razlicit_izvor": 0.45056794278502316
+   "parova": 946,
+   "razlicita_oznaka": 0.28752642706131076,
+   "razlicit_izvor": 0.056025369978858354
   }
  ],
  "zakrenuti_po_udaljenosti": [
   {
    "od": 0,
    "do": 2,
-   "parova": 66761,
-   "razlicita_oznaka": 0.00017974565989125387,
-   "razlicit_izvor": 0.003295337098006321
+   "parova": 226,
+   "razlicita_oznaka": 0.004424778761061947,
+   "razlicit_izvor": 0.004424778761061947
   },
   {
    "od": 3,
    "do": 4,
-   "parova": 6710,
-   "razlicita_oznaka": 0.014605067064083458,
-   "razlicit_izvor": 0.910581222056632
+   "parova": 74,
+   "razlicita_oznaka": 0.14864864864864866,
+   "razlicit_izvor": 0.3108108108108108
   },
   {
    "od": 5,
    "do": 6,
-   "parova": 3214,
-   "razlicita_oznaka": 0.1297448662103298,
-   "razlicit_izvor": 0.8005600497822029
+   "parova": 221,
+   "razlicita_oznaka": 0.33031674208144796,
+   "razlicit_izvor": 0.05429864253393665
   },
   {
    "od": 7,
    "do": 8,
-   "parova": 3748,
-   "razlicita_oznaka": 0.4042155816435432,
-   "razlicit_izvor": 0.44983991462113126
+   "parova": 844,
+   "razlicita_oznaka": 0.3862559241706161,
+   "razlicit_izvor": 0.06042654028436019
   },
   {
    "od": 9,
    "do": 10,
-   "parova": 11582,
-   "razlicita_oznaka": 0.4215161457433949,
-   "razlicit_izvor": 0.4235019858400967
+   "parova": 3646,
+   "razlicita_oznaka": 0.4174437739989029,
+   "razlicit_izvor": 0.13302249040043884
   }
  ],
  "skupina_samo_slicne": 12257,
  "skupina_sa_zakrenutima": 13066,
  "skupina_bez_grupiranja": 13232,
- "skupina_za_podjelu": 11024,
- "najveca_skupina": 152,
- "slika_u_skupinama_od_10_i_vise": 2032
+ "skupina_za_podjelu": 11103,
+ "najveca_skupina": 186,
+ "slika_u_skupinama_od_10_i_vise": 1979
 }

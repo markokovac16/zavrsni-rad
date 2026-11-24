@@ -1,5 +1,5 @@
 {
- "test_slika": 1955,
+ "test_slika": 1991,
  "prag_zakrenute": 4,
  "razmak_serije_s": 30,
  "zakrenute_do_praga": {
@@ -9,14 +9,14 @@
   "po_izvoru": {}
  },
  "zakrenute_iznad_praga": {
-  "testnih_slika": 21,
-  "parova": 26,
-  "parova_razlicite_oznake": 7,
+  "testnih_slika": 20,
+  "parova": 25,
+  "parova_razlicite_oznake": 8,
   "po_izvoru": {
    "aloe_vera_leaf_disease": 14,
    "epipremnum_aureum": 3,
-   "medicinal_leaf_health": 2,
    "indoor_plant_disease": 1,
+   "medicinal_leaf_health": 1,
    "multiclass_medicinal": 1
   }
  },
@@ -27,24 +27,25 @@
   "po_izvoru": {}
  },
  "uspravne_iznad_praga": {
-  "testnih_slika": 127,
-  "parova": 165,
+  "testnih_slika": 124,
+  "parova": 166,
   "parova_razlicite_oznake": 47,
   "po_izvoru": {
    "aloe_vera_leaf_disease": 46,
    "epipremnum_aureum": 25,
-   "indoor_plant_disease": 14,
+   "indoor_plant_disease": 15,
    "aloe_vera_diseases": 13,
-   "medicinal_leaf_health": 11,
-   "combined_medicinal": 6,
-   "money_plant_atlas": 5,
-   "multiclass_medicinal": 5,
-   "healthy_wilted": 1,
-   "medicinal_leaf_disease": 1
+   "combined_medicinal": 8,
+   "money_plant_atlas": 7,
+   "medicinal_leaf_health": 4,
+   "medicinal_leaf_disease": 3,
+   "multiclass_medicinal": 2,
+   "healthy_wilted": 1
   }
  },
  "slicne_test_id": [
   5,
+  17,
   182,
   185,
   197,
@@ -58,11 +59,13 @@
   593,
   598,
   784,
-  818,
-  885,
+  943,
   990,
-  1490,
-  2226,
+  1095,
+  1176,
+  2150,
+  2159,
+  2182,
   2819,
   3026,
   3032,
@@ -148,65 +151,65 @@
   11099,
   11106,
   13975,
-  15390,
+  15168,
+  15174,
+  15460,
   15464,
-  15474,
-  15478,
-  15538,
-  15572,
-  15573,
-  15578,
-  15581,
-  15583,
-  15723,
-  16251,
-  16586,
-  16587,
-  16596,
-  16597,
-  16703,
+  16033,
+  16049,
+  16084,
+  16702,
+  16705,
   17100,
   17101,
   17108,
-  17207,
-  17220,
-  17230
+  17113,
+  17130,
+  17131,
+  17133,
+  17134
  ],
+ "isto_ime": {
+  "testnih_slika": 0,
+  "parova": 0,
+  "parova_razlicite_oznake": 0,
+  "po_izvoru": {}
+ },
  "uzastopne": {
-  "test_s_vremenom": 297,
-  "medijan_sekundi": 194.0,
+  "test_s_vremenom": 333,
+  "medijan_sekundi": 261.0,
   "do_30_s": 0,
-  "do_60_s": 26,
-  "do_120_s": 96,
-  "do_300_s": 221,
+  "do_60_s": 5,
+  "do_120_s": 34,
+  "do_300_s": 224,
   "po_izvoru": {
    "combined_medicinal": {
-    "test_s_vremenom": 104,
+    "test_s_vremenom": 38,
     "do_30_s": 0,
-    "do_60_s": 5,
-    "do_120_s": 17,
-    "do_300_s": 54
+    "do_60_s": 0,
+    "do_120_s": 11,
+    "do_300_s": 38
    },
    "medicinal_leaf_disease": {
-    "test_s_vremenom": 84,
+    "test_s_vremenom": 188,
     "do_30_s": 0,
-    "do_60_s": 8,
-    "do_120_s": 52,
-    "do_300_s": 71
+    "do_60_s": 0,
+    "do_120_s": 0,
+    "do_300_s": 80
    },
    "medicinal_leaf_health": {
-    "test_s_vremenom": 90,
+    "test_s_vremenom": 103,
     "do_30_s": 0,
-    "do_60_s": 11,
-    "do_120_s": 21,
-    "do_300_s": 85
+    "do_60_s": 5,
+    "do_120_s": 22,
+    "do_300_s": 103
    },
    "multiclass_medicinal": {
-    "test_s_vremenom": 19,
+    "test_s_vremenom": 4,
     "do_30_s": 0,
-    "do_60_s": 2,
-    "do_120_s": 6,
-    "do_300_s": 11
+    "do_60_s": 0,
+    "do_120_s": 1,
+    "do_300_s": 3
    }
   }
  }

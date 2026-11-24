@@ -48,6 +48,11 @@ def podijeli(df, stupac_skupine, rng, udjeli=None, sloj=None):
 
 
 def po_udaljenosti(parovi, df):
+    jedinstvena = ~df.md5.duplicated().to_numpy()
+    parovi = parovi[jedinstvena[parovi[:, 0]] & jedinstvena[parovi[:, 1]]]
+    kljuc = np.sort(parovi[:, :2], axis=1)
+    _, prvi = np.unique(kljuc, axis=0, return_index=True)
+    parovi = parovi[np.sort(prvi)]
     udalj = np.maximum(parovi[:, 2], parovi[:, 3])
     izvor, oznaka = df.izvor.to_numpy(), df.oznaka.to_numpy()
     redovi = []
@@ -75,10 +80,14 @@ def main():
     serije = s.parovi_iste_serije(df, RAZMAK_SERIJE)
     for a, b in serije:
         sk.spoji(a, b)
+    isto_ime = s.parovi_istog_imena(df)
+    for a, b in isto_ime:
+        sk.spoji(a, b)
     df["skupina"] = sk.oznake()
     print(f"skupina: slične do {PRAG_SLICNE} bitova {len(set(samo_slicne))}; "
           f"za podjelu: duplikati i zakrenute {len(set(s_zakrenutima))}, "
-          f"sa serijama snimanja {df.skupina.nunique()}; parova u serijama {len(serije)}")
+          f"sa serijama snimanja i istim imenom {df.skupina.nunique()}; parova u serijama {len(serije)}, "
+          f"istog imena u različitim izvorima {len(isto_ime)}")
     print("najveće skupine:", df.skupina.value_counts().head(8).tolist())
 
     df["rang"] = df.izvor.map({ime: i for i, ime in enumerate(PREDNOST)})
@@ -136,6 +145,9 @@ def main():
         parova_test_ucenje_slicnih=int(tt.sum()),
         parova_test_ucenje_slicnih_razlicita_oznaka=int((oznaka[i[tt]] != oznaka[j[tt]]).sum()),
         prag_zakrenute=PRAG_ZAKRENUTE, razmak_serije_s=RAZMAK_SERIJE,
+        parova_istog_imena=len(isto_ime),
+        parova_istog_imena_po_izvorima=pd.Series([" + ".join(sorted({df.izvor.iat[a], df.izvor.iat[b]}))
+                                                  for a, b in isto_ime]).value_counts().to_dict(),
         uspravni_po_udaljenosti=po_udaljenosti(parovi, df),
         zakrenuti_po_udaljenosti=po_udaljenosti(zakrenuti, df),
         skupina_samo_slicne=int(pd.Series(samo_slicne)[cist.index][cist.uloga == "skup"].nunique()),

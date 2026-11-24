@@ -1,0 +1,194 @@
+{
+ "model": "naivni",
+ "arhitektura": "efficientnet_b0",
+ "epoha": 7,
+ "temperatura": 1.691948413848877,
+ "prag": 0.8069999814033508,
+ "ciljana_tocnost": 0.98,
+ "skupovi": {
+  "val": {
+   "n": 2607,
+   "udio_nezdravih": 0.5980053701572688,
+   "tocnost": 0.9620253164556962,
+   "tocnost_interval": [
+    0.9543124580545143,
+    0.9692656053169646
+   ],
+   "preciznost": 0.9847277556440903,
+   "odziv": 0.9512508017960231,
+   "f1": 0.967699836867863,
+   "makro_f1": 0.9608159491458905,
+   "makro_f1_interval": [
+    0.952905090929852,
+    0.968342711664801
+   ],
+   "skupina": 2098,
+   "roc_auc": 0.9920775208222142,
+   "osnovica_najcesci_razred": 0.5980053701572688,
+   "matrica": {
+    "tn": 1025,
+    "fp": 23,
+    "fn": 76,
+    "tp": 1483
+   },
+   "ece_prije": 0.022180157989023494,
+   "ece_poslije": 0.010101623813174063,
+   "uz_prag": {
+    "pokrivenost": 0.934023782125048,
+    "tocnost_iznad_praga": 0.9802874743326488,
+    "tocnost_ispod_praga": 0.7034883720930233
+   }
+  },
+  "test": {
+   "n": 2601,
+   "udio_nezdravih": 0.5982314494425222,
+   "tocnost": 0.9565551710880431,
+   "tocnost_interval": [
+    0.9476724508466619,
+    0.9647155650385665
+   ],
+   "preciznost": 0.9787657597876576,
+   "odziv": 0.9479434447300771,
+   "f1": 0.9631080639895527,
+   "makro_f1": 0.955139819746062,
+   "makro_f1_interval": [
+    0.9459253609781163,
+    0.963581933630143
+   ],
+   "skupina": 2091,
+   "roc_auc": 0.9921529255482714,
+   "osnovica_najcesci_razred": 0.5982314494425222,
+   "matrica": {
+    "tn": 1013,
+    "fp": 32,
+    "fn": 81,
+    "tp": 1475
+   },
+   "ece_prije": 0.020584451331857576,
+   "ece_poslije": 0.008698967890939286,
+   "uz_prag": {
+    "pokrivenost": 0.9242599000384467,
+    "tocnost_iznad_praga": 0.9833610648918469,
+    "tocnost_ispod_praga": 0.6294416243654822
+   }
+  }
+ },
+ "test_po_izvor": [
+  {
+   "naziv": "aloe_vera_diseases",
+   "n": 350,
+   "nezdravih": 256,
+   "tocnost": 0.9971428571428571
+  },
+  {
+   "naziv": "aloe_vera_leaf_disease",
+   "n": 375,
+   "nezdravih": 258,
+   "tocnost": 0.9173333333333333
+  },
+  {
+   "naziv": "combined_medicinal",
+   "n": 84,
+   "nezdravih": 60,
+   "tocnost": 0.9880952380952381
+  },
+  {
+   "naziv": "epipremnum_aureum",
+   "n": 553,
+   "nezdravih": 244,
+   "tocnost": 0.9330922242314648
+  },
+  {
+   "naziv": "healthy_wilted",
+   "n": 136,
+   "nezdravih": 68,
+   "tocnost": 0.9117647058823529
+  },
+  {
+   "naziv": "indoor_leaf_health",
+   "n": 136,
+   "nezdravih": 52,
+   "tocnost": 0.9779411764705882
+  },
+  {
+   "naziv": "indoor_plant_disease",
+   "n": 118,
+   "nezdravih": 77,
+   "tocnost": 0.9661016949152542
+  },
+  {
+   "naziv": "medicinal_leaf_disease",
+   "n": 125,
+   "nezdravih": 94,
+   "tocnost": 1.0
+  },
+  {
+   "naziv": "medicinal_leaf_health",
+   "n": 96,
+   "nezdravih": 60,
+   "tocnost": 1.0
+  },
+  {
+   "naziv": "money_plant_atlas",
+   "n": 281,
+   "nezdravih": 176,
+   "tocnost": 1.0
+  },
+  {
+   "naziv": "multiclass_medicinal",
+   "n": 34,
+   "nezdravih": 18,
+   "tocnost": 0.9705882352941176
+  },
+  {
+   "naziv": "plantvita_aloevera",
+   "n": 313,
+   "nezdravih": 193,
+   "tocnost": 0.9265175718849841
+  }
+ ],
+ "test_po_vrsta": [
+  {
+   "naziv": "aloja",
+   "n": 1081,
+   "nezdravih": 728,
+   "tocnost": 0.9491211840888066
+  },
+  {
+   "naziv": "hibiskus",
+   "n": 26,
+   "nezdravih": 20,
+   "tocnost": 1.0
+  },
+  {
+   "naziv": "kalanhoja",
+   "n": 270,
+   "nezdravih": 191,
+   "tocnost": 0.9925925925925926
+  },
+  {
+   "naziv": "razne",
+   "n": 272,
+   "nezdravih": 120,
+   "tocnost": 0.9448529411764706
+  },
+  {
+   "naziv": "sansevierija",
+   "n": 45,
+   "nezdravih": 28,
+   "tocnost": 0.9555555555555556
+  },
+  {
+   "naziv": "zelenčica",
+   "n": 39,
+   "nezdravih": 25,
+   "tocnost": 0.9487179487179487
+  },
+  {
+   "naziv": "zlatni puzavac",
+   "n": 868,
+   "nezdravih": 444,
+   "tocnost": 0.9573732718894009
+  }
+ ]
+}

@@ -4,7 +4,7 @@ import json
 import config as c
 
 INACICE = {
-    "osnovni": ["osnovni", "osnovni_s1", "osnovni_s2"],
+    "osnovna": ["osnovna", "osnovna_s1", "osnovna_s2"],
     "jaka": ["jaka", "jaka_s1", "jaka_s2"],
 }
 
