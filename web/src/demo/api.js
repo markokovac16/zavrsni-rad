@@ -1,7 +1,9 @@
 import Anthropic from '@anthropic-ai/sdk'
 import postavkeDemo from './postavke.json'
 import cinjenice from '../../../znanje/cinjenice.json'
-import sustav from './sustav.md?raw'
+import predlosci from '../../../znanje/predlosci.json'
+import sustav from '../../../znanje/sustav.md?raw'
+import { pripremi, zavrsi } from './preporuka.js'
 
 export function postavke() {
   if (!__KLJUC__) throw new Error('Nema API ključa: u projekt/.env treba postaviti CLAUDE_API_KEY i pokrenuti pnpm dev.')
@@ -17,49 +19,29 @@ export function nasumicanRezultat(prag) {
   return { stanje, pouzdanost, vjerojatnost_nezdrave: nezdravaJeVeca ? pouzdanost : 1 - pouzdanost, prag }
 }
 
-const odaberiCinjenice = (vrsta) => cinjenice.filter((f) => f.tema === 'opcenito' || f.tema === vrsta)
-
-function sloziUpit(vrsta, stanje, pouzdanost, uvjeti, odabrane) {
-  const dijelovi = [
-    'REZULTAT KLASIFIKATORA',
-    `stanje: ${stanje}`,
-    `pouzdanost: ${Math.round(pouzdanost * 100)}%`,
-    '',
-    'PODACI KORISNIKA',
-    `vrsta biljke: ${vrsta || 'nepoznata'}`,
-  ]
-  for (const [naziv, vrijednost] of Object.entries(uvjeti)) if (vrijednost) dijelovi.push(`${naziv}: ${vrijednost}`)
-  dijelovi.push('', 'ČINJENICE', ...odabrane.map((f) => `[${f.id}] (${f.tema}, ${f.kategorija}) ${f.cinjenica}`))
-  return dijelovi.join('\n')
-}
-
 const klijent = new Anthropic({ apiKey: __KLJUC__, dangerouslyAllowBrowser: true })
 
 export async function analiziraj(obrazac, prag) {
   const rezultat = nasumicanRezultat(prag)
-  const { vrsta, ...ostalo } = obrazac
-  const uvjeti = Object.fromEntries(Object.entries(ostalo).map(([k, v]) => [k, v.trim().slice(0, 200)]))
-  const odabrane = odaberiCinjenice(vrsta)
+  const { vrsta, ...uvjeti } = obrazac
+  const p = pripremi(cinjenice, predlosci, sustav.trim(), vrsta || null, rezultat.stanje, uvjeti)
 
-  let odgovor
+  let sirovo
   try {
-    odgovor = await klijent.messages.create({
+    const odgovor = await klijent.messages.create({
       model: __MODEL__,
       max_tokens: 1500,
       thinking: { type: 'disabled' },
-      system: sustav.trim(),
-      messages: [{ role: 'user', content: sloziUpit(vrsta, rezultat.stanje, rezultat.pouzdanost, uvjeti, odabrane) }],
+      output_config: { format: { type: 'json_schema', schema: p.shema } },
+      system: p.sustav,
+      messages: [{ role: 'user', content: p.upit }],
     })
+    if (odgovor.stop_reason !== 'end_turn') throw new Error(odgovor.stop_reason)
+    sirovo = JSON.parse(odgovor.content.filter((b) => b.type === 'text').map((b) => b.text).join(''))
   } catch (e) {
-    return { ...rezultat, preporuka: null, izvori: [], greska: `Preporuka nije dostupna: ${e.status ?? e.name}` }
+    return { ...rezultat, preporuka: null, izvori: [], greska: `Preporuka nije dostupna: ${e.status ?? e.message ?? e.name}` }
   }
 
-  const tekst = odgovor.content.filter((b) => b.type === 'text').map((b) => b.text).join('')
-  const poId = Object.fromEntries(odabrane.map((f) => [f.id, f]))
-  const navedene = [...new Set(tekst.match(/C\d{3}/g) ?? [])].sort()
-  const izvori = navedene.filter((id) => poId[id]).map((id) => {
-    const { izvor, url, cinjenica } = poId[id]
-    return { id, izvor, url, cinjenica }
-  })
-  return { ...rezultat, preporuka: tekst, izvori }
+  const r = zavrsi(predlosci, sirovo, vrsta || null, rezultat.stanje, rezultat.pouzdanost, p.opce, p.oVrsti)
+  return { ...rezultat, preporuka: r.tekst, izvori: r.izvori }
 }

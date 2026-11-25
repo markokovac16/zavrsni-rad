@@ -10,7 +10,7 @@ daje samo opće savjete.
 
 | Mapa | Što sadrži |
 | --- | --- |
-| `src/` | priprema podataka, učenje i evaluacija klasifikatora (Python) |
+| `src/` | priprema podataka, učenje i evaluacija klasifikatora, preporuke o njezi (Python) |
 | `rezultati/` | rezultati pokretanja (JSON) i slike za rad (`rezultati/slike/`) |
 | `web/` | sučelje (Vue + Vite) |
 | `znanje/` | baza činjenica o njezi s izvorima (`cinjenice.json`) |
@@ -112,6 +112,25 @@ nasumična podjela, pa slike čija je kopija izvan skupa za učenje služe kao k
 uv run src/k05_trening.py --naziv naivni --manifest manifest_naivni.csv
 uv run src/k07_evaluacija.py --naziv naivni --manifest manifest_naivni.csv
 uv run src/k08_curenje.py
+```
+
+### Preporuke o njezi
+
+`src/preporuke.py` sastavlja preporuku pozivom jezičnog modela (ključ i model iz `.env`, isto kao za sučelje).
+Model dobiva stanje iz klasifikatora (zdrava, nezdrava ili nesigurno), vrstu, uvjete uzgoja koje je unio korisnik i
+činjenice iz `znanje/cinjenice.json`: opće i one o odabranoj vrsti, u dva bloka. Ne dobiva fotografiju, pouzdanost
+klasifikatora, činjenice o otrovnosti ni opće činjenice koje činjenica o vrsti zamjenjuje (polje `zamjenjuje`).
+
+Odgovor je JSON po shemi (strukturirani izlaz): četiri popisa rečenica (procjena, što napraviti sada, redovita njega,
+kada potražiti pomoć), a svaka rečenica ima oznake činjenica (npr. `C012`) i tekst. Shema dopušta samo oznake
+priloženih činjenica. Program zatim izbacuje rečenice bez oznake, odsijeca višak rečenica, preslovljava ćirilicu u
+latinicu i dodaje rečenice koje uvijek moraju biti točne: rezultat klasifikatora s pouzdanošću, napomenu kad procjena
+nije pouzdana ili vrsta nije odabrana, otrovnost za kućne ljubimce (činjenica iz baze) i uputu stručnjaku. Uputa
+modelu je u `znanje/sustav.md`, stalne rečenice u `znanje/predlosci.json`. Sučelje (`web/src/demo/preporuka.js`)
+koristi iste datoteke i isti postupak. Primjer s jednom alojom:
+
+```bash
+uv run src/preporuke.py
 ```
 
 ### Brojke za tekst rada

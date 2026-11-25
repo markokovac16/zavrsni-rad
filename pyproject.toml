@@ -13,4 +13,5 @@ dependencies = [
     "torchvision>=0.19",
     "scikit-learn>=1.5",
     "matplotlib==3.10.*",
+    "anthropic>=2.14.0",
 ]

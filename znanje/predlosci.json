@@ -1,0 +1,23 @@
+{
+ "dijelovi": [
+  {"kljuc": "procjena", "naslov": "Procjena", "najvise": 2},
+  {"kljuc": "sto_napraviti", "naslov": "Što napraviti sada", "najvise": 3},
+  {"kljuc": "redovita_njega", "naslov": "Redovita njega", "najvise": 3},
+  {"kljuc": "kada_potraziti_pomoc", "naslov": "Kada potražiti pomoć", "najvise": 2}
+ ],
+ "stanje": {
+  "nezdrava": "Sustav je biljku na fotografiji ocijenio kao nezdravu (pouzdanost modela {p} %). Uzrok ne prepoznaje, pa su u nastavku mogući uzroci koje možete sami provjeriti.",
+  "zdrava": "Sustav je biljku na fotografiji ocijenio kao zdravu (pouzdanost modela {p} %).",
+  "nesigurno": "Sustav nije mogao pouzdano procijeniti stanje biljke na fotografiji. Savjeti u nastavku su opći i nisu prilagođeni stanju ove biljke."
+ },
+ "nepoznata_vrsta": "Vrsta biljke nije odabrana, pa savjeti vrijede za sobne biljke općenito.",
+ "strucnjak": "Ako se stanje biljke pogoršava ili se ne popravlja, pokažite je stručnjaku, primjerice u vrtnom centru.",
+ "otrovnost": {
+  "zlatni puzavac": "C067",
+  "sansevierija": "C077",
+  "zelenčica": "C088",
+  "aloja": "C097",
+  "kalanhoja": "C114"
+ },
+ "najvise_oznaka": 2
+}
