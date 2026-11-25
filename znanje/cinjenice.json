@@ -201,7 +201,7 @@
   "id": "C023",
   "tema": "opcenito",
   "kategorija": "temperatura",
-  "cinjenica": "Crni listovi, pad listova i kolaps cijele biljke simptomi su oštećenja od hladnoće.",
+  "cinjenica": "Crni listovi, klonulost listova i kolaps cijele biljke simptomi su oštećenja od hladnoće.",
   "citat": "Blackened leaves, leaf droop and whole plant collapse are symptoms of cold damage",
   "izvor": "Royal Horticultural Society (RHS): How to help a poorly houseplant",
   "url": "https://www.rhs.org.uk/plants/types/houseplants/how-to-help-a-poorly-houseplant"
@@ -390,7 +390,7 @@
   "id": "C044",
   "tema": "opcenito",
   "kategorija": "stetnici",
-  "cinjenica": "Protiv grinja biljku je često potrebno prskati (vodom ili insekticidnim sapunom) jednom tjedno nekoliko tjedana.",
+  "cinjenica": "Za suzbijanje grinja prskanje je često potrebno ponavljati jednom tjedno tijekom nekoliko tjedana.",
   "citat": "It is often necessary to spray once a week for several weeks to control mites.",
   "izvor": "Clemson University HGIC: Common Houseplant Insects & Related Pests",
   "url": "https://hgic.clemson.edu/factsheet/common-houseplant-insects-related-pests/"
@@ -507,7 +507,7 @@
   "id": "C057",
   "tema": "opcenito",
   "kategorija": "ostalo",
-  "cinjenica": "Listove koji su potpuno smeđi, potpuno žuti, plijesnivi ili sasušeni treba odrezati; listove koji su pretežno zeleni treba zadržati dok biljka ne razvije novo lišće.",
+  "cinjenica": "Listove koji su potpuno smeđi, potpuno žuti, plijesnivi ili sasušeni treba odrezati.",
   "citat": "Cut off any mouldy, shrivelled, completely brown or completely yellow leaves",
   "izvor": "Royal Horticultural Society (RHS): How to help a poorly houseplant",
   "url": "https://www.rhs.org.uk/plants/types/houseplants/how-to-help-a-poorly-houseplant"
@@ -816,7 +816,10 @@
   "cinjenica": "Tlo kod aloje treba potpuno osušiti između zalijevanja.",
   "citat": "Allow the soil to completely dry between waterings.",
   "izvor": "NC State Extension Gardener Plant Toolbox: Aloe vera",
-  "url": "https://plants.ces.ncsu.edu/plants/aloe-vera/"
+  "url": "https://plants.ces.ncsu.edu/plants/aloe-vera/",
+  "zamjenjuje": [
+   "C012"
+  ]
  },
  {
   "id": "C092",
@@ -1105,5 +1108,278 @@
   "citat": "Non-Toxic to Dogs, Non-Toxic to Cats, Non-Toxic to Horses",
   "izvor": "ASPCA: Toxic and Non-toxic Plants – Hibiscus",
   "url": "https://www.aspca.org/pet-care/animal-poison-control/toxic-and-non-toxic-plants/hibiscus"
+ },
+ {
+  "id": "C126",
+  "tema": "zelenčica",
+  "kategorija": "bolesti",
+  "cinjenica": "Kod zelenčice su u kućnim uvjetima bolesti vrlo rijetko problem; glavni su problemi previše ili premalo vode te kukci i grinje.",
+  "citat": "In the home, plant diseases are very rarely a problem. Too much or too little water, along with insects and mites, are the primary problems.",
+  "izvor": "Clemson University HGIC: Spider Plant (Chlorophytum comosum)",
+  "url": "https://hgic.clemson.edu/factsheet/spider-plant/"
+ },
+ {
+  "id": "C127",
+  "tema": "zelenčica",
+  "kategorija": "bolesti",
+  "cinjenica": "Trulež korijena zelenčice obično nastaje zbog supstrata koji ne propušta vodu dovoljno brzo ili zbog prekomjernog zalijevanja.",
+  "citat": "Root rot usually results from a soil mix that does not drain quickly or from excessive watering.",
+  "izvor": "Clemson University HGIC: Spider Plant (Chlorophytum comosum)",
+  "url": "https://hgic.clemson.edu/factsheet/spider-plant/"
+ },
+ {
+  "id": "C128",
+  "tema": "zelenčica",
+  "kategorija": "stetnici",
+  "cinjenica": "Zelenčica općenito ima malo problema sa štetnicima, osim štitastih i brašnastih ušiju.",
+  "citat": "Spider plants generally have few pest problems other than scale insects and mealybugs.",
+  "izvor": "University of Wisconsin–Madison Extension: Spider plant, Chlorophytum comosum",
+  "url": "https://hort.extension.wisc.edu/articles/spider-plant-chlorophytum-comosum/"
+ },
+ {
+  "id": "C129",
+  "tema": "zelenčica",
+  "kategorija": "dijagnoza",
+  "cinjenica": "Smeđe vrhove listova zelenčice mogu uzrokovati niska vlažnost zraka, presuho tlo, nakupljanje soli i/ili kemikalije u vodi iz slavine, osobito fluorid ili klor; destilirana voda ili kišnica pomaže spriječiti smeđenje vrhova.",
+  "citat": "Low humidity, excessively dry soil, salt accumulation and/or chemicals, particularly fluoride or chlorine, in tap water may cause brown leaf tips. Using distilled water or rainwater will help prevent tip browning.",
+  "izvor": "University of Wisconsin–Madison Extension: Spider plant, Chlorophytum comosum",
+  "url": "https://hort.extension.wisc.edu/articles/spider-plant-chlorophytum-comosum/"
+ },
+ {
+  "id": "C130",
+  "tema": "zelenčica",
+  "kategorija": "tlo",
+  "cinjenica": "Za zelenčicu se koristi univerzalni supstrat za lončanice ili supstrat bez zemlje.",
+  "citat": "Use a general-purpose potting soil or soilless medium.",
+  "izvor": "University of Wisconsin–Madison Extension: Spider plant, Chlorophytum comosum",
+  "url": "https://hort.extension.wisc.edu/articles/spider-plant-chlorophytum-comosum/"
+ },
+ {
+  "id": "C131",
+  "tema": "zelenčica",
+  "kategorija": "gnojidba",
+  "cinjenica": "Zelenčicu je obično dovoljno gnojiti svaka 3 do 4 mjeseca, a može i češće, otopinom gnojiva upola slabije koncentracije.",
+  "citat": "Fertilizing every 3-4 months is usually sufficient, or feed more frequently using half strength fertilizer solution.",
+  "izvor": "University of Wisconsin–Madison Extension: Spider plant, Chlorophytum comosum",
+  "url": "https://hort.extension.wisc.edu/articles/spider-plant-chlorophytum-comosum/"
+ },
+ {
+  "id": "C132",
+  "tema": "hibiskus",
+  "kategorija": "stetnici",
+  "cinjenica": "Hibiskus uglavnom nema problema, ali ga mogu napasti uobičajeni staklenički štetnici, poput lisnih ušiju, crvenog pauka (grinje) i stakleničke bijele mušice.",
+  "citat": "Generally trouble free but may suffer from common glasshouse pests such as aphids, red spider mites and glasshouse whitefly.",
+  "izvor": "Royal Horticultural Society (RHS): Hibiscus rosa-sinensis (growing guide)",
+  "url": "https://www.rhs.org.uk/plants/hibiscus/growing-guide"
+ },
+ {
+  "id": "C133",
+  "tema": "hibiskus",
+  "kategorija": "stetnici",
+  "cinjenica": "Hibiskus treba redovito pregledavati zbog štetnika kao što su lisne uši, bijele mušice i brašnaste uši; ti kukci koji sišu biljni sok obično se nalaze u skupinama na listovima i cvjetnim pupovima.",
+  "citat": "Scout your hibiscus regularly for pests such as aphids, whiteflies and mealybugs. These piercing sucking insects are usually found in clusters on leaves and flower buds.",
+  "izvor": "UF/IFAS Gardening Solutions: Hibiscus",
+  "url": "https://gardeningsolutions.ifas.ufl.edu/plants/ornamentals/hibiscus/"
+ },
+ {
+  "id": "C134",
+  "tema": "hibiskus",
+  "kategorija": "dijagnoza",
+  "cinjenica": "Štetnici na hibiskusu otkrivaju se okretanjem listova i traženjem kukaca ili po čađavoj plijesni koja raste na mednoj rosi koju oni izlučuju.",
+  "citat": "Scout by flipping leaves and looking for the pests or by noticing sooty mold growing on the honey dew produced.",
+  "izvor": "UF/IFAS Gardening Solutions: Hibiscus",
+  "url": "https://gardeningsolutions.ifas.ufl.edu/plants/ornamentals/hibiscus/"
+ },
+ {
+  "id": "C135",
+  "tema": "hibiskus",
+  "kategorija": "dijagnoza",
+  "cinjenica": "Zimi, kad je u zatvorenom malo svjetla, cvjetni pupovi i listovi hibiskusa žute i otpadaju; biljka u tom stanju djelomičnog mirovanja može preživjeti ako se smanji zalijevanje.",
+  "citat": "Flower buds and leaves turn yellow and drop in winter when light levels are low indoors but plants can survive in this semi-dormant state if watering is reduced.",
+  "izvor": "Royal Horticultural Society (RHS): Hibiscus rosa-sinensis (growing guide)",
+  "url": "https://www.rhs.org.uk/plants/hibiscus/growing-guide"
+ },
+ {
+  "id": "C136",
+  "tema": "hibiskus",
+  "kategorija": "temperatura",
+  "cinjenica": "Tropski hibiskus osjetljiv je na hladnoću; i najmanji val hladnoće može uzrokovati žućenje i otpadanje donjih listova.",
+  "citat": "Tropical hibiscus are sensitive to cold weather; the slightest cold wave can cause lower leaves to yellow and drop off.",
+  "izvor": "UF/IFAS Gardening Solutions: Hibiscus",
+  "url": "https://gardeningsolutions.ifas.ufl.edu/plants/ornamentals/hibiscus/"
+ },
+ {
+  "id": "C137",
+  "tema": "hibiskus",
+  "kategorija": "gnojidba",
+  "cinjenica": "U proljeće i ljeto hibiskus se počinje gnojiti tjedno uravnoteženim tekućim gnojivom za sobne biljke, oko šest do osam tjedana nakon presađivanja.",
+  "citat": "Begin feeding weekly with a balanced liquid fertiliser for houseplants, about six to eight weeks after repotting",
+  "izvor": "Royal Horticultural Society (RHS): Hibiscus rosa-sinensis (growing guide)",
+  "url": "https://www.rhs.org.uk/plants/hibiscus/growing-guide"
+ },
+ {
+  "id": "C138",
+  "tema": "zlatni puzavac",
+  "kategorija": "bolesti",
+  "cinjenica": "Trulež korijena zlatnog puzavca prepoznaje se po smeđem korijenju ili po tome što korijena nema, a najčešće nastaje zbog prezalijevanja.",
+  "citat": "Root rots, with symptoms of brown or nonexistent roots, are most often due to overwatering.",
+  "izvor": "University of Wisconsin–Madison Extension: Pothos, Epipremnum aureum",
+  "url": "https://hort.extension.wisc.edu/articles/pothos-epipremmum-aureum/"
+ },
+ {
+  "id": "C139",
+  "tema": "zlatni puzavac",
+  "kategorija": "dijagnoza",
+  "cinjenica": "Crnjenje rubova ili vrhova listova zlatnog puzavca može nastati zbog prezalijevanja, nedovoljnog zalijevanja ili viška gnojiva (zbog nakupljanja soli u tlu); uz to listovi često žute.",
+  "citat": "Blackening of the leaf margins or tips can be caused by overwatering, inadequate watering, or excess fertilizer (because of buildup of salts in the soil). Discoloration is often accompanied by leaves becoming yellow.",
+  "izvor": "University of Wisconsin–Madison Extension: Pothos, Epipremnum aureum",
+  "url": "https://hort.extension.wisc.edu/articles/pothos-epipremmum-aureum/"
+ },
+ {
+  "id": "C140",
+  "tema": "zlatni puzavac",
+  "kategorija": "dijagnoza",
+  "cinjenica": "Crne mrlje na listovima zlatnog puzavca znak su da je tlo bilo premokro.",
+  "citat": "Black spots on the leaves are an indication that the soil has been kept too wet.",
+  "izvor": "South Dakota State University Extension: Pothos (Devil’s Ivy, Golden Pothos): House Plant How-To",
+  "url": "https://extension.sdstate.edu/pothos-devils-ivy-golden-pothos-house-plant-how"
+ },
+ {
+  "id": "C141",
+  "tema": "zlatni puzavac",
+  "kategorija": "dijagnoza",
+  "cinjenica": "Klonulo lišće zlatnog puzavca znak je da ga treba zaliti, i to prije nego što se listovi počnu smežuravati; suhi, smeđi rubovi listova znak su da je biljka predugo bila presuha.",
+  "citat": "Drooping leaves are evidence that you need to water the plant. Do not wait for the leaves to begin shriveling up before you water. Dry, brown edges are another sign that the plant has been kept too dry for too long.",
+  "izvor": "South Dakota State University Extension: Pothos (Devil’s Ivy, Golden Pothos): House Plant How-To",
+  "url": "https://extension.sdstate.edu/pothos-devils-ivy-golden-pothos-house-plant-how"
+ },
+ {
+  "id": "C142",
+  "tema": "zlatni puzavac",
+  "kategorija": "dijagnoza",
+  "cinjenica": "Niske temperature ili nagla promjena s vrlo visokih na umjerene temperature mogu na listovima zlatnog puzavca uzrokovati raštrkane smeđe mrlje, obično u sredini lista.",
+  "citat": "Low temperatures or abrupt change from very high temperatures to moderate temperatures can cause scattered brown patches, usually located in the center of the leaf",
+  "izvor": "University of Wisconsin–Madison Extension: Pothos, Epipremnum aureum",
+  "url": "https://hort.extension.wisc.edu/articles/pothos-epipremmum-aureum/"
+ },
+ {
+  "id": "C143",
+  "tema": "sansevierija",
+  "kategorija": "dijagnoza",
+  "cinjenica": "Ako se naginje cijela sansevierija, a ne samo pokoji list, treba provjeriti ima li znakova truleži korijena.",
+  "citat": "if you notice the whole plant leaning over, rather than just the occasional leaf, check for signs of root rot.",
+  "izvor": "Royal Horticultural Society (RHS): How to grow sansevierias",
+  "url": "https://www.rhs.org.uk/plants/sansevieria/growing-guide"
+ },
+ {
+  "id": "C144",
+  "tema": "sansevierija",
+  "kategorija": "tlo",
+  "cinjenica": "Za sansevieriju se koristi propustan supstrat za kaktuse bez treseta ili vlastita mješavina dvaju dijelova supstrata na bazi ilovače bez treseta i jednog dijela sitnog drobljenog kamena ili sitnog šljunka.",
+  "citat": "Use a free-draining, peat-free cactus compost or mix your own using two parts peat-free loam-based compost (such as Melcourt Sylvagrow with John Innes) and one part horticultural grit or fine gravel.",
+  "izvor": "Royal Horticultural Society (RHS): How to grow sansevierias",
+  "url": "https://www.rhs.org.uk/plants/sansevieria/growing-guide"
+ },
+ {
+  "id": "C145",
+  "tema": "sansevierija",
+  "kategorija": "gnojidba",
+  "cinjenica": "Za bolji rast sansevieriju treba gnojiti jednom mjesečno tijekom sezone rasta (od travnja do rujna) tekućim gnojivom za sobne biljke ili posebnim tekućim gnojivom za kaktuse.",
+  "citat": "To boost growth, feed once a month through the growing season (April to September) with a liquid houseplant fertiliser or specialist liquid cactus feed.",
+  "izvor": "Royal Horticultural Society (RHS): How to grow sansevierias",
+  "url": "https://www.rhs.org.uk/plants/sansevieria/growing-guide"
+ },
+ {
+  "id": "C146",
+  "tema": "sansevierija",
+  "kategorija": "stetnici",
+  "cinjenica": "Crveni pauk (grinje) na sansevieriji obično je problem samo u vrućim i suhim uvjetima.",
+  "citat": "Red spider mites – usually only a problem in hot dry conditions",
+  "izvor": "Royal Horticultural Society (RHS): How to grow sansevierias",
+  "url": "https://www.rhs.org.uk/plants/sansevieria/growing-guide"
+ },
+ {
+  "id": "C147",
+  "tema": "sansevierija",
+  "kategorija": "stetnici",
+  "cinjenica": "Ličinke pipa (eng. vine weevil) hrane se mesnatim korijenjem sansevierije, zbog čega listovi klonu.",
+  "citat": "Vine weevils – the grubs feed on the fleshy roots, causing the leaves to collapse",
+  "izvor": "Royal Horticultural Society (RHS): How to grow sansevierias",
+  "url": "https://www.rhs.org.uk/plants/sansevieria/growing-guide"
+ },
+ {
+  "id": "C148",
+  "tema": "aloja",
+  "kategorija": "dijagnoza",
+  "cinjenica": "Premalo vode uzrokuje žute, smežurane i naborane listove aloje; biljka bi se trebala oporaviti kad se ponovno zalije.",
+  "citat": "Too little water will give you yellow, shriveled, and puckered leaves. The plant should recover once it is watered again.",
+  "izvor": "South Dakota State University Extension: Aloe Vera: Houseplant How-To",
+  "url": "https://extension.sdstate.edu/aloe-vera-houseplant-how"
+ },
+ {
+  "id": "C149",
+  "tema": "aloja",
+  "kategorija": "svjetlo",
+  "cinjenica": "Zbog nedostatka svjetla aloja se izdužuje i listovi joj slabe, a premalo svjetla uzrokuje i klonulost listova.",
+  "citat": "The lack of light will make the plant leggy, causing weak leaves. Too little light will cause the leaves to droop.",
+  "izvor": "South Dakota State University Extension: Aloe Vera: Houseplant How-To",
+  "url": "https://extension.sdstate.edu/aloe-vera-houseplant-how"
+ },
+ {
+  "id": "C150",
+  "tema": "aloja",
+  "kategorija": "vlaga",
+  "cinjenica": "Aloji ne treba dodatna vlažnost zraka; zrak u stanu, osobito suh zimski zrak, za nju je idealan.",
+  "citat": "It does not require extra humidity, and the air within your home (especially dry, winter air) will be ideal.",
+  "izvor": "South Dakota State University Extension: Aloe Vera: Houseplant How-To",
+  "url": "https://extension.sdstate.edu/aloe-vera-houseplant-how",
+  "zamjenjuje": [
+   "C017"
+  ]
+ },
+ {
+  "id": "C151",
+  "tema": "aloja",
+  "kategorija": "gnojidba",
+  "cinjenica": "Aloji obično nije potrebno gnojivo da bi ostala zdrava.",
+  "citat": "No fertilizer is usually required to keep the plant healthy.",
+  "izvor": "South Dakota State University Extension: Aloe Vera: Houseplant How-To",
+  "url": "https://extension.sdstate.edu/aloe-vera-houseplant-how"
+ },
+ {
+  "id": "C152",
+  "tema": "aloja",
+  "kategorija": "bolesti",
+  "cinjenica": "Hrđu i gljivične bolesti aloje uzrokuju niže (svježe) temperature i visoka vlažnost; znak hrđe aloje su žute pjege na listovima koje posmeđe, a hrđu obično nije potrebno liječiti.",
+  "citat": "Cool temperatures and high humidity are the cause of rust and fungal diseases. Yellow spots that turn brown on the leaves are the sign of Aloe rust. It usually does not need treatment.",
+  "izvor": "South Dakota State University Extension: Aloe Vera: Houseplant How-To",
+  "url": "https://extension.sdstate.edu/aloe-vera-houseplant-how"
+ },
+ {
+  "id": "C153",
+  "tema": "kalanhoja",
+  "kategorija": "gnojidba",
+  "cinjenica": "Kalanhoju u aktivnom rastu treba gnojiti jednom mjesečno bilo kojim gnojivom za sobne biljke.",
+  "citat": "Fertilize actively growing plants with any houseplant fertilizer once a month.",
+  "izvor": "Clemson University HGIC: Kalanchoe (Kalanchoe blossfeldiana)",
+  "url": "https://hgic.clemson.edu/factsheet/kalanchoe/"
+ },
+ {
+  "id": "C154",
+  "tema": "kalanhoja",
+  "kategorija": "zalijevanje",
+  "cinjenica": "Tlo kalanhoje treba pustiti da se osuši između zalijevanja, ali ne toliko da biljka uvene; dobra drenaža je nužna, pa posuda nikad ne smije stajati u ukrasnom omotu (foliji) punom vode.",
+  "citat": "Allow the soil to dry between waterings but not to the point of wilt. Good drainage is essential, so never allow containers to sit in sleeves full of water.",
+  "izvor": "Iowa State University Extension and Outreach: How do I care for Kalanchoe?",
+  "url": "https://yardandgarden.extension.iastate.edu/faq/how-do-i-care-kalanchoe"
+ },
+ {
+  "id": "C155",
+  "tema": "kalanhoja",
+  "kategorija": "bolesti",
+  "cinjenica": "Pepelnica na kalanhoji sprječava se obilnim strujanjem zraka oko biljke.",
+  "citat": "To prevent powdery mildew allow for plenty of air flow around plant material.",
+  "izvor": "Clemson University HGIC: Kalanchoe (Kalanchoe blossfeldiana)",
+  "url": "https://hgic.clemson.edu/factsheet/kalanchoe/"
  }
 ]
