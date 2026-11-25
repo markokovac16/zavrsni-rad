@@ -1,0 +1,26 @@
+{
+ "naziv": "jaka",
+ "mjerilo": "prosje\u010dni makro F1 na validaciji",
+ "inacice": {
+  "osnovni": {
+   "po_sjemenu": {
+    "osnovni": 0.933624877742713,
+    "osnovni_s1": 0.9165821235228775,
+    "osnovni_s2": 0.9289200907231161
+   },
+   "prosjek": 0.9263756973295688,
+   "najmanji": 0.9165821235228775,
+   "najveci": 0.933624877742713
+  },
+  "jaka": {
+   "po_sjemenu": {
+    "jaka": 0.9340058952962179,
+    "jaka_s1": 0.9414219600801046,
+    "jaka_s2": 0.9365121794027546
+   },
+   "prosjek": 0.9373133449263591,
+   "najmanji": 0.9340058952962179,
+   "najveci": 0.9414219600801046
+  }
+ }
+}

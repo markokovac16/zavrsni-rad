@@ -98,15 +98,29 @@ Odabir glavnog modela (inačica s većim prosječnim makro F1 na validaciji) i e
 
 ```bash
 uv run src/k06_odabir_modela.py
-uv run src/k07_evaluacija.py    # metrike, kalibracija, prag pouzdanosti, slike primjera
+uv run src/k07_evaluacija.py                  # glavni model: metrike, kalibracija, prag pouzdanosti, slike
+uv run src/k07_evaluacija.py --naziv jaka     # druga inačica s prvim sjemenom
+uv run src/k07_evaluacija.py --naziv osnovna_s1 --bez-slika   # i osnovna_s2, jaka_s1, jaka_s2 (rasponi po sjemenu)
 ```
 
 Učinak curenja podataka: isti model učen na podjeli bez uklanjanja duplikata (`manifest_naivni.csv`, stvara
 ga korak 2). Točnost na testu računa se posebno za slike koje imaju duplikat u skupu za učenje i za one koje ga
-nemaju:
+nemaju. Glavna je usporedba unutar skupina duplikata: je li kopija ispitne slike pala u skup za učenje odlučila je
+nasumična podjela, pa slike čija je kopija izvan skupa za učenje služe kao kontrola:
 
 ```bash
 uv run src/k05_trening.py --naziv naivni --manifest manifest_naivni.csv
 uv run src/k07_evaluacija.py --naziv naivni --manifest manifest_naivni.csv
 uv run src/k08_curenje.py
+```
+
+### Brojke za tekst rada
+
+Korak 11 iz rezultata koraka 1–8 zapisuje `rezultati/brojke.tex` (sve brojke koje tekst rada koristi),
+tablice u `rezultati/tablice/` i sliku primjera podataka. Treba mu i `rezultati/odabrani_model_prva_podjela.json`,
+odabir modela na prvoj inačici podjele (prije pravila istog imena i prije nego što su 13-znamenkasti brojevi u
+imenima prestali vrijediti kao vrijeme snimanja), koji je spremljen kakav je bio:
+
+```bash
+uv run src/k11_izvoz.py
 ```
