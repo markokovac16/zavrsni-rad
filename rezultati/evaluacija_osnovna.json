@@ -24,6 +24,10 @@
    ],
    "skupina": 1652,
    "roc_auc": 0.9896574802208573,
+   "roc_auc_interval": [
+    0.9857491362129275,
+    0.9932872332440832
+   ],
    "osnovica_najcesci_razred": 0.5777537796976242,
    "matrica": {
     "tn": 760,
@@ -36,6 +40,10 @@
    "uz_prag": {
     "pokrivenost": 0.9114470842332614,
     "tocnost_iznad_praga": 0.9804502369668247,
+    "tocnost_iznad_praga_interval": [
+     0.9734186058817893,
+     0.9867269175898887
+    ],
     "tocnost_ispod_praga": 0.6829268292682927
    }
   },
@@ -57,6 +65,10 @@
    ],
    "skupina": 1655,
    "roc_auc": 0.9881945095099783,
+   "roc_auc_interval": [
+    0.9830657525209943,
+    0.9925836755168982
+   ],
    "osnovica_najcesci_razred": 0.5876443997990959,
    "matrica": {
     "tn": 777,
@@ -69,6 +81,10 @@
    "uz_prag": {
     "pokrivenost": 0.9126067302862882,
     "tocnost_iznad_praga": 0.972482113373693,
+    "tocnost_iznad_praga_interval": [
+     0.9611305537066311,
+     0.982531432034444
+    ],
     "tocnost_ispod_praga": 0.603448275862069
    }
   },
@@ -90,6 +106,10 @@
    ],
    "skupina": 87,
    "roc_auc": 0.5806878306878307,
+   "roc_auc_interval": [
+    0.42689257485472276,
+    0.7275158129666327
+   ],
    "osnovica_najcesci_razred": 0.7241379310344828,
    "matrica": {
     "tn": 41,
@@ -102,6 +122,10 @@
    "uz_prag": {
     "pokrivenost": 0.6436781609195402,
     "tocnost_iznad_praga": 0.6785714285714286,
+    "tocnost_iznad_praga_interval": [
+     0.5535714285714286,
+     0.8035714285714286
+    ],
     "tocnost_ispod_praga": 0.45161290322580644
    }
   },
@@ -123,6 +147,10 @@
    ],
    "skupina": 2493,
    "roc_auc": 0.8513545766626365,
+   "roc_auc_interval": [
+    0.8362123548402598,
+    0.8662196293818244
+   ],
    "osnovica_najcesci_razred": 0.6637380191693291,
    "matrica": {
     "tn": 631,
@@ -135,10 +163,21 @@
    "uz_prag": {
     "pokrivenost": 0.713258785942492,
     "tocnost_iznad_praga": 0.8393057110862262,
+    "tocnost_iznad_praga_interval": [
+     0.821386076267013,
+     0.8558699433858739
+    ],
     "tocnost_ispod_praga": 0.5891364902506964
    }
   }
  },
+ "primjeri_izvori": [
+  "aloe_vera_diseases",
+  "aloe_vera_leaf_disease",
+  "epipremnum_aureum",
+  "indoor_plant_disease",
+  "medicinal_leaf_disease"
+ ],
  "test_po_izvor": [
   {
    "naziv": "aloe_vera_diseases",
@@ -256,5 +295,28 @@
    "nezdravih": 274,
    "tocnost": 0.9336569579288025
   }
- ]
+ ],
+ "test_slicne": {
+  "sa_slicnom_u_ucenju": {
+   "n": 124,
+   "tocnost": 0.9758064516129032,
+   "tocnost_interval": [
+    0.9430777688924431,
+    1.0
+   ]
+  },
+  "bez_slicne": {
+   "n": 1867,
+   "tocnost": 0.937868237814676,
+   "tocnost_interval": [
+    0.9150587824467467,
+    0.9563909461624219
+   ]
+  },
+  "razlika": 0.03793821379822726,
+  "razlika_interval": [
+   0.003770456544748244,
+   0.06951280770959757
+  ]
+ }
 }

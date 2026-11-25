@@ -1,0 +1,315 @@
+{
+ "model": "jaka_s2",
+ "arhitektura": "efficientnet_b0",
+ "epoha": 5,
+ "temperatura": 1.152895450592041,
+ "prag": 0.824999988079071,
+ "ciljana_tocnost": 0.98,
+ "skupovi": {
+  "val": {
+   "n": 1852,
+   "udio_nezdravih": 0.5777537796976242,
+   "tocnost": 0.9400647948164147,
+   "tocnost_interval": [
+    0.9276053482676824,
+    0.952164868344023
+   ],
+   "preciznost": 0.9606147934678194,
+   "odziv": 0.9345794392523364,
+   "f1": 0.9474182851729038,
+   "makro_f1": 0.9388692179160187,
+   "makro_f1_interval": [
+    0.9263348035168396,
+    0.9512537931241799
+   ],
+   "skupina": 1652,
+   "roc_auc": 0.9873222267370987,
+   "roc_auc_interval": [
+    0.9829278306595427,
+    0.9912035477747013
+   ],
+   "osnovica_najcesci_razred": 0.5777537796976242,
+   "matrica": {
+    "tn": 741,
+    "fp": 41,
+    "fn": 70,
+    "tp": 1000
+   },
+   "ece_prije": 0.012519657740582665,
+   "ece_poslije": 0.008160888826872801,
+   "uz_prag": {
+    "pokrivenost": 0.8677105831533477,
+    "tocnost_iznad_praga": 0.9800871188550093,
+    "tocnost_iznad_praga_interval": [
+     0.9733415995040298,
+     0.9866749845350555
+    ],
+    "tocnost_ispod_praga": 0.6775510204081633
+   }
+  },
+  "test": {
+   "n": 1991,
+   "udio_nezdravih": 0.5876443997990959,
+   "tocnost": 0.945253641386238,
+   "tocnost_interval": [
+    0.9320139954456161,
+    0.9568434664246824
+   ],
+   "preciznost": 0.962510897994769,
+   "odziv": 0.9435897435897436,
+   "f1": 0.9529564091497627,
+   "makro_f1": 0.9437454718421485,
+   "makro_f1_interval": [
+    0.9313872531387732,
+    0.9548286867636566
+   ],
+   "skupina": 1655,
+   "roc_auc": 0.9882476029857272,
+   "roc_auc_interval": [
+    0.9835321651696893,
+    0.9921369077234503
+   ],
+   "osnovica_najcesci_razred": 0.5876443997990959,
+   "matrica": {
+    "tn": 778,
+    "fp": 43,
+    "fn": 66,
+    "tp": 1104
+   },
+   "ece_prije": 0.015833944666032367,
+   "ece_poslije": 0.015825964469277434,
+   "uz_prag": {
+    "pokrivenost": 0.8879959819186338,
+    "tocnost_iznad_praga": 0.9807692307692307,
+    "tocnost_iznad_praga_interval": [
+     0.9727871819563527,
+     0.9875943905070119
+    ],
+    "tocnost_ispod_praga": 0.6636771300448431
+   }
+  },
+  "vanjski_stvarni": {
+   "n": 87,
+   "udio_nezdravih": 0.27586206896551724,
+   "tocnost": 0.5862068965517241,
+   "tocnost_interval": [
+    0.4942528735632184,
+    0.6896551724137931
+   ],
+   "preciznost": 0.3125,
+   "odziv": 0.4166666666666667,
+   "f1": 0.35714285714285715,
+   "makro_f1": 0.5260290556900726,
+   "makro_f1_interval": [
+    0.41567164179104477,
+    0.6313559322033898
+   ],
+   "skupina": 87,
+   "roc_auc": 0.6064814814814815,
+   "roc_auc_interval": [
+    0.4588000003899046,
+    0.7330718800082717
+   ],
+   "osnovica_najcesci_razred": 0.7241379310344828,
+   "matrica": {
+    "tn": 41,
+    "fp": 22,
+    "fn": 14,
+    "tp": 10
+   },
+   "ece_prije": 0.24807538862886103,
+   "ece_poslije": 0.23666244608232342,
+   "uz_prag": {
+    "pokrivenost": 0.45977011494252873,
+    "tocnost_iznad_praga": 0.725,
+    "tocnost_iznad_praga_interval": [
+     0.575,
+     0.85
+    ],
+    "tocnost_ispod_praga": 0.46808510638297873
+   }
+  },
+  "vanjski_usjevi": {
+   "n": 2504,
+   "udio_nezdravih": 0.6637380191693291,
+   "tocnost": 0.7448083067092651,
+   "tocnost_interval": [
+    0.7283214513840875,
+    0.7613783878691142
+   ],
+   "preciznost": 0.8435191403626595,
+   "odziv": 0.7557160048134778,
+   "f1": 0.7972072357981593,
+   "makro_f1": 0.7265519216147501,
+   "makro_f1_interval": [
+    0.7087410373247521,
+    0.7442661568346052
+   ],
+   "skupina": 2493,
+   "roc_auc": 0.8179174848721311,
+   "roc_auc_interval": [
+    0.80039669178347,
+    0.8347321466817197
+   ],
+   "osnovica_najcesci_razred": 0.6637380191693291,
+   "matrica": {
+    "tn": 609,
+    "fp": 233,
+    "fn": 406,
+    "tp": 1256
+   },
+   "ece_prije": 0.1357779412414319,
+   "ece_poslije": 0.12114123554941945,
+   "uz_prag": {
+    "pokrivenost": 0.6829073482428115,
+    "tocnost_iznad_praga": 0.8192982456140351,
+    "tocnost_iznad_praga_interval": [
+     0.8020988947779284,
+     0.8379169104739613
+    ],
+    "tocnost_ispod_praga": 0.5843828715365239
+   }
+  }
+ },
+ "test_po_izvor": [
+  {
+   "naziv": "aloe_vera_diseases",
+   "n": 342,
+   "nezdravih": 249,
+   "tocnost": 1.0
+  },
+  {
+   "naziv": "aloe_vera_leaf_disease",
+   "n": 354,
+   "nezdravih": 249,
+   "tocnost": 0.9011299435028248
+  },
+  {
+   "naziv": "combined_medicinal",
+   "n": 38,
+   "nezdravih": 38,
+   "tocnost": 1.0
+  },
+  {
+   "naziv": "epipremnum_aureum",
+   "n": 548,
+   "nezdravih": 243,
+   "tocnost": 0.9343065693430657
+  },
+  {
+   "naziv": "healthy_wilted",
+   "n": 124,
+   "nezdravih": 61,
+   "tocnost": 0.8387096774193549
+  },
+  {
+   "naziv": "indoor_leaf_health",
+   "n": 136,
+   "nezdravih": 52,
+   "tocnost": 1.0
+  },
+  {
+   "naziv": "indoor_plant_disease",
+   "n": 107,
+   "nezdravih": 67,
+   "tocnost": 0.9906542056074766
+  },
+  {
+   "naziv": "medicinal_leaf_disease",
+   "n": 188,
+   "nezdravih": 121,
+   "tocnost": 0.925531914893617
+  },
+  {
+   "naziv": "medicinal_leaf_health",
+   "n": 103,
+   "nezdravih": 66,
+   "tocnost": 0.9902912621359223
+  },
+  {
+   "naziv": "money_plant_atlas",
+   "n": 36,
+   "nezdravih": 12,
+   "tocnost": 1.0
+  },
+  {
+   "naziv": "multiclass_medicinal",
+   "n": 4,
+   "nezdravih": 4,
+   "tocnost": 1.0
+  },
+  {
+   "naziv": "plantvita_aloevera",
+   "n": 11,
+   "nezdravih": 8,
+   "tocnost": 0.8181818181818182
+  }
+ ],
+ "test_po_vrsta": [
+  {
+   "naziv": "aloja",
+   "n": 776,
+   "nezdravih": 539,
+   "tocnost": 0.9523195876288659
+  },
+  {
+   "naziv": "hibiskus",
+   "n": 21,
+   "nezdravih": 20,
+   "tocnost": 1.0
+  },
+  {
+   "naziv": "kalanhoja",
+   "n": 243,
+   "nezdravih": 176,
+   "tocnost": 0.9382716049382716
+  },
+  {
+   "naziv": "razne",
+   "n": 260,
+   "nezdravih": 113,
+   "tocnost": 0.9230769230769231
+  },
+  {
+   "naziv": "sansevierija",
+   "n": 38,
+   "nezdravih": 23,
+   "tocnost": 0.9736842105263158
+  },
+  {
+   "naziv": "zelenčica",
+   "n": 35,
+   "nezdravih": 25,
+   "tocnost": 1.0
+  },
+  {
+   "naziv": "zlatni puzavac",
+   "n": 618,
+   "nezdravih": 274,
+   "tocnost": 0.941747572815534
+  }
+ ],
+ "test_slicne": {
+  "sa_slicnom_u_ucenju": {
+   "n": 124,
+   "tocnost": 0.9596774193548387,
+   "tocnost_interval": [
+    0.9206278971765697,
+    0.9860463666957496
+   ]
+  },
+  "bez_slicne": {
+   "n": 1867,
+   "tocnost": 0.9442956614890198,
+   "tocnost_interval": [
+    0.930607391657772,
+    0.9565909006811524
+   ]
+  },
+  "razlika": 0.015381757865818968,
+  "razlika_interval": [
+   -0.02308925136086474,
+   0.04763926660323342
+  ]
+ }
+}

@@ -9,7 +9,7 @@ from PIL import Image, ImageOps
 
 import config as c
 import slicnost as s
-from k01_manifest import MAX_STRANICA
+from k01_manifest import KVALITETA_JPEG, MAX_STRANICA
 from k02_ciscenje_i_podjela import PRAG_DUPLIKAT, podijeli
 
 MAPA = "inaturalist_uzgojene"
@@ -27,7 +27,7 @@ def obradi(arg):
         sirina, visina = im.size
         im.thumbnail((MAX_STRANICA, MAX_STRANICA), Image.LANCZOS)
         kopija = f"inat_{id_}.jpg"
-        im.save(c.PREDMEMORIJA / kopija, quality=92)
+        im.save(c.PREDMEMORIJA / kopija, quality=KVALITETA_JPEG)
         return dict(id=id_, sirina=sirina, visina=visina, phash=str(imagehash.phash(im)),
                     dhash=str(imagehash.dhash(im)), kopija=kopija)
 

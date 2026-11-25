@@ -6,6 +6,8 @@
  "duplikata": 4087,
  "proturjecnih": 109,
  "identicnih_datoteka_visak": 3802,
+ "identicnih_proturjecnih_skupina": 12,
+ "identicnih_proturjecnih_datoteka": 43,
  "skupine_medu_izvorima": {
   "aloe_vera_leaf_disease + plantvita_aloevera": 1899,
   "indoor_plant_disease + money_plant_atlas": 23
@@ -264,37 +266,37 @@
   {
    "od": 0,
    "do": 2,
-   "parova": 226,
-   "razlicita_oznaka": 0.004424778761061947,
-   "razlicit_izvor": 0.004424778761061947
+   "parova": 235,
+   "razlicita_oznaka": 0.00851063829787234,
+   "razlicit_izvor": 0.00425531914893617
   },
   {
    "od": 3,
    "do": 4,
-   "parova": 74,
-   "razlicita_oznaka": 0.14864864864864866,
-   "razlicit_izvor": 0.3108108108108108
+   "parova": 103,
+   "razlicita_oznaka": 0.22330097087378642,
+   "razlicit_izvor": 0.2912621359223301
   },
   {
    "od": 5,
    "do": 6,
-   "parova": 221,
-   "razlicita_oznaka": 0.33031674208144796,
-   "razlicit_izvor": 0.05429864253393665
+   "parova": 285,
+   "razlicita_oznaka": 0.35789473684210527,
+   "razlicit_izvor": 0.028070175438596492
   },
   {
    "od": 7,
    "do": 8,
-   "parova": 844,
-   "razlicita_oznaka": 0.3862559241706161,
-   "razlicit_izvor": 0.06042654028436019
+   "parova": 938,
+   "razlicita_oznaka": 0.3773987206823028,
+   "razlicit_izvor": 0.05543710021321962
   },
   {
    "od": 9,
    "do": 10,
-   "parova": 3646,
-   "razlicita_oznaka": 0.4174437739989029,
-   "razlicit_izvor": 0.13302249040043884
+   "parova": 3450,
+   "razlicita_oznaka": 0.42086956521739133,
+   "razlicit_izvor": 0.13942028985507246
   }
  ],
  "skupina_samo_slicne": 12257,

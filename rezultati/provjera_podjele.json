@@ -10,8 +10,8 @@
  },
  "zakrenute_iznad_praga": {
   "testnih_slika": 20,
-  "parova": 25,
-  "parova_razlicite_oznake": 8,
+  "parova": 22,
+  "parova_razlicite_oznake": 7,
   "po_izvoru": {
    "aloe_vera_leaf_disease": 14,
    "epipremnum_aureum": 3,
@@ -210,6 +210,75 @@
     "do_60_s": 0,
     "do_120_s": 1,
     "do_300_s": 3
+   }
+  }
+ },
+ "val": {
+  "slika": 1852,
+  "zakrenute_do_praga": {
+   "testnih_slika": 0,
+   "parova": 0,
+   "parova_razlicite_oznake": 0,
+   "po_izvoru": {}
+  },
+  "uspravne_do_praga": {
+   "testnih_slika": 0,
+   "parova": 0,
+   "parova_razlicite_oznake": 0,
+   "po_izvoru": {}
+  },
+  "uspravne_iznad_praga": {
+   "testnih_slika": 137,
+   "parova": 159,
+   "parova_razlicite_oznake": 42,
+   "po_izvoru": {
+    "aloe_vera_leaf_disease": 52,
+    "epipremnum_aureum": 25,
+    "aloe_vera_diseases": 25,
+    "indoor_plant_disease": 12,
+    "money_plant_atlas": 8,
+    "medicinal_leaf_health": 7,
+    "indoor_leaf_health": 3,
+    "medicinal_leaf_disease": 3,
+    "combined_medicinal": 2
+   }
+  },
+  "uzastopne": {
+   "test_s_vremenom": 179,
+   "medijan_sekundi": 191.0,
+   "do_30_s": 0,
+   "do_60_s": 21,
+   "do_120_s": 66,
+   "do_300_s": 138,
+   "po_izvoru": {
+    "combined_medicinal": {
+     "test_s_vremenom": 39,
+     "do_30_s": 0,
+     "do_60_s": 5,
+     "do_120_s": 17,
+     "do_300_s": 39
+    },
+    "medicinal_leaf_disease": {
+     "test_s_vremenom": 56,
+     "do_30_s": 0,
+     "do_60_s": 11,
+     "do_120_s": 37,
+     "do_300_s": 37
+    },
+    "medicinal_leaf_health": {
+     "test_s_vremenom": 80,
+     "do_30_s": 0,
+     "do_60_s": 5,
+     "do_120_s": 10,
+     "do_300_s": 58
+    },
+    "multiclass_medicinal": {
+     "test_s_vremenom": 4,
+     "do_30_s": 0,
+     "do_60_s": 0,
+     "do_120_s": 2,
+     "do_300_s": 4
+    }
    }
   }
  }

@@ -18,6 +18,10 @@
    ],
    "skupina": 2091,
    "roc_auc": 0.9921529255482713,
+   "roc_auc_interval": [
+    0.9889315890376865,
+    0.994684306561385
+   ],
    "osnovica_najcesci_razred": 0.5982314494425222,
    "matrica": {
     "tn": 1013,
@@ -44,6 +48,10 @@
    ],
    "skupina": 587,
    "roc_auc": 0.9977459016393443,
+   "roc_auc_interval": [
+    0.9956335782073003,
+    0.9991640305015512
+   ],
    "osnovica_najcesci_razred": 0.6272493573264781,
    "matrica": {
     "tn": 284,
@@ -70,6 +78,10 @@
    ],
    "skupina": 579,
    "roc_auc": 0.998639455782313,
+   "roc_auc_interval": [
+    0.9973184975523947,
+    0.9995032050424933
+   ],
    "osnovica_najcesci_razred": 0.6330275229357798,
    "matrica": {
     "tn": 278,
@@ -96,6 +108,10 @@
    ],
    "skupina": 1507,
    "roc_auc": 0.9898163305801523,
+   "roc_auc_interval": [
+    0.985288472552224,
+    0.9935802902026657
+   ],
    "osnovica_najcesci_razred": 0.5858475041140977,
    "matrica": {
     "tn": 729,
@@ -122,6 +138,10 @@
    ],
    "skupina": 87,
    "roc_auc": 0.7182539682539683,
+   "roc_auc_interval": [
+    0.602089552238806,
+    0.8302744708994709
+   ],
    "osnovica_najcesci_razred": 0.7241379310344828,
    "matrica": {
     "tn": 41,
@@ -148,6 +168,10 @@
    ],
    "skupina": 2493,
    "roc_auc": 0.8476372798705736,
+   "roc_auc_interval": [
+    0.8321313335494447,
+    0.8624206377410705
+   ],
    "osnovica_najcesci_razred": 0.6637380191693291,
    "matrica": {
     "tn": 611,
@@ -174,6 +198,10 @@
    ],
    "skupina": 1299,
    "roc_auc": 0.9929635366034503,
+   "roc_auc_interval": [
+    0.988885647903718,
+    0.9960737470708935
+   ],
    "osnovica_najcesci_razred": 0.5639719923615532,
    "matrica": {
     "tn": 670,
@@ -202,6 +230,10 @@
    ],
    "skupina": 1655,
    "roc_auc": 0.9881945095099783,
+   "roc_auc_interval": [
+    0.9830657525209943,
+    0.9925836755168982
+   ],
    "osnovica_najcesci_razred": 0.5876443997990959,
    "matrica": {
     "tn": 777,
@@ -228,6 +260,10 @@
    ],
    "skupina": 87,
    "roc_auc": 0.5806878306878307,
+   "roc_auc_interval": [
+    0.42689257485472276,
+    0.7275158129666327
+   ],
    "osnovica_najcesci_razred": 0.7241379310344828,
    "matrica": {
     "tn": 41,
@@ -254,6 +290,10 @@
    ],
    "skupina": 2493,
    "roc_auc": 0.8513545766626365,
+   "roc_auc_interval": [
+    0.8362123548402598,
+    0.8662196293818245
+   ],
    "osnovica_najcesci_razred": 0.6637380191693291,
    "matrica": {
     "tn": 631,
@@ -484,6 +524,79 @@
      0.7752808988764045,
      0.9213483146067416
     ]
+   }
+  }
+ },
+ "kontrola": {
+  "velicina_2": {
+   "s_kopijom": {
+    "n": 421,
+    "udio_nezdravih": 0.6389548693586699,
+    "tocnost": 0.9572446555819477,
+    "tocnost_interval": [
+     0.9382422802850356,
+     0.9761350721672917
+    ]
+   },
+   "bez_kopije": {
+    "n": 183,
+    "udio_nezdravih": 0.6065573770491803,
+    "tocnost": 0.8688524590163934,
+    "tocnost_interval": [
+     0.8079041720990874,
+     0.9306594158807423
+    ]
+   },
+   "razlika": 0.0883921965655543,
+   "razlika_interval": [
+    0.027974030827281983,
+    0.15268903455033492
+   ],
+   "bez_kopije_po_izvoru": {
+    "aloe_vera_leaf_disease": 86,
+    "plantvita_aloevera": 75,
+    "aloe_vera_diseases": 6,
+    "indoor_plant_disease": 5,
+    "healthy_wilted": 4,
+    "medicinal_leaf_disease": 3,
+    "epipremnum_aureum": 2,
+    "combined_medicinal": 2
+   }
+  },
+  "velicina_2_i_vise": {
+   "s_kopijom": {
+    "n": 763,
+    "udio_nezdravih": 0.6330275229357798,
+    "tocnost": 0.9764089121887287,
+    "tocnost_interval": [
+     0.963855421686747,
+     0.987136447256248
+    ]
+   },
+   "bez_kopije": {
+    "n": 195,
+    "udio_nezdravih": 0.5948717948717949,
+    "tocnost": 0.8769230769230769,
+    "tocnost_interval": [
+     0.8199896907216494,
+     0.9356481971726585
+    ]
+   },
+   "razlika": 0.0994858352656518,
+   "razlika_interval": [
+    0.044593062443058065,
+    0.16106615187555293
+   ],
+   "bez_kopije_po_izvoru": {
+    "aloe_vera_leaf_disease": 89,
+    "plantvita_aloevera": 77,
+    "aloe_vera_diseases": 6,
+    "medicinal_leaf_disease": 6,
+    "indoor_plant_disease": 5,
+    "money_plant_atlas": 4,
+    "healthy_wilted": 4,
+    "epipremnum_aureum": 2,
+    "combined_medicinal": 2
    }
   }
  }

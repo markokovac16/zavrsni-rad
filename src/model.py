@@ -69,7 +69,7 @@ class Slike(Dataset):
         return x, self.oznake[i]
 
 
-def ucitavac(df, transformacija, mijesaj=False, serija=64):
+def ucitavac(df, transformacija, mijesaj=False, serija=c.SERIJA):
     return DataLoader(Slike(df, transformacija), batch_size=serija, shuffle=mijesaj,
                       num_workers=6, persistent_workers=False, drop_last=mijesaj)
 

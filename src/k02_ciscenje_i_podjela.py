@@ -51,9 +51,10 @@ def po_udaljenosti(parovi, df):
     jedinstvena = ~df.md5.duplicated().to_numpy()
     parovi = parovi[jedinstvena[parovi[:, 0]] & jedinstvena[parovi[:, 1]]]
     kljuc = np.sort(parovi[:, :2], axis=1)
-    _, prvi = np.unique(kljuc, axis=0, return_index=True)
-    parovi = parovi[np.sort(prvi)]
     udalj = np.maximum(parovi[:, 2], parovi[:, 3])
+    red = np.lexsort((udalj, kljuc[:, 1], kljuc[:, 0]))
+    _, prvi = np.unique(kljuc[red], axis=0, return_index=True)
+    parovi, udalj = kljuc[red][prvi], udalj[red][prvi]
     izvor, oznaka = df.izvor.to_numpy(), df.oznaka.to_numpy()
     redovi = []
     for a, b in [(0, 2), (3, 4), (5, 6), (7, 8), (9, 10)]:
@@ -133,6 +134,8 @@ def main():
         duplikata=int((df.status == "duplikat").sum()),
         proturjecnih=int((df.status == "proturječna oznaka").sum()),
         identicnih_datoteka_visak=int(len(df) - df.md5.nunique()),
+        identicnih_proturjecnih_skupina=int((df.groupby("md5").oznaka.nunique() > 1).sum()),
+        identicnih_proturjecnih_datoteka=int((df.groupby("md5").oznaka.transform("nunique") > 1).sum()),
         skupine_medu_izvorima=medu_izvorima,
         po_izvoru=po_izvoru.reset_index().to_dict(orient="records"),
         podjela=cist.groupby(["dio", "oznaka"]).size().unstack(fill_value=0).reset_index().to_dict(orient="records"),

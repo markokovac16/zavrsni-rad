@@ -6,7 +6,7 @@ from sklearn.metrics import accuracy_score
 
 import config as c
 import model as M
-from k07_evaluacija import interval, metrike, softmax
+from k07_evaluacija import interval, interval_razlike, metrike, softmax
 
 NAJMANJE = 20
 
@@ -78,7 +78,24 @@ def main():
                 f" | {k}: n={v['n']} točnost={v['tocnost']:.3f} ({v['tocnost_interval'][0]:.3f}-"
                 f"{v['tocnost_interval'][1]:.3f}) nezdravih={v['udio_nezdravih']:.2f}" for k, v in r.items()))
 
-    rez = dict(naivni=naivni_rez, osnovna=osnovna_rez, po_izvoru=po_izvoru)
+    velicina = test.skupina_duplikata.map(naivni.skupina_duplikata.value_counts()).to_numpy()
+    dosljedne = ~test.skupina_duplikata.isin(proturjecna).to_numpy()
+    tocno = p.argmax(1) == y
+    kontrola = {}
+    for ime, m in [("velicina_2", (velicina == 2) & dosljedne), ("velicina_2_i_vise", (velicina >= 2) & dosljedne)]:
+        s_kopijom, bez_kopije = m & ima_duplikat, m & ~ima_duplikat
+        kontrola[ime] = dict(
+            s_kopijom=dio_ocjena(y[s_kopijom], p[s_kopijom], skupine[s_kopijom]),
+            bez_kopije=dio_ocjena(y[bez_kopije], p[bez_kopije], skupine[bez_kopije]),
+            razlika=float(tocno[s_kopijom].mean() - tocno[bez_kopije].mean()),
+            razlika_interval=interval_razlike(tocno[m], ima_duplikat[m], skupine[m]),
+            bez_kopije_po_izvoru=test[bez_kopije].izvor.value_counts().to_dict())
+        k = kontrola[ime]
+        print(f"kontrola {ime}: s kopijom {k['s_kopijom']['n']} {k['s_kopijom']['tocnost']:.3f}, bez kopije "
+              f"{k['bez_kopije']['n']} {k['bez_kopije']['tocnost']:.3f}, razlika {k['razlika']:.3f} "
+              f"({k['razlika_interval'][0]:.3f}-{k['razlika_interval'][1]:.3f}); {k['bez_kopije_po_izvoru']}")
+
+    rez = dict(naivni=naivni_rez, osnovna=osnovna_rez, po_izvoru=po_izvoru, kontrola=kontrola)
     (c.REZULTATI / "curenje.json").write_text(json.dumps(rez, indent=1, ensure_ascii=False))
 
 

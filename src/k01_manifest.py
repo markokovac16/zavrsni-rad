@@ -11,6 +11,7 @@ from tqdm import tqdm
 import config as c
 
 MAX_STRANICA = 384
+KVALITETA_JPEG = 92
 
 
 def popis_datoteka():
@@ -42,7 +43,7 @@ def obradi(arg):
             phash = str(imagehash.phash(im))
             dhash = str(imagehash.dhash(im))
             kopija = c.PREDMEMORIJA / f"{i:06d}.jpg"
-            im.save(kopija, quality=92)
+            im.save(kopija, quality=KVALITETA_JPEG)
     except Exception as e:
         return dict(id=i, izvor=izvor, greska=f"{type(e).__name__}: {e}", putanja=str(p))
     return dict(

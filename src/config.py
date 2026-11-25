@@ -10,6 +10,9 @@ MODELI = KORIJEN / "modeli"
 
 SJEME = 42
 VELICINA = 224
+SERIJA = 64
+TEZINSKO_SLABLJENJE = 1e-4
+UDIO_RASTA = 0.15
 RAZREDI = ["zdrava", "nezdrava"]  # indeks 1 = nezdrava (pozitivan razred)
 Z, N = "zdrava", "nezdrava"
 
@@ -125,6 +128,23 @@ IZVORI = {
         "mapa": "kaggle_houseplant_health_tarieretimitimi/data_raw", "uloga": "vanjski_stvarni",
         "razredi": {"Healthy": ("razne", Z), "Unhealthy": ("razne", N)},
     },
+}
+
+LICENCE = {
+    "aloe_vera_diseases": "CC BY 4.0",
+    "aloe_vera_leaf_disease": "CC BY 4.0",
+    "combined_medicinal": "CC BY 4.0",
+    "epipremnum_aureum": "CC BY 4.0",
+    "healthy_wilted": "Data files © Original Authors",
+    "indoor_leaf_health": "CC BY-SA 4.0",
+    "indoor_plant_disease": "CC BY 4.0",
+    "medicinal_leaf_disease": "CC BY 4.0",
+    "medicinal_leaf_health": "CC BY 4.0",
+    "money_plant_atlas": "CC BY 4.0",
+    "multiclass_medicinal": "CC BY 4.0",
+    "plantvita_aloevera": "nije navedena",
+    "houseplant_health": "CC BY-SA 4.0",
+    "plantdoc": "CC BY 4.0",
 }
 
 PLANTDOC_MAPA = "plantdoc"

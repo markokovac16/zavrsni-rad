@@ -24,6 +24,10 @@
    ],
    "skupina": 2098,
    "roc_auc": 0.9920775208222142,
+   "roc_auc_interval": [
+    0.9893169892886042,
+    0.9944624403710122
+   ],
    "osnovica_najcesci_razred": 0.5980053701572688,
    "matrica": {
     "tn": 1025,
@@ -36,6 +40,10 @@
    "uz_prag": {
     "pokrivenost": 0.934023782125048,
     "tocnost_iznad_praga": 0.9802874743326488,
+    "tocnost_iznad_praga_interval": [
+     0.9737292746861704,
+     0.985967654607901
+    ],
     "tocnost_ispod_praga": 0.7034883720930233
    }
   },
@@ -57,6 +65,10 @@
    ],
    "skupina": 2091,
    "roc_auc": 0.9921529255482714,
+   "roc_auc_interval": [
+    0.9889315890376866,
+    0.9946843065613851
+   ],
    "osnovica_najcesci_razred": 0.5982314494425222,
    "matrica": {
     "tn": 1013,
@@ -69,10 +81,21 @@
    "uz_prag": {
     "pokrivenost": 0.9242599000384467,
     "tocnost_iznad_praga": 0.9833610648918469,
+    "tocnost_iznad_praga_interval": [
+     0.9772136475738421,
+     0.988887864188249
+    ],
     "tocnost_ispod_praga": 0.6294416243654822
    }
   }
  },
+ "primjeri_izvori": [
+  "aloe_vera_diseases",
+  "aloe_vera_leaf_disease",
+  "epipremnum_aureum",
+  "medicinal_leaf_disease",
+  "money_plant_atlas"
+ ],
  "test_po_izvor": [
   {
    "naziv": "aloe_vera_diseases",

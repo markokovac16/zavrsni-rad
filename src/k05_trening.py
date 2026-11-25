@@ -37,9 +37,9 @@ def main():
     udio = (tr.oznaka == c.N).mean()
     tezine = torch.tensor([0.5 / (1 - udio), 0.5 / udio], dtype=torch.float32, device=dev)
     gubitak_fn = nn.CrossEntropyLoss(weight=tezine)
-    opt = torch.optim.AdamW(model.parameters(), lr=a.lr, weight_decay=1e-4)
+    opt = torch.optim.AdamW(model.parameters(), lr=a.lr, weight_decay=c.TEZINSKO_SLABLJENJE)
     koraka = a.epohe * len(ucit_tr)
-    raspored = torch.optim.lr_scheduler.OneCycleLR(opt, max_lr=a.lr, total_steps=koraka, pct_start=0.15)
+    raspored = torch.optim.lr_scheduler.OneCycleLR(opt, max_lr=a.lr, total_steps=koraka, pct_start=c.UDIO_RASTA)
 
     y_va = (va.oznaka == c.N).astype(int).to_numpy()
     povijest, najbolji = [], -1.0
