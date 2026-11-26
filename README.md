@@ -143,6 +143,28 @@ koristi iste datoteke i isti postupak. Primjer s jednom alojom:
 uv run src/preporuke.py
 ```
 
+### Ocjena preporuka
+
+Korak 10 piše preporuke za unaprijed zadane scenarije (vrsta, stanje, uvjeti uzgoja) u tri inačice: s bazom
+činjenica, bez nje (`znanje/sustav_bez_baze.md`) i prvom inačicom sa slobodnim tekstom (`src/preporuke_tekst.py`,
+oznake u uglatim zagradama, ista baza), koja služi kao osnovica. Scenariji su u dva skupa. Na **razvojnim** (24: šest
+vrsta i nepoznata vrsta u sva tri stanja, te upute u uvjetima, prazni uvjeti i simptom u uvjetima) uputa se smije
+mijenjati; svaki se pokreće tri puta, jer odgovori modela nisu ponovljivi. **Ispitni** (36: šest vrsta, tri stanja,
+dva skupa uvjeta, s tekstovima uvjeta kojih u razvojnim nema) pokreću se jednom, kad je uputa konačna, i njih
+ocjenjuju ocjenjivači. Automatske provjere mjere oblik: broj rečenica i riječi, rečenice dulje od 20 riječi i
+rečenice bez oznake, znakove izvan latinice u odgovoru modela te, kao gruba pravila, ponavljanje rezultata
+klasifikatora ili upute stručnjaku, ponovljen naziv vrste i opću činjenicu tamo gdje postoji činjenica o vrsti iste
+kategorije. Podupire li činjenica rečenicu, provjerava se ručno (obrazac `*_potkrijepljenost.csv`). Rezultati su u
+`rezultati/preporuke/`; ime razvojne datoteke sadrži sažetak upute, baze i koda, pa svaka izmjena upute dobiva svoju
+datoteku:
+
+```bash
+uv run src/k10_evaluacija_preporuka.py                 # razvojni scenariji, svaki 3 puta
+uv run src/k10_evaluacija_preporuka.py --ispitni       # ispitni scenariji, jednom
+uv run src/k10_evaluacija_preporuka.py --samo-pokazatelji razvojni_<inačica>.json   # bez novih poziva
+uv run src/k10_evaluacija_preporuka.py --dopuni razvojni_<inačica>.json            # ponovi samo neuspjele pozive
+```
+
 ### Brojke za tekst rada
 
 Korak 11 iz rezultata koraka 1–8 zapisuje `rezultati/brojke.tex` (sve brojke koje tekst rada koristi),
