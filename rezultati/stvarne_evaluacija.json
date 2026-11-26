@@ -1,0 +1,399 @@
+{
+ "slabe_oznake": "prijedlozi jezičnog modela; mjere slaganje s njima, ne točnost",
+ "n": 635,
+ "nezdravih": 143,
+ "autora": 202,
+ "interval": "bootstrap po autoru",
+ "modeli": {
+  "osnovna": {
+   "temperatura": 1.5740656852722168,
+   "prag": 0.8019999861717224,
+   "slabe_oznake": {
+    "n": 635,
+    "udio_nezdravih": 0.2251968503937008,
+    "tocnost": 0.5984251968503937,
+    "tocnost_interval": [
+     0.5519348268839104,
+     0.6351408515114099
+    ],
+    "preciznost": 0.3055555555555556,
+    "odziv": 0.6153846153846154,
+    "f1": 0.40835266821345706,
+    "makro_f1": 0.552209707169899,
+    "makro_f1_interval": [
+     0.5106686914120062,
+     0.5910947559691364
+    ],
+    "skupina": 202,
+    "roc_auc": 0.6462277559838534,
+    "roc_auc_interval": [
+     0.5930153133061911,
+     0.6963482761012838
+    ],
+    "osnovica_najcesci_razred": 0.7748031496062993,
+    "matrica": {
+     "tn": 292,
+     "fp": 200,
+     "fn": 55,
+     "tp": 88
+    },
+    "uz_prag": {
+     "pokrivenost": 0.5826771653543307,
+     "tocnost_iznad_praga": 0.6621621621621622,
+     "tocnost_iznad_praga_interval": [
+      0.5915455096168408,
+      0.7102481754235329
+     ],
+     "tocnost_ispod_praga": 0.5094339622641509
+    },
+    "po_vrsti": {
+     "aloja": {
+      "n": 231,
+      "nezdravih": 52,
+      "slaganje": 0.6190476190476191
+     },
+     "sansevierija": {
+      "n": 157,
+      "nezdravih": 36,
+      "slaganje": 0.6242038216560509
+     },
+     "zelenčica": {
+      "n": 126,
+      "nezdravih": 27,
+      "slaganje": 0.5476190476190477
+     },
+     "zlatni puzavac": {
+      "n": 121,
+      "nezdravih": 28,
+      "slaganje": 0.5785123966942148
+     }
+    }
+   }
+  },
+  "osnovna_s1": {
+   "temperatura": 1.561824083328247,
+   "prag": 0.8029999732971191,
+   "slabe_oznake": {
+    "n": 635,
+    "udio_nezdravih": 0.2251968503937008,
+    "tocnost": 0.5606299212598426,
+    "tocnost_interval": [
+     0.515235939206407,
+     0.600390800719748
+    ],
+    "preciznost": 0.2806451612903226,
+    "odziv": 0.6083916083916084,
+    "f1": 0.3841059602649007,
+    "makro_f1": 0.5213063461055225,
+    "makro_f1_interval": [
+     0.47634867089356203,
+     0.5697259209428723
+    ],
+    "skupina": 202,
+    "roc_auc": 0.6071408266530218,
+    "roc_auc_interval": [
+     0.5454716067750771,
+     0.6679399236275612
+    ],
+    "osnovica_najcesci_razred": 0.7748031496062993,
+    "matrica": {
+     "tn": 269,
+     "fp": 223,
+     "fn": 56,
+     "tp": 87
+    },
+    "uz_prag": {
+     "pokrivenost": 0.6251968503937008,
+     "tocnost_iznad_praga": 0.5818639798488665,
+     "tocnost_iznad_praga_interval": [
+      0.5139752268471842,
+      0.6337445736434109
+     ],
+     "tocnost_ispod_praga": 0.5252100840336135
+    },
+    "po_vrsti": {
+     "aloja": {
+      "n": 231,
+      "nezdravih": 52,
+      "slaganje": 0.5974025974025974
+     },
+     "sansevierija": {
+      "n": 157,
+      "nezdravih": 36,
+      "slaganje": 0.6050955414012739
+     },
+     "zelenčica": {
+      "n": 126,
+      "nezdravih": 27,
+      "slaganje": 0.373015873015873
+     },
+     "zlatni puzavac": {
+      "n": 121,
+      "nezdravih": 28,
+      "slaganje": 0.628099173553719
+     }
+    }
+   }
+  },
+  "osnovna_s2": {
+   "temperatura": 1.3381080627441406,
+   "prag": 0.8109999895095825,
+   "slabe_oznake": {
+    "n": 635,
+    "udio_nezdravih": 0.2251968503937008,
+    "tocnost": 0.5275590551181102,
+    "tocnost_interval": [
+     0.4785954481416879,
+     0.5669756806488587
+    ],
+    "preciznost": 0.26843657817109146,
+    "odziv": 0.6363636363636364,
+    "f1": 0.3775933609958506,
+    "makro_f1": 0.4984413505486867,
+    "makro_f1_interval": [
+     0.4497027232661889,
+     0.5430092008951404
+    ],
+    "skupina": 202,
+    "roc_auc": 0.6187318778782193,
+    "roc_auc_interval": [
+     0.558362032958501,
+     0.6783923599249745
+    ],
+    "osnovica_najcesci_razred": 0.7748031496062993,
+    "matrica": {
+     "tn": 244,
+     "fp": 248,
+     "fn": 52,
+     "tp": 91
+    },
+    "uz_prag": {
+     "pokrivenost": 0.6204724409448819,
+     "tocnost_iznad_praga": 0.5761421319796954,
+     "tocnost_iznad_praga_interval": [
+      0.5054132353507972,
+      0.6277748022065149
+     ],
+     "tocnost_ispod_praga": 0.44813278008298757
+    },
+    "po_vrsti": {
+     "aloja": {
+      "n": 231,
+      "nezdravih": 52,
+      "slaganje": 0.5324675324675324
+     },
+     "sansevierija": {
+      "n": 157,
+      "nezdravih": 36,
+      "slaganje": 0.5286624203821656
+     },
+     "zelenčica": {
+      "n": 126,
+      "nezdravih": 27,
+      "slaganje": 0.47619047619047616
+     },
+     "zlatni puzavac": {
+      "n": 121,
+      "nezdravih": 28,
+      "slaganje": 0.5702479338842975
+     }
+    }
+   }
+  },
+  "jaka": {
+   "temperatura": 1.1270246505737305,
+   "prag": 0.8399999737739563,
+   "slabe_oznake": {
+    "n": 635,
+    "udio_nezdravih": 0.2251968503937008,
+    "tocnost": 0.7007874015748031,
+    "tocnost_interval": [
+     0.6629194155241728,
+     0.7324367625641786
+    ],
+    "preciznost": 0.36257309941520466,
+    "odziv": 0.43356643356643354,
+    "f1": 0.39490445859872614,
+    "makro_f1": 0.5980798443621246,
+    "makro_f1_interval": [
+     0.5422442025216118,
+     0.6588813185116079
+    ],
+    "skupina": 202,
+    "roc_auc": 0.63751492410029,
+    "roc_auc_interval": [
+     0.5764236436392403,
+     0.7070705261147997
+    ],
+    "osnovica_najcesci_razred": 0.7748031496062993,
+    "matrica": {
+     "tn": 383,
+     "fp": 109,
+     "fn": 81,
+     "tp": 62
+    },
+    "uz_prag": {
+     "pokrivenost": 0.5275590551181102,
+     "tocnost_iznad_praga": 0.7671641791044777,
+     "tocnost_iznad_praga_interval": [
+      0.7131457293190109,
+      0.8048867388911419
+     ],
+     "tocnost_ispod_praga": 0.6266666666666667
+    },
+    "po_vrsti": {
+     "aloja": {
+      "n": 231,
+      "nezdravih": 52,
+      "slaganje": 0.70995670995671
+     },
+     "sansevierija": {
+      "n": 157,
+      "nezdravih": 36,
+      "slaganje": 0.7197452229299363
+     },
+     "zelenčica": {
+      "n": 126,
+      "nezdravih": 27,
+      "slaganje": 0.6349206349206349
+     },
+     "zlatni puzavac": {
+      "n": 121,
+      "nezdravih": 28,
+      "slaganje": 0.7272727272727273
+     }
+    }
+   }
+  },
+  "jaka_s1": {
+   "temperatura": 1.1516982316970825,
+   "prag": 0.8180000185966492,
+   "slabe_oznake": {
+    "n": 635,
+    "udio_nezdravih": 0.2251968503937008,
+    "tocnost": 0.5716535433070866,
+    "tocnost_interval": [
+     0.5159930817610063,
+     0.6114676001473917
+    ],
+    "preciznost": 0.29652996845425866,
+    "odziv": 0.6573426573426573,
+    "f1": 0.40869565217391307,
+    "makro_f1": 0.5364465915190553,
+    "makro_f1_interval": [
+     0.48957098804933596,
+     0.57701191807549
+    ],
+    "skupina": 202,
+    "roc_auc": 0.6597305133890501,
+    "roc_auc_interval": [
+     0.6019048578411177,
+     0.7164305678941392
+    ],
+    "osnovica_najcesci_razred": 0.7748031496062993,
+    "matrica": {
+     "tn": 269,
+     "fp": 223,
+     "fn": 49,
+     "tp": 94
+    },
+    "uz_prag": {
+     "pokrivenost": 0.49133858267716535,
+     "tocnost_iznad_praga": 0.6346153846153846,
+     "tocnost_iznad_praga_interval": [
+      0.5525051909755545,
+      0.6931311120939604
+     ],
+     "tocnost_ispod_praga": 0.5108359133126935
+    },
+    "po_vrsti": {
+     "aloja": {
+      "n": 231,
+      "nezdravih": 52,
+      "slaganje": 0.6060606060606061
+     },
+     "sansevierija": {
+      "n": 157,
+      "nezdravih": 36,
+      "slaganje": 0.6305732484076433
+     },
+     "zelenčica": {
+      "n": 126,
+      "nezdravih": 27,
+      "slaganje": 0.42857142857142855
+     },
+     "zlatni puzavac": {
+      "n": 121,
+      "nezdravih": 28,
+      "slaganje": 0.5785123966942148
+     }
+    }
+   }
+  },
+  "jaka_s2": {
+   "temperatura": 1.152895450592041,
+   "prag": 0.824999988079071,
+   "slabe_oznake": {
+    "n": 635,
+    "udio_nezdravih": 0.2251968503937008,
+    "tocnost": 0.6031496062992125,
+    "tocnost_interval": [
+     0.5545808936273234,
+     0.6387574561746242
+    ],
+    "preciznost": 0.28286852589641437,
+    "odziv": 0.4965034965034965,
+    "f1": 0.3604060913705584,
+    "makro_f1": 0.536367429246923,
+    "makro_f1_interval": [
+     0.48538818078877677,
+     0.5894762693446904
+    ],
+    "skupina": 202,
+    "roc_auc": 0.5983427141963727,
+    "roc_auc_interval": [
+     0.5364472367293236,
+     0.6660379092448516
+    ],
+    "osnovica_najcesci_razred": 0.7748031496062993,
+    "matrica": {
+     "tn": 312,
+     "fp": 180,
+     "fn": 72,
+     "tp": 71
+    },
+    "uz_prag": {
+     "pokrivenost": 0.494488188976378,
+     "tocnost_iznad_praga": 0.6210191082802548,
+     "tocnost_iznad_praga_interval": [
+      0.5624937248995984,
+      0.6758902430098082
+     ],
+     "tocnost_ispod_praga": 0.5856697819314641
+    },
+    "po_vrsti": {
+     "aloja": {
+      "n": 231,
+      "nezdravih": 52,
+      "slaganje": 0.6363636363636364
+     },
+     "sansevierija": {
+      "n": 157,
+      "nezdravih": 36,
+      "slaganje": 0.643312101910828
+     },
+     "zelenčica": {
+      "n": 126,
+      "nezdravih": 27,
+      "slaganje": 0.4523809523809524
+     },
+     "zlatni puzavac": {
+      "n": 121,
+      "nezdravih": 28,
+      "slaganje": 0.6446280991735537
+     }
+    }
+   }
+  }
+ }
+}

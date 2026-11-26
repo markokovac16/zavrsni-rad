@@ -114,6 +114,16 @@ uv run src/k07_evaluacija.py --naziv naivni --manifest manifest_naivni.csv
 uv run src/k08_curenje.py
 ```
 
+Ocjena na ispitnim fotografijama s iNaturalista (635 fotografija, 202 autora). Ocjenjuju se modeli učeni samo na
+skupovima podataka, svih šest učenja, s temperaturom i pragom pouzdanosti iz koraka 7. Dok ručne provjere nema,
+rezultat je slaganje s prijedlozima jezičnog modela, a ne točnost. Kad postoji `oznake/provjerene.csv`, isti se
+modeli ocjenjuju i na provjerenim oznakama, a računa se i slaganje čovjeka i jezičnog modela (Cohenova kappa).
+Intervali se računaju bootstrapom po autoru, jer isti autor često snima istu biljku više puta:
+
+```bash
+uv run src/k09_stvarne_evaluacija.py
+```
+
 ### Preporuke o njezi
 
 `src/preporuke.py` sastavlja preporuku pozivom jezičnog modela (ključ i model iz `.env`, isto kao za sučelje).
