@@ -1,0 +1,817 @@
+{
+ "meta": {
+  "skup": "razvojni",
+  "inacica": "a3107bb3",
+  "vrijeme": "2026-11-28T00:29:55",
+  "modeli": [
+   "claude-haiku-5-5"
+  ],
+  "ponavljanja": 3,
+  "varijante": [
+   "s_bazom",
+   "bez_baze",
+   "prva_inacica"
+  ],
+  "sustav_sha256": "b28fbe3e51e40fae",
+  "sustav_bez_baze_sha256": "9aa87cc2dadb8b94",
+  "prva_inacica_sha256": "e4882bc17ae52550"
+ },
+ "varijante": {
+  "s_bazom": {
+   "poziva": 72,
+   "gresaka": 0,
+   "scenarija": 24,
+   "recenica": {
+    "prosjek": 8.6,
+    "najmanje": 6,
+    "najvise": 10
+   },
+   "rijeci_modela": {
+    "prosjek": 131.9,
+    "najmanje": 78,
+    "najvise": 182
+   },
+   "rijeci_ukupno": {
+    "prosjek": 181.2,
+    "najmanje": 120,
+    "najvise": 234
+   },
+   "razlicitih_oznaka": {
+    "prosjek": 9.9,
+    "najmanje": 5,
+    "najvise": 15
+   },
+   "ulaznih_tokena": 534618,
+   "izlaznih_tokena": 49083,
+   "problemi": {
+    "recenica_preko_20_rijeci": {
+     "scenarija_primjenjivo": 24,
+     "poziva_primjenjivo": 72,
+     "poziva": 35,
+     "scenarija_barem_jednom": 20,
+     "scenarija_uvijek": 3,
+     "po_scenariju": {
+      "R02": "1/3",
+      "R03": "1/3",
+      "R04": "2/3",
+      "R05": "1/3",
+      "R06": "1/3",
+      "R07": "2/3",
+      "R08": "3/3",
+      "R09": "2/3",
+      "R10": "1/3",
+      "R12": "2/3",
+      "R15": "3/3",
+      "R16": "1/3",
+      "R17": "1/3",
+      "R18": "2/3",
+      "R19": "2/3",
+      "R20": "1/3",
+      "R21": "3/3",
+      "R22": "2/3",
+      "R23": "2/3",
+      "R24": "2/3"
+     }
+    },
+    "nelatinicni_u_odgovoru": {
+     "scenarija_primjenjivo": 24,
+     "poziva_primjenjivo": 72,
+     "poziva": 1,
+     "scenarija_barem_jednom": 1,
+     "scenarija_uvijek": 0,
+     "po_scenariju": {
+      "R06": "1/3"
+     }
+    },
+    "spominje_klasifikator": {
+     "scenarija_primjenjivo": 24,
+     "poziva_primjenjivo": 72,
+     "poziva": 1,
+     "scenarija_barem_jednom": 1,
+     "scenarija_uvijek": 0,
+     "po_scenariju": {
+      "R21": "1/3"
+     }
+    },
+    "ponavlja_stanje": {
+     "scenarija_primjenjivo": 24,
+     "poziva_primjenjivo": 72,
+     "poziva": 3,
+     "scenarija_barem_jednom": 3,
+     "scenarija_uvijek": 0,
+     "po_scenariju": {
+      "R10": "1/3",
+      "R19": "1/3",
+      "R21": "1/3"
+     }
+    },
+    "ista_oznaka_u_vise_dijelova": {
+     "scenarija_primjenjivo": 24,
+     "poziva_primjenjivo": 72,
+     "poziva": 35,
+     "scenarija_barem_jednom": 17,
+     "scenarija_uvijek": 5,
+     "po_scenariju": {
+      "R02": "3/3",
+      "R03": "3/3",
+      "R05": "2/3",
+      "R06": "2/3",
+      "R08": "3/3",
+      "R09": "2/3",
+      "R12": "2/3",
+      "R13": "2/3",
+      "R14": "3/3",
+      "R17": "1/3",
+      "R18": "1/3",
+      "R19": "2/3",
+      "R20": "1/3",
+      "R21": "1/3",
+      "R22": "2/3",
+      "R23": "2/3",
+      "R24": "3/3"
+     }
+    },
+    "otrovnost_preko_20_rijeci": {
+     "scenarija_primjenjivo": 24,
+     "poziva_primjenjivo": 72,
+     "poziva": 5,
+     "scenarija_barem_jednom": 5,
+     "scenarija_uvijek": 0,
+     "po_scenariju": {
+      "R06": "1/3",
+      "R15": "1/3",
+      "R18": "1/3",
+      "R19": "1/3",
+      "R21": "1/3"
+     }
+    },
+    "spominje_strucnjaka": {
+     "scenarija_primjenjivo": 24,
+     "poziva_primjenjivo": 72,
+     "poziva": 9,
+     "scenarija_barem_jednom": 9,
+     "scenarija_uvijek": 0,
+     "po_scenariju": {
+      "R02": "1/3",
+      "R03": "1/3",
+      "R05": "1/3",
+      "R09": "1/3",
+      "R12": "1/3",
+      "R16": "1/3",
+      "R19": "1/3",
+      "R20": "1/3",
+      "R22": "1/3"
+     }
+    },
+    "naziv_vrste_vise_puta": {
+     "scenarija_primjenjivo": 21,
+     "poziva_primjenjivo": 63,
+     "poziva": 49,
+     "scenarija_barem_jednom": 18,
+     "scenarija_uvijek": 13,
+     "po_scenariju": {
+      "R06": "2/3",
+      "R07": "2/3",
+      "R08": "2/3",
+      "R09": "2/3",
+      "R10": "3/3",
+      "R11": "3/3",
+      "R12": "3/3",
+      "R13": "3/3",
+      "R14": "3/3",
+      "R15": "3/3",
+      "R16": "3/3",
+      "R17": "2/3",
+      "R18": "3/3",
+      "R19": "3/3",
+      "R20": "3/3",
+      "R21": "3/3",
+      "R22": "3/3",
+      "R24": "3/3"
+     }
+    },
+    "opca_uz_cinjenicu_o_vrsti": {
+     "scenarija_primjenjivo": 21,
+     "poziva_primjenjivo": 63,
+     "poziva": 54,
+     "scenarija_barem_jednom": 20,
+     "scenarija_uvijek": 15,
+     "po_scenariju": {
+      "R04": "3/3",
+      "R05": "3/3",
+      "R06": "3/3",
+      "R07": "2/3",
+      "R08": "3/3",
+      "R09": "3/3",
+      "R10": "2/3",
+      "R11": "3/3",
+      "R12": "3/3",
+      "R14": "3/3",
+      "R15": "2/3",
+      "R16": "3/3",
+      "R17": "3/3",
+      "R18": "3/3",
+      "R19": "3/3",
+      "R20": "3/3",
+      "R21": "3/3",
+      "R22": "2/3",
+      "R23": "1/3",
+      "R24": "3/3"
+     }
+    }
+   },
+   "provjere_sustava": {
+    "bez_oznaka": {
+     "poziva": 0,
+     "ukupno": 0
+    },
+    "skraceno": {
+     "poziva": 0,
+     "ukupno": 0
+    },
+    "vise_oznaka": {
+     "poziva": 31,
+     "ukupno": 36
+    },
+    "vise_recenica": {
+     "poziva": 0,
+     "ukupno": 0
+    },
+    "ociscen_tekst": {
+     "poziva": 0,
+     "ukupno": 0
+    },
+    "preslovljeno": {
+     "poziva": 1,
+     "ukupno": 1
+    },
+    "nelatinicni_znakovi": {
+     "poziva": 0,
+     "ukupno": 0
+    },
+    "dodana_otrovnost": {
+     "poziva": 0,
+     "ukupno": 0
+    }
+   },
+   "slicnost_oznaka_medu_ponavljanjima": 0.59,
+   "opce_uz_cinjenicu_o_vrsti_po_oznaci": {
+    "C009": 29,
+    "C012": 23,
+    "C007": 18,
+    "C018": 18,
+    "C011": 15,
+    "C023": 9,
+    "C021": 9,
+    "C008": 8,
+    "C010": 7,
+    "C017": 6,
+    "C019": 6,
+    "C020": 2,
+    "C014": 1,
+    "C016": 1
+   },
+   "najcesce_oznake_po_pozivima": {
+    "C009": 36,
+    "C012": 32,
+    "C007": 27,
+    "C018": 27,
+    "C011": 19,
+    "C017": 17,
+    "C023": 15,
+    "C005": 14,
+    "C031": 13,
+    "C058": 12
+   },
+   "ista_oznaka_u_vise_dijelova_po_oznaci": {
+    "C009": 8,
+    "C143": 5,
+    "C093": 5,
+    "C018": 4,
+    "C060": 3,
+    "C031": 3,
+    "C008": 2,
+    "C138": 2,
+    "C058": 2,
+    "C092": 2
+   }
+  },
+  "bez_baze": {
+   "poziva": 72,
+   "gresaka": 0,
+   "scenarija": 24,
+   "recenica": {
+    "prosjek": 9.1,
+    "najmanje": 7,
+    "najvise": 10
+   },
+   "rijeci_modela": {
+    "prosjek": 134.4,
+    "najmanje": 98,
+    "najvise": 188
+   },
+   "rijeci_ukupno": {
+    "prosjek": 183.5,
+    "najmanje": 138,
+    "najvise": 238
+   },
+   "ulaznih_tokena": 156153,
+   "izlaznih_tokena": 41752,
+   "problemi": {
+    "recenica_preko_20_rijeci": {
+     "scenarija_primjenjivo": 24,
+     "poziva_primjenjivo": 72,
+     "poziva": 15,
+     "scenarija_barem_jednom": 12,
+     "scenarija_uvijek": 1,
+     "po_scenariju": {
+      "R02": "1/3",
+      "R04": "1/3",
+      "R06": "1/3",
+      "R07": "1/3",
+      "R10": "1/3",
+      "R12": "2/3",
+      "R14": "1/3",
+      "R15": "1/3",
+      "R16": "1/3",
+      "R21": "3/3",
+      "R23": "1/3",
+      "R24": "1/3"
+     }
+    },
+    "nelatinicni_u_odgovoru": {
+     "scenarija_primjenjivo": 24,
+     "poziva_primjenjivo": 72,
+     "poziva": 4,
+     "scenarija_barem_jednom": 3,
+     "scenarija_uvijek": 0,
+     "po_scenariju": {
+      "R15": "1/3",
+      "R19": "2/3",
+      "R21": "1/3"
+     }
+    },
+    "spominje_klasifikator": {
+     "scenarija_primjenjivo": 24,
+     "poziva_primjenjivo": 72,
+     "poziva": 4,
+     "scenarija_barem_jednom": 4,
+     "scenarija_uvijek": 0,
+     "po_scenariju": {
+      "R03": "1/3",
+      "R06": "1/3",
+      "R12": "1/3",
+      "R18": "1/3"
+     }
+    },
+    "ponavlja_stanje": {
+     "scenarija_primjenjivo": 24,
+     "poziva_primjenjivo": 72,
+     "poziva": 12,
+     "scenarija_barem_jednom": 7,
+     "scenarija_uvijek": 2,
+     "po_scenariju": {
+      "R01": "2/3",
+      "R03": "3/3",
+      "R06": "3/3",
+      "R07": "1/3",
+      "R18": "1/3",
+      "R19": "1/3",
+      "R23": "1/3"
+     }
+    },
+    "otrovnost_preko_20_rijeci": {
+     "scenarija_primjenjivo": 24,
+     "poziva_primjenjivo": 72,
+     "poziva": 2,
+     "scenarija_barem_jednom": 2,
+     "scenarija_uvijek": 0,
+     "po_scenariju": {
+      "R20": "1/3",
+      "R21": "1/3"
+     }
+    },
+    "spominje_strucnjaka": {
+     "scenarija_primjenjivo": 24,
+     "poziva_primjenjivo": 72,
+     "poziva": 9,
+     "scenarija_barem_jednom": 7,
+     "scenarija_uvijek": 0,
+     "po_scenariju": {
+      "R04": "1/3",
+      "R08": "1/3",
+      "R09": "2/3",
+      "R12": "2/3",
+      "R18": "1/3",
+      "R20": "1/3",
+      "R22": "1/3"
+     }
+    },
+    "naziv_vrste_vise_puta": {
+     "scenarija_primjenjivo": 21,
+     "poziva_primjenjivo": 63,
+     "poziva": 22,
+     "scenarija_barem_jednom": 12,
+     "scenarija_uvijek": 3,
+     "po_scenariju": {
+      "R09": "1/3",
+      "R10": "1/3",
+      "R13": "2/3",
+      "R15": "1/3",
+      "R16": "3/3",
+      "R18": "1/3",
+      "R19": "3/3",
+      "R20": "2/3",
+      "R21": "2/3",
+      "R22": "3/3",
+      "R23": "1/3",
+      "R24": "2/3"
+     }
+    },
+    "zelencica_otrovna": {
+     "scenarija_primjenjivo": 3,
+     "poziva_primjenjivo": 9,
+     "poziva": 8,
+     "scenarija_barem_jednom": 3,
+     "scenarija_uvijek": 2,
+     "po_scenariju": {
+      "R10": "2/3",
+      "R11": "3/3",
+      "R12": "3/3"
+     }
+    },
+    "hibiskus_otrovan": {
+     "scenarija_primjenjivo": 3,
+     "poziva_primjenjivo": 9,
+     "poziva": 7,
+     "scenarija_barem_jednom": 3,
+     "scenarija_uvijek": 1,
+     "po_scenariju": {
+      "R19": "3/3",
+      "R20": "2/3",
+      "R21": "2/3"
+     }
+    }
+   },
+   "provjere_sustava": {
+    "bez_oznaka": {
+     "poziva": 0,
+     "ukupno": 0
+    },
+    "skraceno": {
+     "poziva": 0,
+     "ukupno": 0
+    },
+    "vise_oznaka": {
+     "poziva": 0,
+     "ukupno": 0
+    },
+    "vise_recenica": {
+     "poziva": 0,
+     "ukupno": 0
+    },
+    "ociscen_tekst": {
+     "poziva": 0,
+     "ukupno": 0
+    },
+    "preslovljeno": {
+     "poziva": 4,
+     "ukupno": 4
+    },
+    "nelatinicni_znakovi": {
+     "poziva": 0,
+     "ukupno": 0
+    },
+    "dodana_otrovnost": {
+     "poziva": 0,
+     "ukupno": 0
+    }
+   }
+  },
+  "prva_inacica": {
+   "poziva": 72,
+   "gresaka": 0,
+   "scenarija": 24,
+   "recenica": {
+    "prosjek": 10.9,
+    "najmanje": 8,
+    "najvise": 14
+   },
+   "rijeci_modela": {
+    "prosjek": 140.5,
+    "najmanje": 97,
+    "najvise": 187
+   },
+   "rijeci_ukupno": {
+    "prosjek": 140.5,
+    "najmanje": 97,
+    "najvise": 187
+   },
+   "razlicitih_oznaka": {
+    "prosjek": 12.3,
+    "najmanje": 6,
+    "najvise": 20
+   },
+   "ulaznih_tokena": 388095,
+   "izlaznih_tokena": 38227,
+   "problemi": {
+    "recenica_preko_20_rijeci": {
+     "scenarija_primjenjivo": 24,
+     "poziva_primjenjivo": 72,
+     "poziva": 35,
+     "scenarija_barem_jednom": 20,
+     "scenarija_uvijek": 3,
+     "po_scenariju": {
+      "R01": "1/3",
+      "R02": "3/3",
+      "R04": "2/3",
+      "R06": "2/3",
+      "R07": "3/3",
+      "R08": "2/3",
+      "R09": "2/3",
+      "R10": "1/3",
+      "R12": "3/3",
+      "R13": "1/3",
+      "R14": "1/3",
+      "R15": "2/3",
+      "R17": "1/3",
+      "R18": "1/3",
+      "R19": "2/3",
+      "R20": "2/3",
+      "R21": "2/3",
+      "R22": "1/3",
+      "R23": "1/3",
+      "R24": "2/3"
+     }
+    },
+    "spominje_klasifikator": {
+     "scenarija_primjenjivo": 24,
+     "poziva_primjenjivo": 72,
+     "poziva": 72,
+     "scenarija_barem_jednom": 24,
+     "scenarija_uvijek": 24,
+     "po_scenariju": {
+      "R01": "3/3",
+      "R02": "3/3",
+      "R03": "3/3",
+      "R04": "3/3",
+      "R05": "3/3",
+      "R06": "3/3",
+      "R07": "3/3",
+      "R08": "3/3",
+      "R09": "3/3",
+      "R10": "3/3",
+      "R11": "3/3",
+      "R12": "3/3",
+      "R13": "3/3",
+      "R14": "3/3",
+      "R15": "3/3",
+      "R16": "3/3",
+      "R17": "3/3",
+      "R18": "3/3",
+      "R19": "3/3",
+      "R20": "3/3",
+      "R21": "3/3",
+      "R22": "3/3",
+      "R23": "3/3",
+      "R24": "3/3"
+     }
+    },
+    "ponavlja_stanje": {
+     "scenarija_primjenjivo": 24,
+     "poziva_primjenjivo": 72,
+     "poziva": 2,
+     "scenarija_barem_jednom": 2,
+     "scenarija_uvijek": 0,
+     "po_scenariju": {
+      "R10": "1/3",
+      "R24": "1/3"
+     }
+    },
+    "spominje_strucnjaka": {
+     "scenarija_primjenjivo": 24,
+     "poziva_primjenjivo": 72,
+     "poziva": 44,
+     "scenarija_barem_jednom": 23,
+     "scenarija_uvijek": 7,
+     "po_scenariju": {
+      "R01": "2/3",
+      "R02": "3/3",
+      "R03": "2/3",
+      "R04": "2/3",
+      "R05": "1/3",
+      "R06": "1/3",
+      "R07": "1/3",
+      "R08": "3/3",
+      "R09": "1/3",
+      "R10": "3/3",
+      "R11": "1/3",
+      "R12": "2/3",
+      "R13": "1/3",
+      "R14": "1/3",
+      "R15": "3/3",
+      "R16": "2/3",
+      "R17": "1/3",
+      "R19": "3/3",
+      "R20": "3/3",
+      "R21": "3/3",
+      "R22": "2/3",
+      "R23": "2/3",
+      "R24": "1/3"
+     }
+    },
+    "pocinje_veznikom": {
+     "scenarija_primjenjivo": 24,
+     "poziva_primjenjivo": 72,
+     "poziva": 1,
+     "scenarija_barem_jednom": 1,
+     "scenarija_uvijek": 0,
+     "po_scenariju": {
+      "R17": "1/3"
+     }
+    },
+    "naziv_vrste_vise_puta": {
+     "scenarija_primjenjivo": 21,
+     "poziva_primjenjivo": 63,
+     "poziva": 58,
+     "scenarija_barem_jednom": 21,
+     "scenarija_uvijek": 16,
+     "po_scenariju": {
+      "R04": "3/3",
+      "R05": "2/3",
+      "R06": "2/3",
+      "R07": "2/3",
+      "R08": "3/3",
+      "R09": "3/3",
+      "R10": "3/3",
+      "R11": "3/3",
+      "R12": "3/3",
+      "R13": "3/3",
+      "R14": "3/3",
+      "R15": "3/3",
+      "R16": "2/3",
+      "R17": "3/3",
+      "R18": "3/3",
+      "R19": "3/3",
+      "R20": "3/3",
+      "R21": "3/3",
+      "R22": "3/3",
+      "R23": "3/3",
+      "R24": "2/3"
+     }
+    },
+    "hibiskus_otrovan": {
+     "scenarija_primjenjivo": 3,
+     "poziva_primjenjivo": 9,
+     "poziva": 1,
+     "scenarija_barem_jednom": 1,
+     "scenarija_uvijek": 0,
+     "po_scenariju": {
+      "R19": "1/3"
+     }
+    },
+    "recenica_bez_oznake": {
+     "scenarija_primjenjivo": 24,
+     "poziva_primjenjivo": 72,
+     "poziva": 65,
+     "scenarija_barem_jednom": 24,
+     "scenarija_uvijek": 18,
+     "po_scenariju": {
+      "R01": "3/3",
+      "R02": "3/3",
+      "R03": "3/3",
+      "R04": "2/3",
+      "R05": "3/3",
+      "R06": "3/3",
+      "R07": "2/3",
+      "R08": "3/3",
+      "R09": "3/3",
+      "R10": "2/3",
+      "R11": "3/3",
+      "R12": "3/3",
+      "R13": "2/3",
+      "R14": "3/3",
+      "R15": "3/3",
+      "R16": "3/3",
+      "R17": "3/3",
+      "R18": "2/3",
+      "R19": "1/3",
+      "R20": "3/3",
+      "R21": "3/3",
+      "R22": "3/3",
+      "R23": "3/3",
+      "R24": "3/3"
+     }
+    },
+    "savjet_bez_oznake": {
+     "scenarija_primjenjivo": 24,
+     "poziva_primjenjivo": 72,
+     "poziva": 23,
+     "scenarija_barem_jednom": 12,
+     "scenarija_uvijek": 1,
+     "po_scenariju": {
+      "R03": "2/3",
+      "R05": "2/3",
+      "R08": "2/3",
+      "R09": "2/3",
+      "R10": "1/3",
+      "R11": "2/3",
+      "R13": "2/3",
+      "R14": "2/3",
+      "R16": "3/3",
+      "R17": "1/3",
+      "R23": "2/3",
+      "R24": "2/3"
+     }
+    },
+    "opca_uz_cinjenicu_o_vrsti": {
+     "scenarija_primjenjivo": 21,
+     "poziva_primjenjivo": 63,
+     "poziva": 61,
+     "scenarija_barem_jednom": 21,
+     "scenarija_uvijek": 19,
+     "po_scenariju": {
+      "R04": "3/3",
+      "R05": "3/3",
+      "R06": "3/3",
+      "R07": "3/3",
+      "R08": "2/3",
+      "R09": "3/3",
+      "R10": "3/3",
+      "R11": "3/3",
+      "R12": "3/3",
+      "R13": "3/3",
+      "R14": "3/3",
+      "R15": "3/3",
+      "R16": "3/3",
+      "R17": "3/3",
+      "R18": "3/3",
+      "R19": "3/3",
+      "R20": "3/3",
+      "R21": "3/3",
+      "R22": "2/3",
+      "R23": "3/3",
+      "R24": "3/3"
+     }
+    },
+    "preko_150_rijeci": {
+     "scenarija_primjenjivo": 24,
+     "poziva_primjenjivo": 72,
+     "poziva": 22,
+     "scenarija_barem_jednom": 14,
+     "scenarija_uvijek": 1,
+     "po_scenariju": {
+      "R01": "1/3",
+      "R02": "3/3",
+      "R06": "2/3",
+      "R08": "2/3",
+      "R09": "2/3",
+      "R11": "1/3",
+      "R12": "2/3",
+      "R14": "1/3",
+      "R16": "1/3",
+      "R20": "1/3",
+      "R21": "2/3",
+      "R22": "1/3",
+      "R23": "1/3",
+      "R24": "2/3"
+     }
+    }
+   },
+   "slicnost_oznaka_medu_ponavljanjima": 0.49,
+   "opce_uz_cinjenicu_o_vrsti_po_oznaci": {
+    "C012": 56,
+    "C015": 21,
+    "C007": 20,
+    "C019": 15,
+    "C018": 12,
+    "C017": 9,
+    "C021": 9,
+    "C011": 7,
+    "C022": 7,
+    "C013": 5,
+    "C008": 4,
+    "C025": 3,
+    "C014": 2,
+    "C024": 2,
+    "C020": 1,
+    "C009": 1,
+    "C016": 1,
+    "C027": 1
+   },
+   "najcesce_oznake_po_pozivima": {
+    "C012": 65,
+    "C005": 47,
+    "C053": 47,
+    "C015": 28,
+    "C007": 26,
+    "C001": 23,
+    "C003": 18,
+    "C018": 18,
+    "C031": 17,
+    "C057": 16
+   }
+  }
+ },
+ "recenica_za_rucnu_provjeru": 229
+}

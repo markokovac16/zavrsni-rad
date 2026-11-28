@@ -30,7 +30,7 @@ RAZVOJNI_UVJETI = {
     "sansevierija": {"svjetlo": "kut sobe, slabo svjetlo", "zalijevanje": "jednom tjedno", "prostorija": "spavaća soba"},
     "zelenčica": {"svjetlo": "istočni prozor", "zalijevanje": "vodom iz slavine, dvaput tjedno", "prostorija": "kuhinja"},
     "aloja": {"svjetlo": "južni prozor, izravno sunce", "zalijevanje": "dvaput tjedno", "prostorija": "dnevni boravak"},
-    "kalanhoja": {"svjetlo": "zapadni prozor", "zalijevanje": "", "prostorija": "kupaonica bez prozora"},
+    "kalanhoja": {"svjetlo": "zapadni prozor", "zalijevanje": "", "prostorija": "kupaonica"},
     "hibiskus": {"svjetlo": "sjeverni prozor", "zalijevanje": "jednom tjedno", "prostorija": "uz radijator, zima"},
 }
 RAZVOJNI_POSEBNI = [
@@ -43,25 +43,70 @@ RAZVOJNI_POSEBNI = [
       "prostorija": "hodnik, listovi su pri dnu mekani i žute"}),
 ]
 ISPITNI_UVJETI = {
-    "nepovoljni": {"svjetlo": "polica na suprotnoj strani sobe od prozora, i danju je polumrak",
-                   "zalijevanje": "svaka dva dana, u tanjuriću ispod lonca stalno stoji voda",
-                   "prostorija": "dnevni boravak, lonac stoji na radijatoru"},
-    "povoljni": {"svjetlo": "metar od istočnog prozora, ujutro malo sunca",
-                 "zalijevanje": "kad se gornjih nekoliko centimetara zemlje osuši",
-                 "prostorija": "spavaća soba, oko 20 °C, lonac s rupom za odvod"},
+    "zlatni puzavac": {
+        "nepovoljni": {"svjetlo": "hodnik bez prozora, upaljena svjetla samo navečer",
+                       "zalijevanje": "svaki drugi dan, zemlja je stalno mokra", "prostorija": "hodnik stana"},
+        "povoljni": {"svjetlo": "pola metra od zapadnog prozora, iza tanke zavjese",
+                     "zalijevanje": "kad se zemlja na vrhu osuši, otprilike svakih deset dana",
+                     "prostorija": "dnevni boravak, oko 21 °C"}},
+    "sansevierija": {
+        "nepovoljni": {"svjetlo": "sjeverni prozor, sada je zima", "zalijevanje": "kao i ljeti, svakih pet dana",
+                       "prostorija": "hladna spavaća soba, oko 12 °C"},
+        "povoljni": {"svjetlo": "dva metra od istočnog prozora", "zalijevanje": "jednom mjesečno, kad je zemlja potpuno suha",
+                     "prostorija": ""}},
+    "zelenčica": {
+        "nepovoljni": {"svjetlo": "južni prozor, sunce cijelo poslijepodne",
+                       "zalijevanje": "svaki dan vodom ravno iz slavine", "prostorija": "kuhinja, uz štednjak"},
+        "povoljni": {"svjetlo": "svijetla soba, nije na izravnom suncu", "zalijevanje": "kišnicom, kad se vrh zemlje osuši",
+                     "prostorija": ""}},
+    "aloja": {
+        "nepovoljni": {"svjetlo": "polica u kupaonici s malim prozorom", "zalijevanje": "svaka tri dana, lonac nema rupu za odvod",
+                       "prostorija": "kupaonica, zrak je često vlažan"},
+        "povoljni": {"svjetlo": "južni prozor, nekoliko sati sunca dnevno", "zalijevanje": "svaka dva do tri tjedna",
+                     "prostorija": "dnevni boravak, ljeti na balkonu"}},
+    "kalanhoja": {
+        "nepovoljni": {"svjetlo": "tamni kut iza ormara", "zalijevanje": "malo vode svaki dan",
+                       "prostorija": "dječja soba, mačka se penje po polici"},
+        "povoljni": {"svjetlo": "prozorska daska južnog prozora", "zalijevanje": "kad se zemlja osuši", "prostorija": ""}},
+    "hibiskus": {
+        "nepovoljni": {"svjetlo": "sjeveroistočni prozor, zimi je malo svjetla",
+                       "zalijevanje": "jednom u dva tjedna, zemlja je između suha",
+                       "prostorija": "uz radijator, zrak je suh, prosinac"},
+        "povoljni": {"svjetlo": "južni prozor, ljeto", "zalijevanje": "svaka tri do četiri dana",
+                     "prostorija": "dnevni boravak, oko 22 °C"}},
+}
+ISPITNI_NEPOZNATA = {
+    "zdrava": {"svjetlo": "svijetla prostorija, nekoliko metara od prozora", "zalijevanje": "jednom tjedno, nedjeljom",
+               "prostorija": "ured s klimom"},
+    "nezdrava": {"svjetlo": "polumrak, daleko od prozora", "zalijevanje": "neredovito, ponekad dva tjedna bez vode",
+                 "prostorija": "spavaća soba, uz radijator"},
+    "nesigurno": {"svjetlo": "", "zalijevanje": "", "prostorija": ""},
 }
 
 NASLOVI = [d["naslov"] for d in P.PREDLOSCI["dijelovi"]]
 OZNAKE_U_ZAGRADI = re.compile(r"\s*\[[^\]]*\bC\d{3}\b[^\]]*\]")
-KRAJ = re.compile(r"(?<!\bnpr\.)(?<!\btj\.)(?<!\bitd\.)(?<!\bsl\.)(?<=[.!?])\s+")
+KRAJ = re.compile(r"(?<!\bnpr\.)(?<!\btj\.)(?<!\bitd\.)(?<!\bsl\.)(?<!\bspp\.)(?<=[.!?])\s+(?=[A-ZČĆĐŠŽ])")
 KLASIFIKATOR = re.compile(r"pouzdan|klasifikator|\bsustav(?!n)|fotografij", re.I)
 STRUCNJAK = re.compile(r"stručn\w*|vrtn\w* centr", re.I)
 VEZNIK = re.compile(r"^(zato|stoga|također|to|osim toga|isto tako)\b", re.I)
 NESIGURNOST = re.compile(r"nije mog|ne može pouzdano|nesigur|opći|općenit", re.I)
 NAPOMENA = re.compile(KLASIFIKATOR.pattern + "|" + STRUCNJAK.pattern + "|" + NESIGURNOST.pattern
                       + r"|vrsta\b.*\bnije (poznata|odabrana)", re.I)
+OTROVNA = re.compile(r"\botrov(?:an|n(?!ost)\w*)|(?<!ne)toksič(?!nost)\w*", re.I)
+STETNA = re.compile(r"\bštet(?:an|n[aieo]|nu|nom)\b", re.I)
+LJUBIMCI = re.compile(r"ljubim|\bmač(?:k|ak|j)|\bps(?:a|e|i|u|ima)\b|\bpas(?:a|u|om)?\b", re.I)
+NIJEKANJE = re.compile(r"\bnije\b|\bnisu\b|\bnema\b|\bako (?:je|bi)\b|\bje li\b|\bne (?:smatra|ubraja|sadrž)|provjeri\w* (?:je li|li je|podat)", re.I)
+NETOKSICNE = ("zelenčica", "hibiskus")
 NAZIV = {"zlatni puzavac": r"puzav", "sansevierija": r"sansevi", "zelenčica": r"zelenčic", "aloja": r"\baloj",
          "kalanhoja": r"kalanhoj", "hibiskus": r"hibiskus"}
+STANJE = re.compile(r"(?:\bbiljk|" + "|".join(NAZIV.values()) + r")\w*\s+(?:(?:je\s+|izgleda\s+|se čini\s+|"
+                    r"može biti\s+)(?:prema klasifikatoru\s+|trenutačno\s+|trenutno\s+)?(?:ne)?zdrav(?:[aoi]|om)?\b"
+                    r"|(?:ne)?zdrav[aoi]?\s+je\b)|\bnezdrav\w*\s+(?:" + "|".join(NAZIV.values()) + r")"
+                    r"|označen\w*\s+kao|ocijenjen\w*\s+kao"
+                    r"|\bstanje biljke nije\b(?!\s+(?:moguće\s+)?(?:ispraviti|popraviti|riješiti))"
+                    r"|\bnije\s+(?:sigurno|pouzdano)\s+(?:procijenjen|utvrđen|ocijenjen)", re.I)
+IZVOR = re.compile(r"\bASPCA\b|\bNC State\b|\bUMD\b|sveučilišt|prema (?:izvoru|izvorima|podacima)", re.I)
+BEZ_ODGOVORA = re.compile(r"nije odabran|vrsta (?:biljke )?nije poznata|nije procijenjen|nema podataka|ne mogu|ne znam", re.I)
 
 
 def razvojni():
@@ -73,7 +118,9 @@ def razvojni():
 
 def ispitni():
     popis = [dict(vrsta=v, stanje=s, uvjeti_naziv=n, uvjeti=u)
-             for v in P.VRSTE for s in P.STANJA for n, u in ISPITNI_UVJETI.items()]
+             for v in P.VRSTE for s in P.STANJA for n, u in ISPITNI_UVJETI[v].items()]
+    popis += [dict(vrsta=None, stanje=s, uvjeti_naziv="bez uvjeta" if not any(u.values()) else "nepoznata vrsta",
+                   uvjeti=u) for s, u in ISPITNI_NEPOZNATA.items()]
     return [dict(id=f"I{i + 1:02d}", pouzdanost=POUZDANOST[sc["stanje"]], **sc) for i, sc in enumerate(popis)]
 
 
@@ -82,6 +129,7 @@ def inacica():
     for put in [P.ZNANJE / "sustav.md", P.ZNANJE / "sustav_bez_baze.md", P.ZNANJE / "predlosci.json",
                 P.ZNANJE / "cinjenice.json", c.KORIJEN / "src" / "preporuke.py", c.KORIJEN / "src" / "preporuke_tekst.py"]:
         h.update(put.read_bytes())
+    h.update(json.dumps([razvojni(), ispitni(), P.ucitaj_env()[1]], ensure_ascii=False, sort_keys=True).encode())
     return h.hexdigest()[:8]
 
 
@@ -90,7 +138,7 @@ def dostupne(varijanta, vrsta, cinjenice):
         return [f["id"] for f in T.odaberi_cinjenice(cinjenice, vrsta)]
     if varijanta == "s_bazom":
         opce, o_vrsti = P.odaberi_cinjenice(cinjenice, vrsta)
-        return [f["id"] for f in opce + o_vrsti if f["kategorija"] != P.OTROVNOST]
+        return [f["id"] for f in opce + o_vrsti]
     return []
 
 
@@ -130,7 +178,7 @@ def recenice_slobodnog(tekst):
 def recenice_modela(poziv):
     if poziv["varijanta"] == "prva_inacica":
         return recenice_slobodnog(poziv["tekst"])
-    return [r for rs in poziv["dijelovi"].values() for r in rs if not r.get("sustav")]
+    return [r for rs in poziv["dijelovi"].values() for r in rs if not r.get("sustav") and not r.get("otrovnost")]
 
 
 def tekst_odgovora(poziv):
@@ -143,19 +191,29 @@ def rijeci(tekst):
     tekst = OZNAKE_U_ZAGRADI.sub("", tekst)
     for n in NASLOVI:
         tekst = tekst.replace(f"**{n}**", "")
-    return len([r for r in tekst.split() if re.search(r"\w", r)])
+    return P.broj_rijeci(tekst)
+
+
+def ponovljene_oznake(poziv):
+    dijelovi = {}
+    for d, rs in poziv["dijelovi"].items():
+        for r in rs:
+            if not r.get("sustav") and not r.get("otrovnost"):
+                for i in r["oznake"]:
+                    dijelovi.setdefault(i, set()).add(d)
+    return sorted(i for i, ds in dijelovi.items() if len(ds - {"procjena"} if "sto_napraviti" in ds else ds) > 1)
 
 
 def tvrdi_da_je_otrovna(tekst):
-    return any(re.search(r"otrovn", r, re.I) and not re.search(r"\bnije\b|\bnisu\b|provjeri|netoksi", r, re.I)
-               for r in re.split(r"(?<=[.!?])\s+|\n", tekst))
+    return any((OTROVNA.search(r) or STETNA.search(r) and LJUBIMCI.search(r)) and not NIJEKANJE.search(r)
+               for r in re.split(r"(?<=[.!?])\s+|\n|,\s*(?:ali|no|a)\b", tekst))
 
 
 def pokazatelji(poziv, sc, po_id):
     recenice = recenice_modela(poziv)
     s_oznakama = poziv["varijanta"] != "bez_baze"
     oznake = [i for r in recenice for i in r["oznake"]]
-    duljine = [len(r["tekst"].split()) for r in recenice]
+    duljine = [P.broj_rijeci(r["tekst"]) for r in recenice]
     tekstovi = [r["tekst"] for r in recenice]
     vrste_kat = {po_id[i]["kategorija"] for i in poziv["dostupne"] if po_id[i]["tema"] == sc["vrsta"]}
     p = dict(
@@ -163,15 +221,26 @@ def pokazatelji(poziv, sc, po_id):
         rijeci_modela=sum(duljine),
         rijeci_ukupno=rijeci(poziv["tekst"]),
         recenica_preko_20_rijeci=sum(n > NAJVISE_RIJECI_RECENICE for n in duljine),
-        nelatinicni_znakovi=P.nelatinicni(tekst_odgovora(poziv)),
+        nelatinicni_u_odgovoru=P.nelatinicni(tekst_odgovora(poziv)),
         spominje_klasifikator=sum(bool(KLASIFIKATOR.search(t)) for t in tekstovi),
+        ponavlja_stanje=sum(bool(STANJE.search(t)) for t in tekstovi),
         spominje_strucnjaka=sum(bool(STRUCNJAK.search(t)) for t in tekstovi),
         pocinje_veznikom=sum(bool(VEZNIK.search(t)) for t in tekstovi),
         naziv_vrste=len(re.findall(NAZIV[sc["vrsta"]], " ".join(tekstovi), re.I)) if sc["vrsta"] else None,
+        naziv_u_svakoj_recenici=len(tekstovi) > 1 and all(re.search(NAZIV[sc["vrsta"]], t, re.I) for t in tekstovi)
+        if sc["vrsta"] else None,
         fahrenheit=bool(re.search(r"°\s?F\b|Fahrenheit", poziv["tekst"])),
         napomena_o_nesigurnosti=bool(NESIGURNOST.search(poziv["tekst"])) if sc["stanje"] == "nesigurno" else None,
-        tvrdi_da_je_otrovna=tvrdi_da_je_otrovna(poziv["tekst"]) if sc["vrsta"] == "zelenčica" else None,
+        tvrdi_da_je_otrovna=tvrdi_da_je_otrovna(poziv["tekst"]) if sc["vrsta"] in NETOKSICNE else None,
     )
+    if poziv["varijanta"] != "prva_inacica":
+        p["ponovljene_oznake"] = ponovljene_oznake(poziv) if s_oznakama else None
+        otrovnost = [r["tekst"] for r in poziv["dijelovi"]["redovita_njega"] if r.get("otrovnost") and not r.get("sustav")]
+        p["otrovnost_modela"] = bool(otrovnost) if sc["vrsta"] else None
+        p["otrovnost_bez_odgovora"] = any(BEZ_ODGOVORA.search(t) for t in otrovnost) if sc["vrsta"] else None
+        p["otrovnost_preko_20_rijeci"] = sum(P.broj_rijeci(t) > NAJVISE_RIJECI_RECENICE for t in otrovnost)
+        p["spominje_izvor"] = sum(bool(IZVOR.search(r["tekst"])) for rs in poziv["dijelovi"].values() for r in rs
+                                  if not r.get("sustav"))
     if s_oznakama:
         p.update(
             recenica_bez_oznake=sum(not r["oznake"] for r in recenice),
@@ -192,14 +261,22 @@ def pokazatelji(poziv, sc, po_id):
 
 PROBLEMI = {
     "recenica_preko_20_rijeci": ("recenica_preko_20_rijeci", lambda x: x > 0),
-    "nelatinicni_znakovi": ("nelatinicni_znakovi", bool),
+    "nelatinicni_u_odgovoru": ("nelatinicni_u_odgovoru", bool),
     "spominje_klasifikator": ("spominje_klasifikator", lambda x: x > 0),
+    "ponavlja_stanje": ("ponavlja_stanje", lambda x: x > 0),
+    "ista_oznaka_u_vise_dijelova": ("ponovljene_oznake", bool),
+    "bez_recenice_o_otrovnosti": ("otrovnost_modela", lambda x: not x),
+    "otrovnost_bez_odgovora": ("otrovnost_bez_odgovora", bool),
+    "otrovnost_preko_20_rijeci": ("otrovnost_preko_20_rijeci", lambda x: x > 0),
+    "spominje_izvor": ("spominje_izvor", lambda x: x > 0),
     "spominje_strucnjaka": ("spominje_strucnjaka", lambda x: x > 0),
     "pocinje_veznikom": ("pocinje_veznikom", lambda x: x > 0),
     "naziv_vrste_vise_puta": ("naziv_vrste", lambda x: x > 1),
+    "naziv_vrste_u_svakoj_recenici": ("naziv_u_svakoj_recenici", bool),
     "fahrenheit": ("fahrenheit", bool),
     "bez_napomene_o_nesigurnosti": ("napomena_o_nesigurnosti", lambda x: not x),
-    "zelencica_otrovna": ("tvrdi_da_je_otrovna", bool),
+    "zelencica_otrovna": ("tvrdi_da_je_otrovna", bool, "zelenčica"),
+    "hibiskus_otrovan": ("tvrdi_da_je_otrovna", bool, "hibiskus"),
     "recenica_bez_oznake": ("recenica_bez_oznake", lambda x: x > 0),
     "savjet_bez_oznake": ("savjet_bez_oznake", lambda x: x > 0),
     "nepostojeca_oznaka": ("nepostojecih_oznaka", lambda x: x > 0),
@@ -208,7 +285,8 @@ PROBLEMI = {
     "preko_150_rijeci": ("preko_150_rijeci", bool),
     "prekinuto": ("prekinuto", bool),
 }
-PROVJERE_SUSTAVA = ["bez_oznaka", "skraceno", "vise_oznaka", "vise_recenica", "ociscen_tekst", "preslovljeno"]
+PROVJERE_SUSTAVA = ["bez_oznaka", "skraceno", "vise_oznaka", "vise_recenica", "ociscen_tekst", "preslovljeno",
+                    "nelatinicni_znakovi", "dodana_otrovnost"]
 
 
 def jaccard(a, b):
@@ -236,8 +314,10 @@ def sazmi(pozivi, scenariji):
         s["ulaznih_tokena"] = sum(p["potrosnja"]["ulaz"] for p in uspjeli)
         s["izlaznih_tokena"] = sum(p["potrosnja"]["izlaz"] for p in uspjeli)
         s["problemi"] = {}
-        for naziv, (kljuc, uvjet) in PROBLEMI.items():
-            primjenjivo = {sc: ps for sc, ps in po_sc.items() if ps[0]["pokazatelji"].get(kljuc) is not None}
+        vrsta = {sc["id"]: sc["vrsta"] for sc in scenariji}
+        for naziv, (kljuc, uvjet, *samo) in PROBLEMI.items():
+            primjenjivo = {sc: ps for sc, ps in po_sc.items() if ps[0]["pokazatelji"].get(kljuc) is not None
+                           and (not samo or vrsta[sc] == samo[0])}
             k = {sc: sum(bool(uvjet(p["pokazatelji"][kljuc])) for p in ps) for sc, ps in primjenjivo.items()}
             if any(k.values()):
                 s["problemi"][naziv] = dict(scenarija_primjenjivo=len(primjenjivo), poziva_primjenjivo=sum(
@@ -246,8 +326,10 @@ def sazmi(pozivi, scenariji):
                                             scenarija_uvijek=sum(x == len(po_sc[sc]) for sc, x in k.items()),
                                             po_scenariju={sc: f"{x}/{len(po_sc[sc])}" for sc, x in k.items() if x})
         if v != "prva_inacica":
-            s["provjere_sustava"] = {k: dict(poziva=sum(p["provjere"][k] > 0 for p in uspjeli),
-                                             ukupno=sum(p["provjere"][k] for p in uspjeli)) for k in PROVJERE_SUSTAVA}
+            broj = lambda x: len(x) if isinstance(x, list) else x
+            s["provjere_sustava"] = {k: dict(poziva=sum(broj(p["provjere"].get(k, 0)) > 0 for p in uspjeli),
+                                             ukupno=sum(broj(p["provjere"].get(k, 0)) for p in uspjeli))
+                                     for k in PROVJERE_SUSTAVA}
         if v != "bez_baze":
             parovi = [jaccard(a["pokazatelji"]["odabrane_oznake"], b["pokazatelji"]["odabrane_oznake"])
                       for ps in po_sc.values() for a, b in combinations(ps, 2)]
@@ -255,6 +337,11 @@ def sazmi(pozivi, scenariji):
                 s["slicnost_oznaka_medu_ponavljanjima"] = round(st.mean(parovi), 2)
             opce = Counter(i for p in uspjeli for i in p["pokazatelji"]["opce_uz_cinjenicu_o_vrsti"] or [])
             s["opce_uz_cinjenicu_o_vrsti_po_oznaci"] = dict(opce.most_common())
+            s["najcesce_oznake_po_pozivima"] = dict(Counter(i for p in uspjeli for i in p["pokazatelji"]["odabrane_oznake"])
+                                                    .most_common(10))
+            if v == "s_bazom":
+                s["ista_oznaka_u_vise_dijelova_po_oznaci"] = dict(Counter(
+                    i for p in uspjeli for i in p["pokazatelji"]["ponovljene_oznake"] or []).most_common(10))
         sazetak[v] = s
     return sazetak
 

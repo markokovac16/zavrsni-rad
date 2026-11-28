@@ -93,7 +93,6 @@ button[aria-busy='true'] { background: var(--naglasak); cursor: progress; }
 .mjerilo-brojke .prag-oznaka { position: absolute; top: 0; transform: translateX(-50%); white-space: nowrap; }
 
 .rezultat-tijelo { padding: 8px 24px 24px; }
-.napomena-istaknuta { margin: 16px 0 0; padding: 10px 14px; border-radius: 6px; background: var(--povrsina); border: 1px solid var(--rub); font-size: 0.9rem; color: var(--prigušeno); }
 
 .odjeljak { display: grid; grid-template-columns: 170px minmax(0, 66ch); gap: 4px 28px; padding: 18px 0; border-bottom: 1px solid var(--rub); }
 .odjeljak:last-child { border-bottom: 0; }

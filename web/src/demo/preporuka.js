@@ -1,15 +1,19 @@
 export const OPCENITO = 'opcenito'
 export const OTROVNOST = 'otrovnost'
 export const NAJVISE_ZNAKOVA = 200
-const OZNAKA_U_TEKSTU = /\[?\bC\d{3}\b\]?|\*+/g
-const KRAJ_RECENICE = /(?<!\bnpr)(?<!\btj)(?<!\bitd)(?<!\bsl)[.!?](?:\s|$)/g
-const CIRILICA = Object.fromEntries(
-  [...'абвгдђежзијклљмнњопрстћуфхцчџшАБВГДЂЕЖЗИЈКЛЉМНЊОПРСТЋУФХЦЧЏШ'].map((z, i) => [
-    z,
-    ['a', 'b', 'v', 'g', 'd', 'đ', 'e', 'ž', 'z', 'i', 'j', 'k', 'l', 'lj', 'm', 'n', 'nj', 'o', 'p', 'r', 's', 't', 'ć', 'u', 'f', 'h', 'c', 'č', 'dž', 'š',
-      'A', 'B', 'V', 'G', 'D', 'Đ', 'E', 'Ž', 'Z', 'I', 'J', 'K', 'L', 'Lj', 'M', 'N', 'Nj', 'O', 'P', 'R', 'S', 'T', 'Ć', 'U', 'F', 'H', 'C', 'Č', 'Dž', 'Š'][i],
-  ]),
-)
+const JEDNA = String.raw`(?:[[(]\s*C[0-9]{3}(?:\s*(?:[,;]|(?<![\p{L}\p{N}_])i(?![\p{L}\p{N}_]))\s*C[0-9]{3})*\s*[\])]|(?<![\p{L}\p{N}_])C[0-9]{3}(?![\p{L}\p{N}_]))`
+const OZNAKA_U_TEKSTU = new RegExp(String.raw`\s*${JEDNA}(?:\s*(?:[,;]|(?<![\p{L}\p{N}_])i(?![\p{L}\p{N}_]))\s*${JEDNA})*|\*+`, 'gu')
+const RAZMAK_PRIJE_ZNAKA = /\s+([.,;:!?])/g
+const KRAJ_RECENICE = /(?<!\bnpr)(?<!\btj)(?<!\bitd)(?<!\bsl)(?<!\bspp)[.!?](?=\s+[A-ZČĆĐŠŽ]|\s*$)/g
+const RIJEC = /[\p{L}\p{N}]/u
+const preslovi = (slova, latinica) => [...slova].map((z, i) => [z, latinica[i]])
+const CIRILICA = Object.fromEntries([
+  ...preslovi('абвгдђежзијклљмнњопрстћуфхцчџшАБВГДЂЕЖЗИЈКЛЉМНЊОПРСТЋУФХЦЧЏШ', ['a', 'b', 'v', 'g', 'd', 'đ', 'e', 'ž', 'z', 'i', 'j', 'k', 'l', 'lj', 'm', 'n', 'nj', 'o', 'p', 'r', 's', 't', 'ć', 'u', 'f', 'h', 'c', 'č', 'dž', 'š',
+    'A', 'B', 'V', 'G', 'D', 'Đ', 'E', 'Ž', 'Z', 'I', 'J', 'K', 'L', 'Lj', 'M', 'N', 'Nj', 'O', 'P', 'R', 'S', 'T', 'Ć', 'U', 'F', 'H', 'C', 'Č', 'Dž', 'Š']),
+  ...preslovi('ёйщъыьэюяєіїґЁЙЩЪЫЬЭЮЯЄІЇҐ', ['jo', 'j', 'šč', '', 'y', '', 'e', 'ju', 'ja', 'je', 'i', 'ji', 'g', 'Jo', 'J', 'Šč', '', 'Y', '', 'E', 'Ju', 'Ja', 'Je', 'I', 'Ji', 'G']),
+])
+const jeOtrovnost = (f) => f.kategorija === OTROVNOST
+export const brojRijeci = (tekst) => tekst.split(/\s+/).filter((r) => RIJEC.test(r)).length
 
 export function odaberiCinjenice(cinjenice, vrsta) {
   const oVrsti = cinjenice.filter((f) => f.tema === vrsta)
@@ -20,30 +24,45 @@ export function odaberiCinjenice(cinjenice, vrsta) {
 
 const blok = (cinjenice) => cinjenice.map((f) => `[${f.id}] (${f.kategorija}) ${f.cinjenica}`)
 
-export function sloziUpit(vrsta, stanje, uvjeti, opce = null, oVrsti = null) {
+export function sloziUpit(vrsta, stanje, uvjeti, opce = null, oVrsti = null, otrovnost = null) {
   const dijelovi = []
   if (opce !== null) {
     dijelovi.push('OPĆE ČINJENICE', ...blok(opce), '')
     dijelovi.push(vrsta ? `ČINJENICE O VRSTI: ${vrsta}` : 'ČINJENICE O VRSTI: nema, vrsta nije odabrana', ...blok(oVrsti), '')
   }
+  if (otrovnost?.length) dijelovi.push(`ČINJENICE O OTROVNOSTI: ${vrsta}`, ...blok(otrovnost), '')
   dijelovi.push('SLUČAJ', `stanje prema klasifikatoru: ${stanje}`, `vrsta biljke: ${vrsta || 'nije odabrana'}`)
   const navedeni = Object.entries(uvjeti)
-    .map(([k, v]) => [k, (v ?? '').trim().slice(0, NAJVISE_ZNAKOVA)])
+    .map(([k, v]) => [k, [...(v ?? '').trim()].slice(0, NAJVISE_ZNAKOVA).join('')])
     .filter(([, v]) => v)
   if (navedeni.length) dijelovi.push('uvjeti koje je upisao korisnik:', ...navedeni.map(([k, v]) => `- ${k}: ${v}`))
   else dijelovi.push('uvjeti koje je upisao korisnik: nisu navedeni')
   return dijelovi.join('\n')
 }
 
-export function shema(predlosci, oznake = null) {
-  let svojstva = { tekst: { type: 'string' } }
-  if (oznake !== null) svojstva = { oznake: { type: 'array', items: { type: 'string', enum: [...oznake].sort() } }, ...svojstva }
+export function shema(predlosci, oznake = null, oznakeOtrovnosti = null, obaveznaOtrovnost = false) {
+  const recenica = (dopustene) => {
+    let svojstva = { tekst: { type: 'string' } }
+    if (dopustene !== null) svojstva = { oznake: { type: 'array', items: { type: 'string', enum: [...dopustene].sort() } }, ...svojstva }
+    return { type: 'object', properties: svojstva, required: Object.keys(svojstva), additionalProperties: false }
+  }
+  const popisi = Object.fromEntries(predlosci.dijelovi.map((d) => [d.kljuc, 'recenica']))
+  const definicije = { recenica: recenica(oznake) }
+  if (oznake === null) {
+    if (obaveznaOtrovnost) popisi[OTROVNOST] = 'recenica'
+  } else if (oznakeOtrovnosti?.length) {
+    popisi[OTROVNOST] = 'recenica_otrovnost'
+    definicije.recenica_otrovnost = recenica(oznakeOtrovnosti)
+    obaveznaOtrovnost = true
+  }
+  const svojstva = Object.fromEntries(Object.entries(popisi).map(([k, v]) => [k, { type: 'array', items: { $ref: `#/$defs/${v}` } }]))
+  if (obaveznaOtrovnost) svojstva[OTROVNOST].minItems = 1
   return {
     type: 'object',
-    properties: Object.fromEntries(predlosci.dijelovi.map((d) => [d.kljuc, { type: 'array', items: { $ref: '#/$defs/recenica' } }])),
-    required: predlosci.dijelovi.map((d) => d.kljuc),
+    properties: svojstva,
+    required: Object.keys(popisi),
     additionalProperties: false,
-    $defs: { recenica: { type: 'object', properties: svojstva, required: Object.keys(svojstva), additionalProperties: false } },
+    $defs: definicije,
   }
 }
 
@@ -54,11 +73,12 @@ export function obradi(predlosci, sirovo, sBazom) {
   const dijelovi = {}
   const izbaceno = []
   const provjere = { bez_oznaka: 0, skraceno: 0, vise_oznaka: 0, vise_recenica: 0, ociscen_tekst: 0, preslovljeno: 0 }
-  for (const d of predlosci.dijelovi) {
+  const popisi = [...predlosci.dijelovi, ...(OTROVNOST in sirovo ? [{ kljuc: OTROVNOST, najvise: 1 }] : [])]
+  for (const d of popisi) {
     const recenice = []
     for (const r of sirovo[d.kljuc]) {
       const tekst = r.tekst.trim()
-      let cisto = tekst.replace(OZNAKA_U_TEKSTU, '').replace(/\s{2,}/g, ' ').trim()
+      let cisto = tekst.replace(OZNAKA_U_TEKSTU, '').replace(/\s{2,}/g, ' ').replace(RAZMAK_PRIJE_ZNAKA, '$1').trim()
       if (cisto !== tekst) provjere.ociscen_tekst += 1
       const latinica = [...cisto].map((z) => CIRILICA[z] ?? z).join('')
       if (latinica !== cisto) {
@@ -82,22 +102,25 @@ export function obradi(predlosci, sirovo, sBazom) {
     }
     dijelovi[d.kljuc] = recenice.slice(0, d.najvise)
   }
-  const tekstovi = Object.values(dijelovi).flat().map((r) => r.tekst)
-  provjere.rijeci_modela = tekstovi.reduce((n, t) => n + t.split(/\s+/).filter(Boolean).length, 0)
-  provjere.nelatinicni_znakovi = nelatinicni(tekstovi.join(' '))
+  provjere.rijeci_modela = predlosci.dijelovi.flatMap((d) => dijelovi[d.kljuc]).reduce((n, r) => n + brojRijeci(r.tekst), 0)
+  dijelovi.redovita_njega.push(...(dijelovi[OTROVNOST] ?? []).map((r) => ({ ...r, otrovnost: true })))
+  delete dijelovi[OTROVNOST]
+  provjere.nelatinicni_znakovi = nelatinicni(Object.values(dijelovi).flat().map((r) => r.tekst).join(' '))
   return { dijelovi, izbaceno, provjere }
 }
 
-const recenicaSustava = (tekst, oznake = []) => ({ tekst, oznake: [...oznake], sustav: true })
+const recenicaSustava = (tekst, oznake = [], oznaka = {}) => ({ tekst, oznake: [...oznake], sustav: true, ...oznaka })
 
 export function dodajReceniceSustava(predlosci, dijelovi, vrsta, stanje, pouzdanost, oVrsti, sBazom) {
-  const prve = [recenicaSustava(predlosci.stanje[stanje].replace('{p}', String(Math.round(pouzdanost * 100))))]
+  const p = String(Math.floor(pouzdanost * 100 + 0.5))
+  const [prva, ...ostale] = predlosci.stanje[stanje]
+  const prve = [recenicaSustava(prva.replace('{p}', p), [], { stanje: true }), ...ostale.map((t) => recenicaSustava(t))]
   if (!vrsta) prve.push(recenicaSustava(predlosci.nepoznata_vrsta))
   dijelovi.procjena = [...prve, ...dijelovi.procjena]
   const oznaka = predlosci.otrovnost[vrsta]
-  if (sBazom && oznaka) {
+  if (sBazom && oznaka && !dijelovi.redovita_njega.some((r) => r.otrovnost)) {
     const f = oVrsti.find((f) => f.id === oznaka)
-    dijelovi.redovita_njega.push(recenicaSustava(f.cinjenica, [oznaka]))
+    dijelovi.redovita_njega.push(recenicaSustava(f.cinjenica, [oznaka], { otrovnost: true }))
   }
   dijelovi.kada_potraziti_pomoc.push(recenicaSustava(predlosci.strucnjak))
   return dijelovi
@@ -114,19 +137,21 @@ export function sloziTekst(predlosci, dijelovi) {
 
 export function pripremi(cinjenice, predlosci, sustav, vrsta, stanje, uvjeti) {
   const { opce, oVrsti } = odaberiCinjenice(cinjenice, vrsta)
-  const zaModel = oVrsti.filter((f) => f.kategorija !== OTROVNOST)
+  const njega = oVrsti.filter((f) => !jeOtrovnost(f))
+  const otrovnost = oVrsti.filter(jeOtrovnost)
   return {
     opce,
     oVrsti,
     sustav,
-    upit: sloziUpit(vrsta, stanje, uvjeti, opce, zaModel),
-    shema: shema(predlosci, [...opce, ...zaModel].map((f) => f.id)),
+    upit: sloziUpit(vrsta, stanje, uvjeti, opce, njega, otrovnost),
+    shema: shema(predlosci, [...opce, ...njega].map((f) => f.id), otrovnost.map((f) => f.id)),
   }
 }
 
 export function zavrsi(predlosci, sirovo, vrsta, stanje, pouzdanost, opce, oVrsti, sBazom = true) {
   const { dijelovi: obradeni, izbaceno, provjere } = obradi(predlosci, sirovo, sBazom)
   const dijelovi = dodajReceniceSustava(predlosci, obradeni, vrsta, stanje, pouzdanost, oVrsti, sBazom)
+  provjere.dodana_otrovnost = dijelovi.redovita_njega.filter((r) => r.sustav && r.otrovnost).length
   const poId = Object.fromEntries([...opce, ...oVrsti].map((f) => [f.id, f]))
   const navedene = [...new Set(Object.values(dijelovi).flat().flatMap((r) => r.oznake))].sort()
   const izvori = navedene.map((id) => {

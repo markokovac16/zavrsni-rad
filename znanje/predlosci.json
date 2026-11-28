@@ -6,9 +6,9 @@
   {"kljuc": "kada_potraziti_pomoc", "naslov": "Kada potražiti pomoć", "najvise": 2}
  ],
  "stanje": {
-  "nezdrava": "Sustav je biljku na fotografiji ocijenio kao nezdravu (pouzdanost modela {p} %). Uzrok ne prepoznaje, pa su u nastavku mogući uzroci koje možete sami provjeriti.",
-  "zdrava": "Sustav je biljku na fotografiji ocijenio kao zdravu (pouzdanost modela {p} %).",
-  "nesigurno": "Sustav nije mogao pouzdano procijeniti stanje biljke na fotografiji. Savjeti u nastavku su opći i nisu prilagođeni stanju ove biljke."
+  "nezdrava": ["Sustav je biljku na fotografiji ocijenio kao nezdravu (pouzdanost modela {p} %).", "Uzrok sustav ne prepoznaje, pa su u nastavku mogući uzroci koje možete sami provjeriti."],
+  "zdrava": ["Sustav je biljku na fotografiji ocijenio kao zdravu (pouzdanost modela {p} %)."],
+  "nesigurno": ["Sustav nije mogao pouzdano procijeniti stanje biljke na fotografiji.", "Savjeti u nastavku su opći i nisu prilagođeni stanju ove biljke."]
  },
  "nepoznata_vrsta": "Vrsta biljke nije odabrana, pa savjeti vrijede za sobne biljke općenito.",
  "strucnjak": "Ako se stanje biljke pogoršava ili se ne popravlja, pokažite je stručnjaku, primjerice u vrtnom centru.",
@@ -17,7 +17,8 @@
   "sansevierija": "C077",
   "zelenčica": "C088",
   "aloja": "C097",
-  "kalanhoja": "C114"
+  "kalanhoja": "C114",
+  "hibiskus": "C125"
  },
  "najvise_oznaka": 2
 }

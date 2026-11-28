@@ -1,6 +1,7 @@
 <script setup>
 import { computed, nextTick, onMounted, ref } from 'vue'
 import * as demo from './demo/api.js'
+import { NAJVISE_ZNAKOVA } from './demo/preporuka.js'
 
 const vrste = ref([])
 const prag = ref(null)
@@ -24,6 +25,7 @@ onMounted(() => {
 function postaviSliku(f) {
   if (!f || !f.type.startsWith('image/')) return
   datoteka.value = f
+  if (pregled.value) URL.revokeObjectURL(pregled.value)
   pregled.value = URL.createObjectURL(f)
   rezultat.value = null
 }
@@ -60,38 +62,13 @@ const opisStanja = computed(() => ({
 
 const naTraci = (x) => `${Math.max(0, Math.min(1, (x - 0.5) / 0.5)) * 100}%`
 
-function oznakeUBrojeve(odlomak, redniBroj) {
-  const izlaz = []
-  for (const komad of odlomak.split(/(\[C\d{3}(?:\s*[,;]\s*C\d{3})*\])/)) {
-    const oznake = /^\[C\d{3}/.test(komad) ? komad.match(/C\d{3}/g) : null
-    const zadnji = izlaz.at(-1)
-    if (oznake) {
-      const brojevi = oznake.map((o) => redniBroj[o]).filter(Boolean)
-      if (!brojevi.length) continue
-      if (zadnji?.brojevi) {
-        for (const b of brojevi) if (!zadnji.brojevi.includes(b)) zadnji.brojevi.push(b)
-      } else {
-        if (zadnji) zadnji.tekst = zadnji.tekst.trimEnd()
-        izlaz.push({ brojevi: [...new Set(brojevi)] })
-      }
-    } else if (komad && !(zadnji?.brojevi && !komad.trim())) {
-      izlaz.push({ tekst: komad })
-    }
-  }
-  return izlaz
-}
-
 const odjeljci = computed(() => {
-  const tekst = rezultat.value?.preporuka
-  if (!tekst) return []
+  if (!rezultat.value?.preporuka) return []
   const redniBroj = Object.fromEntries(rezultat.value.izvori.map((izvor, i) => [izvor.id, i + 1]))
-  const dijelovi = tekst.split(/\*\*(.+?)\*\*/).map((d) => d.trim())
-  const izlaz = []
-  for (let i = 1; i < dijelovi.length; i += 2) {
-    const odlomci = dijelovi[i + 1].split(/\n+/).filter(Boolean).map((o) => oznakeUBrojeve(o, redniBroj))
-    izlaz.push({ naslov: dijelovi[i], odlomci })
-  }
-  return izlaz
+  return rezultat.value.odjeljci.map((o) => ({
+    naslov: o.naslov,
+    recenice: o.recenice.map((r) => ({ tekst: r.tekst, brojevi: r.oznake.map((i) => redniBroj[i]).filter(Boolean) })),
+  }))
 })
 
 const postotak = (x) => `${Math.round(x * 100)} %`
@@ -155,13 +132,13 @@ const postotak = (x) => `${Math.round(x * 100)} %`
               </select>
             </label>
             <label>Svjetlo
-              <input v-model="obrazac.svjetlo" placeholder="npr. istočni prozor, bez izravnog sunca" />
+              <input v-model="obrazac.svjetlo" :maxlength="NAJVISE_ZNAKOVA" placeholder="npr. istočni prozor, bez izravnog sunca" />
             </label>
             <label>Zalijevanje
-              <input v-model="obrazac.zalijevanje" placeholder="npr. jednom tjedno" />
+              <input v-model="obrazac.zalijevanje" :maxlength="NAJVISE_ZNAKOVA" placeholder="npr. jednom tjedno" />
             </label>
             <label>Prostorija
-              <input v-model="obrazac.prostorija" placeholder="npr. dnevni boravak, pokraj radijatora" />
+              <input v-model="obrazac.prostorija" :maxlength="NAJVISE_ZNAKOVA" placeholder="npr. dnevni boravak, pokraj radijatora" />
             </label>
           </fieldset>
         </div>
@@ -199,20 +176,14 @@ const postotak = (x) => `${Math.round(x * 100)} %`
           </div>
 
           <div class="rezultat-tijelo">
-            <p v-if="rezultat.stanje === 'nesigurno'" class="napomena-istaknuta">
-              Pouzdanost je ispod praga, pa su savjeti opći i nisu prilagođeni stanju ove biljke.
-            </p>
             <p v-if="rezultat.greska" class="greska">{{ rezultat.greska }}</p>
 
             <div class="preporuka">
               <article v-for="o in odjeljci" :key="o.naslov" class="odjeljak">
                 <h3>{{ o.naslov }}</h3>
                 <div>
-                  <p v-for="(odlomak, i) in o.odlomci" :key="i">
-                    <template v-for="(komad, j) in odlomak" :key="j">
-                      <sup v-if="komad.brojevi" class="poziv"><template v-for="(b, k) in komad.brojevi" :key="b"><a :href="`#izvor-${b}`" :aria-label="`izvor ${b}`">{{ b }}</a><template v-if="k < komad.brojevi.length - 1">,</template></template></sup>
-                      <template v-else>{{ komad.tekst }}</template>
-                    </template>
+                  <p>
+                    <template v-for="(r, j) in o.recenice" :key="j">{{ j ? ' ' : '' }}{{ r.tekst }}<sup v-if="r.brojevi.length" class="poziv"><template v-for="(b, k) in r.brojevi" :key="b"><a :href="`#izvor-${b}`" :aria-label="`izvor ${b}`">{{ b }}</a><template v-if="k < r.brojevi.length - 1">,</template></template></sup></template>
                   </p>
                 </div>
               </article>

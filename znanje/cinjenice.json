@@ -315,15 +315,6 @@
   "url": "https://hgic.clemson.edu/factsheet/houseplant-diseases-disorders/"
  },
  {
-  "id": "C036",
-  "tema": "opcenito",
-  "kategorija": "bolesti",
-  "cinjenica": "Sistemski zaražene biljke nemaju lijeka i treba ih odbaciti.",
-  "citat": "There are no cures for systemically infected plants and these plants should be discarded.",
-  "izvor": "University of Maryland Extension: Bacterial Leaf Spots on Indoor Plants",
-  "url": "https://extension.umd.edu/resource/bacterial-leaf-spots-indoor-plants"
- },
- {
   "id": "C037",
   "tema": "opcenito",
   "kategorija": "bolesti",
@@ -579,7 +570,7 @@
   "id": "C065",
   "tema": "zlatni puzavac",
   "kategorija": "otrovnost",
-  "cinjenica": "NC State navodi zlatni puzavac kao biljku srednje ozbiljnosti otrovnih svojstava.",
+  "cinjenica": "Zlatni puzavac je biljka srednje ozbiljnosti otrovnih svojstava.",
   "citat": "This plant has medium severity poison characteristics.",
   "izvor": "NC State Extension Gardener Plant Toolbox: Epipremnum aureum",
   "url": "https://plants.ces.ncsu.edu/plants/epipremnum-aureum/"
@@ -588,7 +579,7 @@
   "id": "C066",
   "tema": "zlatni puzavac",
   "kategorija": "otrovnost",
-  "cinjenica": "Prema NC Stateu, simptomi trovanja uključuju iritaciju usne šupljine, bol i oticanje usta, jezika i usana te pretjerano slinjenje.",
+  "cinjenica": "Simptomi trovanja zlatnim puzavcem uključuju iritaciju usne šupljine, bol i oticanje usta, jezika i usana te pretjerano slinjenje.",
   "citat": "Oral irritation, pain and swelling of mouth, tongue, and lips, excessive drooling",
   "izvor": "NC State Extension Gardener Plant Toolbox: Epipremnum aureum",
   "url": "https://plants.ces.ncsu.edu/plants/epipremnum-aureum/"
@@ -597,7 +588,7 @@
   "id": "C067",
   "tema": "zlatni puzavac",
   "kategorija": "otrovnost",
-  "cinjenica": "ASPCA navodi zlatni puzavac kao otrovan za pse i mačke; toksični principi su netopljivi kalcijevi oksalati.",
+  "cinjenica": "Zlatni puzavac otrovan je za pse i mačke; otrovne tvari su netopljivi kalcijevi oksalati.",
   "citat": "Toxic Principles: Insoluble calcium oxalates",
   "izvor": "ASPCA: Toxic and Non-toxic Plants – Golden Pothos",
   "url": "https://www.aspca.org/pet-care/animal-poison-control/toxic-and-non-toxic-plants/golden-pothos"
@@ -606,7 +597,7 @@
   "id": "C068",
   "tema": "zlatni puzavac",
   "kategorija": "otrovnost",
-  "cinjenica": "Prema ASPCA-i, kod ljubimaca se javljaju iritacija usta, usana i jezika, pretjerano slinjenje, povraćanje i teškoće s gutanjem.",
+  "cinjenica": "Simptomi trovanja zlatnim puzavcem kod ljubimaca su iritacija usta, usana i jezika, pretjerano slinjenje, povraćanje i teškoće s gutanjem.",
   "citat": "Oral irritation, intense burning and irritation of mouth, tongue and lips, excessive drooling, vomiting, difficulty swallowing.",
   "izvor": "ASPCA: Toxic and Non-toxic Plants – Golden Pothos",
   "url": "https://www.aspca.org/pet-care/animal-poison-control/toxic-and-non-toxic-plants/golden-pothos"
@@ -687,7 +678,7 @@
   "id": "C077",
   "tema": "sansevierija",
   "kategorija": "otrovnost",
-  "cinjenica": "ASPCA navodi sansevieriju kao otrovnu za pse i mačke; toksični principi su saponini.",
+  "cinjenica": "Sansevierija je otrovna za pse i mačke; otrovne tvari su saponini.",
   "citat": "Toxic Principles: Saponins",
   "izvor": "ASPCA: Toxic and Non-toxic Plants – Snake Plant",
   "url": "https://www.aspca.org/pet-care/animal-poison-control/toxic-and-non-toxic-plants/snake-plant"
@@ -696,7 +687,7 @@
   "id": "C078",
   "tema": "sansevierija",
   "kategorija": "otrovnost",
-  "cinjenica": "Simptomi trovanja sansevierijom prema ASPCA-i su mučnina, povraćanje i proljev.",
+  "cinjenica": "Simptomi trovanja sansevierijom su mučnina, povraćanje i proljev.",
   "citat": "Clinical Signs: Nausea, vomiting, diarrhea.",
   "izvor": "ASPCA: Toxic and Non-toxic Plants – Snake Plant",
   "url": "https://www.aspca.org/pet-care/animal-poison-control/toxic-and-non-toxic-plants/snake-plant"
@@ -762,7 +753,10 @@
   "cinjenica": "Vodu iz slavine treba izbjegavati jer klor i fluoridi mogu uzrokovati opeklinu vrhova listova zelenčice.",
   "citat": "Avoid watering with tap water as the chlorine and fluorides can cause leaf tip burn.",
   "izvor": "NC State Extension Gardener Plant Toolbox: Chlorophytum comosum",
-  "url": "https://plants.ces.ncsu.edu/plants/chlorophytum-comosum/"
+  "url": "https://plants.ces.ncsu.edu/plants/chlorophytum-comosum/",
+  "zamjenjuje": [
+   "C015"
+  ]
  },
  {
   "id": "C086",
@@ -786,7 +780,7 @@
   "id": "C088",
   "tema": "zelenčica",
   "kategorija": "otrovnost",
-  "cinjenica": "ASPCA navodi zelenčicu kao netoksičnu za pse i mačke.",
+  "cinjenica": "Zelenčica je neotrovna za pse i mačke.",
   "citat": "Non-Toxic to Dogs, Non-Toxic to Cats",
   "izvor": "ASPCA: Toxic and Non-toxic Plants – Spider Plant",
   "url": "https://www.aspca.org/pet-care/animal-poison-control/toxic-and-non-toxic-plants/spider-plant"
@@ -870,7 +864,7 @@
   "id": "C097",
   "tema": "aloja",
   "kategorija": "otrovnost",
-  "cinjenica": "ASPCA navodi aloju kao otrovnu za pse, mačke i konje.",
+  "cinjenica": "Aloja je otrovna za pse, mačke i konje.",
   "citat": "Toxic to Dogs, Toxic to Cats, Toxic to Horses",
   "izvor": "ASPCA: Toxic and Non-toxic Plants – Aloe",
   "url": "https://www.aspca.org/pet-care/animal-poison-control/toxic-and-non-toxic-plants/aloe"
@@ -879,7 +873,7 @@
   "id": "C098",
   "tema": "aloja",
   "kategorija": "otrovnost",
-  "cinjenica": "Toksični principi aloje prema ASPCA-i su saponini i antrakinoni; simptomi su povraćanje (ne kod konja), letargija i proljev.",
+  "cinjenica": "Otrovne tvari u aloji su saponini i antrakinoni; simptomi trovanja su povraćanje (ne kod konja), letargija i proljev.",
   "citat": "Clinical Signs: Vomiting (not horses), lethargy, diarrhea.",
   "izvor": "ASPCA: Toxic and Non-toxic Plants – Aloe",
   "url": "https://www.aspca.org/pet-care/animal-poison-control/toxic-and-non-toxic-plants/aloe"
@@ -888,7 +882,7 @@
   "id": "C099",
   "tema": "aloja",
   "kategorija": "otrovnost",
-  "cinjenica": "ASPCA navodi da se gel aloje smatra jestivim, ali je sama biljka otrovna za pse, mačke i konje.",
+  "cinjenica": "Gel aloje smatra se jestivim, ali je sama biljka otrovna za pse, mačke i konje.",
   "citat": "The gel is considered edible.",
   "izvor": "ASPCA: Toxic and Non-toxic Plants – Aloe",
   "url": "https://www.aspca.org/pet-care/animal-poison-control/toxic-and-non-toxic-plants/aloe"
@@ -897,7 +891,7 @@
   "id": "C100",
   "tema": "aloja",
   "kategorija": "otrovnost",
-  "cinjenica": "NC State navodi aloju kao biljku niske ozbiljnosti otrovnih svojstava; otrovnost se odnosi na gutanje ili dermatitis.",
+  "cinjenica": "Aloja je biljka niske ozbiljnosti otrovnih svojstava; otrovnost se odnosi na gutanje ili dermatitis.",
   "citat": "This plant has low severity poison characteristics.",
   "izvor": "NC State Extension Gardener Plant Toolbox: Aloe vera",
   "url": "https://plants.ces.ncsu.edu/plants/aloe-vera/"
@@ -1005,7 +999,7 @@
   "id": "C114",
   "tema": "kalanhoja",
   "kategorija": "otrovnost",
-  "cinjenica": "ASPCA navodi kalanhoju (Kalanchoe spp.) kao otrovnu za pse i mačke; toksični principi su bufadienolidi.",
+  "cinjenica": "Kalanhoje (rod Kalanchoe) otrovne su za pse i mačke; otrovne tvari su bufadienolidi.",
   "citat": "Toxic Principles: Bufodienolides",
   "izvor": "ASPCA: Toxic and Non-toxic Plants – Kalanchoe",
   "url": "https://www.aspca.org/pet-care/animal-poison-control/toxic-and-non-toxic-plants/kalanchoe"
@@ -1014,7 +1008,7 @@
   "id": "C115",
   "tema": "kalanhoja",
   "kategorija": "otrovnost",
-  "cinjenica": "Simptomi trovanja kalanhojom prema ASPCA-i su povraćanje, proljev i rijetko abnormalan srčani ritam.",
+  "cinjenica": "Simptomi trovanja kalanhojom su povraćanje, proljev i rijetko abnormalan srčani ritam.",
   "citat": "Clinical Signs: Vomiting, diarrhea, abnormal heart rhythm (rare).",
   "izvor": "ASPCA: Toxic and Non-toxic Plants – Kalanchoe",
   "url": "https://www.aspca.org/pet-care/animal-poison-control/toxic-and-non-toxic-plants/kalanchoe"
@@ -1044,7 +1038,10 @@
   "cinjenica": "Korijenje hibiskusa treba držati vlažnim.",
   "citat": "The roots should be kept moist.",
   "izvor": "NC State Extension Gardener Plant Toolbox: Hibiscus rosa-sinensis",
-  "url": "https://plants.ces.ncsu.edu/plants/hibiscus-rosa-sinensis/"
+  "url": "https://plants.ces.ncsu.edu/plants/hibiscus-rosa-sinensis/",
+  "zamjenjuje": [
+   "C012"
+  ]
  },
  {
   "id": "C119",
@@ -1086,7 +1083,7 @@
   "id": "C123",
   "tema": "hibiskus",
   "kategorija": "stetnici",
-  "cinjenica": "NC State ne navodi značajne probleme s hibiskusom, ali treba paziti na štitaste uši.",
+  "cinjenica": "Za hibiskus se ne navode značajni problemi, ali treba paziti na štitaste uši.",
   "citat": "No significant problems, but watch for scale insects.",
   "izvor": "NC State Extension Gardener Plant Toolbox: Hibiscus rosa-sinensis",
   "url": "https://plants.ces.ncsu.edu/plants/hibiscus-rosa-sinensis/"
@@ -1104,7 +1101,7 @@
   "id": "C125",
   "tema": "hibiskus",
   "kategorija": "otrovnost",
-  "cinjenica": "ASPCA-ina stranica „Hibiscus“ kao znanstveni naziv navodi Hibiscus syriacus, a među uobičajenim nazivima i „Rose of China“; biljku navodi kao netoksičnu za pse, mačke i konje. Izričit podatak o otrovnosti vrste Hibiscus rosa-sinensis na toj stranici ne postoji.",
+  "cinjenica": "Za vrstu Hibiscus rosa-sinensis nema izričitog podatka o otrovnosti; srodna vrsta Hibiscus syriacus navodi se kao neotrovna za pse, mačke i konje.",
   "citat": "Non-Toxic to Dogs, Non-Toxic to Cats, Non-Toxic to Horses",
   "izvor": "ASPCA: Toxic and Non-toxic Plants – Hibiscus",
   "url": "https://www.aspca.org/pet-care/animal-poison-control/toxic-and-non-toxic-plants/hibiscus"

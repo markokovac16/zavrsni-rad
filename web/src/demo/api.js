@@ -43,5 +43,8 @@ export async function analiziraj(obrazac, prag) {
   }
 
   const r = zavrsi(predlosci, sirovo, vrsta || null, rezultat.stanje, rezultat.pouzdanost, p.opce, p.oVrsti)
-  return { ...rezultat, preporuka: r.tekst, izvori: r.izvori }
+  const odjeljci = predlosci.dijelovi
+    .map((d) => ({ naslov: d.naslov, recenice: r.dijelovi[d.kljuc].filter((x) => !x.stanje) }))
+    .filter((o) => o.recenice.length)
+  return { ...rezultat, preporuka: r.tekst, odjeljci, izvori: r.izvori }
 }

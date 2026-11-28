@@ -128,16 +128,19 @@ uv run src/k09_stvarne_evaluacija.py
 
 `src/preporuke.py` sastavlja preporuku pozivom jezičnog modela (ključ i model iz `.env`, isto kao za sučelje).
 Model dobiva stanje iz klasifikatora (zdrava, nezdrava ili nesigurno), vrstu, uvjete uzgoja koje je unio korisnik i
-činjenice iz `znanje/cinjenice.json`: opće i one o odabranoj vrsti, u dva bloka. Ne dobiva fotografiju, pouzdanost
-klasifikatora, činjenice o otrovnosti ni opće činjenice koje činjenica o vrsti zamjenjuje (polje `zamjenjuje`).
+činjenice iz `znanje/cinjenice.json`: opće, one o njezi odabrane vrste i one o njezinoj otrovnosti, u tri bloka. Ne
+dobiva fotografiju, pouzdanost klasifikatora ni opće činjenice koje činjenica o vrsti zamjenjuje (polje `zamjenjuje`).
 
 Odgovor je JSON po shemi (strukturirani izlaz): četiri popisa rečenica (procjena, što napraviti sada, redovita njega,
-kada potražiti pomoć), a svaka rečenica ima oznake činjenica (npr. `C012`) i tekst. Shema dopušta samo oznake
-priloženih činjenica. Program zatim izbacuje rečenice bez oznake, odsijeca višak rečenica, preslovljava ćirilicu u
-latinicu i dodaje rečenice koje uvijek moraju biti točne: rezultat klasifikatora s pouzdanošću, napomenu kad procjena
-nije pouzdana ili vrsta nije odabrana, otrovnost za kućne ljubimce (činjenica iz baze) i uputu stručnjaku. Uputa
+kada potražiti pomoć) i, kad je vrsta odabrana, popis s jednom rečenicom o otrovnosti; svaka rečenica ima oznake
+činjenica (npr. `C012`) i tekst. Shema dopušta samo oznake priloženih činjenica, a u popisu o otrovnosti samo oznake
+činjenica o otrovnosti. Program zatim izbacuje rečenice bez oznake, odsijeca višak rečenica, preslovljava ćirilicu u
+latinicu, rečenicu o otrovnosti stavlja na kraj redovite njege i dodaje rečenice koje uvijek moraju biti točne:
+rezultat klasifikatora s pouzdanošću, napomenu kad procjena nije pouzdana ili vrsta nije odabrana i uputu stručnjaku.
+Ako model za vrstu s podatkom o otrovnosti ne napiše rečenicu o otrovnosti, program dodaje tu činjenicu iz baze. Uputa
 modelu je u `znanje/sustav.md`, stalne rečenice u `znanje/predlosci.json`. Sučelje (`web/src/demo/preporuka.js`)
-koristi iste datoteke i isti postupak. Primjer s jednom alojom:
+koristi iste datoteke i isti postupak. U inačici bez baze (`znanje/sustav_bez_baze.md`, samo za usporedbu u koraku
+10) rečenicu o otrovnosti model piše iz vlastitog znanja, u istom zasebnom popisu. Primjer s jednom alojom:
 
 ```bash
 uv run src/preporuke.py
@@ -149,14 +152,17 @@ Korak 10 piše preporuke za unaprijed zadane scenarije (vrsta, stanje, uvjeti uz
 činjenica, bez nje (`znanje/sustav_bez_baze.md`) i prvom inačicom sa slobodnim tekstom (`src/preporuke_tekst.py`,
 oznake u uglatim zagradama, ista baza), koja služi kao osnovica. Scenariji su u dva skupa. Na **razvojnim** (24: šest
 vrsta i nepoznata vrsta u sva tri stanja, te upute u uvjetima, prazni uvjeti i simptom u uvjetima) uputa se smije
-mijenjati; svaki se pokreće tri puta, jer odgovori modela nisu ponovljivi. **Ispitni** (36: šest vrsta, tri stanja,
-dva skupa uvjeta, s tekstovima uvjeta kojih u razvojnim nema) pokreću se jednom, kad je uputa konačna, i njih
-ocjenjuju ocjenjivači. Automatske provjere mjere oblik: broj rečenica i riječi, rečenice dulje od 20 riječi i
-rečenice bez oznake, znakove izvan latinice u odgovoru modela te, kao gruba pravila, ponavljanje rezultata
-klasifikatora ili upute stručnjaku, ponovljen naziv vrste i opću činjenicu tamo gdje postoji činjenica o vrsti iste
-kategorije. Podupire li činjenica rečenicu, provjerava se ručno (obrazac `*_potkrijepljenost.csv`). Rezultati su u
-`rezultati/preporuke/`; ime razvojne datoteke sadrži sažetak upute, baze i koda, pa svaka izmjena upute dobiva svoju
-datoteku:
+mijenjati; svaki se pokreće tri puta, jer odgovori modela nisu ponovljivi. **Ispitni** (39: šest vrsta u tri stanja,
+svaka s dva vlastita skupa uvjeta, nepovoljnim i povoljnim, i nepoznata vrsta u tri stanja, jednom bez uvjeta; s
+tekstovima uvjeta kojih u razvojnim nema) pokreću se jednom, kad je uputa konačna, i njih ocjenjuju ocjenjivači. Automatske provjere mjere oblik: broj rečenica i riječi, rečenice dulje od 20 riječi i
+rečenice bez oznake, znakove izvan latinice u odgovoru modela, istu oznaku u više dijelova (osim uzroka iz procjene
+i radnje u „što napraviti“), rečenicu o otrovnosti (postoji li, odgovara li na pitanje, je li dulja od 20 riječi),
+ime izvora u tekstu te, kao gruba pravila, spominjanje klasifikatora, ponavljanje
+stanja biljke ili upute stručnjaku, naziv vrste ponovljen više puta i u svakoj rečenici, tvrdnju da su zelenčica ili hibiskus otrovni
+(ASPCA ih navodi kao netoksične; za hibiskus stranica navodi *Hibiscus syriacus*) i opću činjenicu tamo gdje postoji činjenica o vrsti iste kategorije. U dvjema strukturiranim
+inačicama rečenice koje dodaje program i rečenica o otrovnosti ne broje se među rečenicama modela. Podupire li činjenica rečenicu, provjerava se ručno (obrazac `*_potkrijepljenost.csv`). Rezultati su u
+`rezultati/preporuke/`; ime razvojne datoteke sadrži sažetak upute, baze, koda preporuke, scenarija i modela, pa svaka izmjena upute dobiva
+svoju datoteku:
 
 ```bash
 uv run src/k10_evaluacija_preporuka.py                 # razvojni scenariji, svaki 3 puta
