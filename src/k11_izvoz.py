@@ -1,5 +1,6 @@
 """Korak 11: brojke, tablice i slike za tekst rada (rezultati/brojke.tex, rezultati/tablice/, rezultati/slike/)."""
 import json
+import re
 
 import matplotlib
 matplotlib.use("Agg")
@@ -89,9 +90,17 @@ def ucitaj(ime):
     return json.loads((c.REZULTATI / ime).read_text())
 
 
+def celija_zaglavlja(z, poravnanje):
+    if "\n" not in z:
+        return f"\\zaglavlje{{{z}}}"
+    return f"\\zaglavlje{{\\begin{{tabular}}[b]{{@{{}}{poravnanje}@{{}}}}{z.replace(chr(10), ' \\\\ ')}\\end{{tabular}}}}"
+
+
 def tablica(ime, stupci, zaglavlje, retci):
+    poravnanja = [s[0].lower() for s in re.findall(r"[LCR]\{[^}]*\}|[lcr]", stupci)]
     t = [f"\\begin{{tabular}}{{{stupci}}}", "\\toprule", "\\rowcolor{fakplava}",
-         " & ".join(f"\\zaglavlje{{{z}}}" for z in zaglavlje) + " \\\\", "\\midrule"]
+         " & ".join(celija_zaglavlja(z, "r" if a == "r" else "l") for z, a in zip(zaglavlje, poravnanja))
+         + " \\\\", "\\midrule"]
     t += [" & ".join(str(x) for x in r) + " \\\\" for r in retci]
     t += ["\\bottomrule", "\\end{tabular}"]
     (TABLICE / f"{ime}.tex").write_text("\n".join(t) + "\n", encoding="utf-8")
@@ -148,7 +157,7 @@ def izvori_i_podjela():
             retci.append([f"{naziv} \\citep{{skup_{izvor}}}", repozitorij, opis, licenca, ULOGE[uloga],
                           cijeli(sirovi[izvor]["ukupno"]), cijeli(len(g)),
                           cijeli((g.oznaka == c.Z).sum()), cijeli((g.oznaka == c.N).sum())])
-    tablica("izvori", "lllllrrrr",
+    tablica("izvori", "L{2.4cm} L{1.8cm} L{1.4cm} L{1.5cm} l r r r r",
             ["Skup", "Repozitorij", "Vrste", "Licenca", "Namjena", "Preuzeto", "Zadržano", "Zdrava", "Nezdrava"],
             retci)
 
@@ -206,7 +215,7 @@ def izvori_i_podjela():
 
 
 def primjeri(df):
-    fig, osi = plt.subplots(2, len(PRIMJERI), figsize=(9, 3.4))
+    fig, osi = plt.subplots(2, len(PRIMJERI), figsize=(E.SIRINA_TEKSTA, 0.4 * E.SIRINA_TEKSTA))
     for j, (vrsta, izvor) in enumerate(PRIMJERI):
         for i, oznaka in enumerate([c.Z, c.N]):
             g = df[(df.izvor == izvor) & (df.vrsta == vrsta) & (df.oznaka == oznaka)].sort_values("id")
@@ -218,11 +227,11 @@ def primjeri(df):
             osi[i, j].set_xticks([])
             osi[i, j].set_yticks([])
             if i == 0:
-                osi[i, j].set_title(vrsta.replace("sansevierija", "sansevijerija"), fontsize=9)
+                osi[i, j].set_title(vrsta.replace("sansevierija", "sansevijerija").replace(" ", "\n"))
             if j == 0:
-                osi[i, j].set_ylabel(oznaka, fontsize=9)
+                osi[i, j].set_ylabel(oznaka)
     fig.tight_layout()
-    fig.savefig(SLIKE / "primjeri_podataka.png", dpi=200)
+    fig.savefig(SLIKE / "primjeri_podataka.png", dpi=E.DPI)
     plt.close(fig)
 
 
@@ -345,8 +354,8 @@ def ucenje_i_odabir():
                           broj_post(ev["test"]["tocnost"]), broj_post(ev["vanjski_stvarni"]["tocnost"]),
                           broj_post(ev["vanjski_usjevi"]["tocnost"])])
     tablica("ucenja", "llrrrrrr",
-            ["Augmentacija", "Sjeme", "Epoha", "Makro F1 (provjera)", "Makro F1 (ispitni)", "Točnost, \\% (ispitni)",
-             "Točnost, \\% (Houseplant Health)", "Točnost, \\% (PlantDoc)"], retci)
+            ["Augmentacija", "Sjeme", "Epoha", "Makro F1\n(provjera)", "Makro F1\n(ispitni)", "Točnost, \\%\n(ispitni)",
+             "Točnost, \\%\n(Houseplant\nHealth)", "Točnost, \\%\n(PlantDoc)"], retci)
     for inacica, evs in po_inacici.items():
         for skup, m, f, ime in [("test", "makro_f1", dec, "test_makro_f1"), ("test", "tocnost", post, "test_tocnost"),
                                 ("vanjski_stvarni", "tocnost", post, "hh_tocnost"),
@@ -402,12 +411,12 @@ def evaluacija():
             u = r["uz_prag"]
             retci_p.append([naziv, m, dec(r["ece_prije"]), dec(r["ece_poslije"]), broj_post(u["pokrivenost"]),
                             broj_post(u["tocnost_iznad_praga"]), broj_post(u["tocnost_ispod_praga"])])
-    tablica("metrike", "llrrlrrrrr",
-            ["Skup", "Model", "Slika", "Osnovica, \\%", "Točnost, \\% (interval)", "Preciznost", "Odziv", "F1",
-             "Makro F1", "AUC"], retci_m)
+    tablica("metrike", "L{1.9cm} l r r r r r r r r",
+            ["Skup", "Model", "Slika", "Osnovica,\n\\%", "Točnost, \\%\n(interval)", "Preciznost", "Odziv", "F1",
+             "Makro\nF1", "AUC"], retci_m)
     tablica("prag", "llrrrrr",
-            ["Skup", "Model", "ECE prije", "ECE poslije", "Pokrivenost, \\%", "Točnost iznad praga, \\%",
-             "Točnost ispod praga, \\%"], retci_p)
+            ["Skup", "Model", "ECE\nprije", "ECE\nposlije", "Pokrivenost,\n\\%", "Točnost iznad\npraga, \\%",
+             "Točnost ispod\npraga, \\%"], retci_p)
     for m in MODELI:
         e = ev[m]
         postavi(f"m.{m}.T", dec(e["temperatura"], 2))
@@ -448,8 +457,8 @@ def evaluacija():
             postavi("po_izvoru.izvora", len(retci))
             postavi("po_izvoru.bez_pogreske", sum(r["tocnost"] == 1 for r in ev["osnovna"]["test_po_izvor"]))
         if stupac == "izvor":
-            tablica(ime, "lrrrrr", ["Izvor", "Slika", "Skupina", "Udio nezdravih, \\%", "Točnost, \\% (osnovna)",
-                                    "Točnost, \\% (jaka)"], retci)
+            tablica(ime, "lrrrrr", ["Izvor", "Slika", "Skupina", "Udio\nnezdravih, \\%", "Točnost, \\%\n(osnovna)",
+                                    "Točnost, \\%\n(jaka)"], retci)
 
 
 def curenje():
@@ -487,7 +496,7 @@ def curenje():
             postavi(k + ".udio_nezdravih", post(r["udio_nezdravih"], 0))
             retci.append(red(f"\\textit{{{IZVORI[izvor][0]}}}: {opis}", r))
     retci.append(red("Očišćena podjela (osnovna): svi", cu["osnovna"]["test_cisti"]))
-    tablica("curenje", "lrrl", ["Ispitne slike", "Slika", "Udio nezdravih, \\%", "Točnost, \\% (interval)"], retci)
+    tablica("curenje", "lrrr", ["Ispitne slike", "Slika", "Udio\nnezdravih, \\%", "Točnost, \\%\n(interval)"], retci)
 
     aloje = {"aloe_vera_leaf_disease", "plantvita_aloevera"}
     retci = []
@@ -509,8 +518,9 @@ def curenje():
         retci.append([opis, cijeli(r["s_kopijom"]["n"]), s_intervalom(r["s_kopijom"]["tocnost"], r["s_kopijom"]["tocnost_interval"]),
                       cijeli(r["bez_kopije"]["n"]), s_intervalom(r["bez_kopije"]["tocnost"], r["bez_kopije"]["tocnost_interval"]),
                       f"{bodovi(r['razlika'])} ({bodovi(r['razlika_interval'][0])} -- {bodovi(r['razlika_interval'][1])})"])
-    tablica("curenje_kontrola", "lrlrll", ["Ispitne slike u skupini duplikata", "Slika", "Kopija u učenju: točnost, \\%",
-                                           "Slika", "Kopija izvan učenja: točnost, \\%", "Razlika, bodovi"], retci)
+    tablica("curenje_kontrola", "lrrrrr", ["Ispitne slike\nu skupini duplikata", "Slika",
+                                           "Kopija u učenju:\ntočnost, \\%", "Slika",
+                                           "Kopija izvan učenja:\ntočnost, \\%", "Razlika,\nbodovi"], retci)
 
 
 def znanstveni(x):
@@ -545,6 +555,7 @@ def postavke():
     postavi("postavke.ece_kosara", E.ECE_KOSARA)
     postavi("postavke.kalibracija_kosara", E.KALIBRACIJA_KOSARA)
     postavi("postavke.kalibracija_najmanje", E.KALIBRACIJA_NAJMANJE)
+    postavi("postavke.pokrivenost_preskoci", E.POKRIVENOST_PRESKOCI)
     postavi("postavke.predmemorija", K1.MAX_STRANICA)
     postavi("postavke.kvaliteta_jpeg", K1.KVALITETA_JPEG)
     postavi("postavke.inacica", len(s.INACICE))

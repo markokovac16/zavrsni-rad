@@ -21,6 +21,11 @@ def ocjena(y, p, skupine, prag):
     return r
 
 
+def po_vrsti(vrste, y, p, mjera):
+    return {v: {"n": len(i), "nezdravih": int(y[i].sum()), mjera: float((p[i].argmax(1) == y[i]).mean())}
+            for v, i in sorted(pd.Series(vrste).groupby(vrste).indices.items())}
+
+
 def provjera_oznaka(test, putanja):
     covjek = pd.read_csv(putanja).drop_duplicates("id", keep="last").set_index("id").oznaka
     test["covjek"] = test.id.map(covjek)
@@ -61,12 +66,11 @@ def main():
         model, _ = M.ucitaj_model(c.MODELI / f"{naziv}.pt")
         p = softmax(M.logiti(model, test), ev["temperatura"])
         r = dict(temperatura=ev["temperatura"], prag=ev["prag"], slabe_oznake=ocjena(y, p, skupine, ev["prag"]))
-        r["slabe_oznake"]["po_vrsti"] = {
-            v: dict(n=int(len(g)), nezdravih=int(y[g.index].sum()),
-                    slaganje=float((p[g.index].argmax(1) == y[g.index]).mean()))
-            for v, g in test.groupby("vrsta")}
+        r["slabe_oznake"]["po_vrsti"] = po_vrsti(test.vrsta.to_numpy(), y, p, "slaganje")
         if upotrebljivo is not None:
             r["provjerene_oznake"] = ocjena(y_covjek, p[upotrebljivo], skupine[upotrebljivo], ev["prag"])
+            r["provjerene_oznake"]["po_vrsti"] = po_vrsti(test.vrsta.to_numpy()[upotrebljivo], y_covjek,
+                                                          p[upotrebljivo], "tocnost")
         rez["modeli"][naziv] = r
         s = r["slabe_oznake"]
         print(f"{naziv:11s} n={s['n']} autora={s['skupina']} slaganje={s['tocnost']:.3f} "

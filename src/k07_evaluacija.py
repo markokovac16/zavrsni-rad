@@ -5,6 +5,7 @@ import json
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
+plt.rcParams.update({"font.size": 9, "pdf.fonttype": 42})
 from matplotlib.ticker import FuncFormatter, ScalarFormatter
 import numpy as np
 import pandas as pd
@@ -26,6 +27,9 @@ KALIBRACIJA_KOSARA = 6
 KALIBRACIJA_NAJMANJE = 5
 LICENCA_ZA_PRIKAZ = "CC BY 4.0"
 PO_RETKU = 4
+POKRIVENOST_PRESKOCI = 10
+SIRINA_TEKSTA = 15.5 / 2.54
+DPI = 300
 
 
 def softmax(lg, T=1.0):
@@ -54,8 +58,8 @@ def ece(p, y, kosara=ECE_KOSARA):
     pouzd, pred = p.max(1), p.argmax(1)
     rubovi = np.linspace(0.5, 1.0, kosara + 1)
     ukupno = 0.0
-    for a, b in zip(rubovi[:-1], rubovi[1:]):
-        m = (pouzd > a) & (pouzd <= b)
+    for i, (a, b) in enumerate(zip(rubovi[:-1], rubovi[1:])):
+        m = (pouzd >= a if i == 0 else pouzd > a) & (pouzd <= b)
         if m.any():
             ukupno += m.mean() * abs((pred[m] == y[m]).mean() - pouzd[m].mean())
     return float(ukupno)
@@ -136,21 +140,22 @@ def spremi(fig, putanja):
             if isinstance(os_.get_major_formatter(), ScalarFormatter):
                 os_.set_major_formatter(FuncFormatter(lambda v, _: zarez(v, 1)))
     fig.tight_layout()
-    fig.savefig(putanja, dpi=200)
+    fig.savefig(putanja, dpi=DPI)
     plt.close(fig)
 
 
 def kalibracijske_tocke(p, y, kosara=KALIBRACIJA_KOSARA, najmanje=KALIBRACIJA_NAJMANJE):
     pouzd, tocno = p.max(1), p.argmax(1) == y
     rubovi = np.linspace(0.5, 1, kosara + 1)
-    maske = [(pouzd > a) & (pouzd <= b) for a, b in zip(rubovi[:-1], rubovi[1:])]
+    maske = [(pouzd >= a if i == 0 else pouzd > a) & (pouzd <= b)
+             for i, (a, b) in enumerate(zip(rubovi[:-1], rubovi[1:]))]
     maske = [m for m in maske if m.sum() >= najmanje]
     return [pouzd[m].mean() for m in maske], [tocno[m].mean() for m in maske]
 
 
 def crtaj_matricu(y, p, naslov, putanja):
     mz = confusion_matrix(y, p.argmax(1), labels=[0, 1])
-    fig, ax = plt.subplots(figsize=(3.6, 3.2))
+    fig, ax = plt.subplots(figsize=(0.5 * SIRINA_TEKSTA, 0.46 * SIRINA_TEKSTA))
     ax.imshow(mz, cmap="Greens")
     for i in range(2):
         for j in range(2):
@@ -160,7 +165,7 @@ def crtaj_matricu(y, p, naslov, putanja):
     ax.set_yticks([0, 1], c.RAZREDI, rotation=90, va="center")
     ax.set_xlabel("Predviđeni razred")
     ax.set_ylabel("Stvarni razred")
-    ax.set_title(naslov, fontsize=9)
+    ax.set_title(naslov)
     spremi(fig, putanja)
 
 
@@ -168,24 +173,27 @@ def crtaj_primjere(d, y, p, prag, naslov, putanja):
     pouzd, pred = p.max(1), p.argmax(1)
     iznad = pouzd >= prag
     retci = [
-        ("Točno: zdrava", iznad & (pred == 0) & (y == 0)),
-        ("Točno: nezdrava", iznad & (pred == 1) & (y == 1)),
-        ("Pogrešno: proglašena nezdravom", iznad & (pred == 1) & (y == 0)),
-        ("Pogrešno: proglašena zdravom", iznad & (pred == 0) & (y == 1)),
-        ("Ispod praga: nesigurno", ~iznad),
+        ("Točno:\nzdrava", iznad & (pred == 0) & (y == 0)),
+        ("Točno:\nnezdrava", iznad & (pred == 1) & (y == 1)),
+        ("Pogrešno:\nproglašena\nnezdravom", iznad & (pred == 1) & (y == 0)),
+        ("Pogrešno:\nproglašena\nzdravom", iznad & (pred == 0) & (y == 1)),
+        ("Ispod praga:\nnesigurno", ~iznad),
     ]
     dozvoljeno = (d.izvor.map(c.LICENCE) == LICENCA_ZA_PRIKAZ).to_numpy()
     rng = np.random.default_rng(c.SJEME)
     prikazani, iskoristene = set(), set()
-    fig, osi = plt.subplots(len(retci), PO_RETKU, figsize=(2.1 * PO_RETKU, 2.45 * len(retci)))
+    fig, osi = plt.subplots(len(retci), PO_RETKU + 1, figsize=(SIRINA_TEKSTA, 1.45 * len(retci)),
+                            gridspec_kw=dict(width_ratios=[0.8] + [1] * PO_RETKU))
     for r, (opis, maska) in enumerate(retci):
         odabrani = []
         for i in rng.permutation(np.flatnonzero(maska & dozvoljeno)):
             if len(odabrani) < PO_RETKU and d.skupina.iloc[i] not in iskoristene:
                 iskoristene.add(d.skupina.iloc[i])
                 odabrani.append(i)
+        osi[r, 0].axis("off")
+        osi[r, 0].text(1, 0.5, opis, transform=osi[r, 0].transAxes, ha="right", va="center")
         for s in range(PO_RETKU):
-            ax = osi[r, s]
+            ax = osi[r, s + 1]
             ax.axis("off")
             if s >= len(odabrani):
                 continue
@@ -193,9 +201,7 @@ def crtaj_primjere(d, y, p, prag, naslov, putanja):
             prikazani.add(d.izvor.iloc[i])
             with Image.open(c.PREDMEMORIJA / d.kopija.iloc[i]) as im:
                 ax.imshow(im.convert("RGB"))
-            ax.set_title(f"{d.vrsta.iloc[i]}\nP(nezdrava) = {zarez(p[i, 1], 2)}", fontsize=7)
-        osi[r, 0].text(-0.08, 0.5, opis, transform=osi[r, 0].transAxes, rotation=90,
-                       ha="right", va="center", fontsize=8)
+            ax.set_title(f"{d.vrsta.iloc[i].replace('sansevierija', 'sansevijerija')}\n{zarez(p[i, 1], 2)}")
     fig.suptitle(naslov, fontsize=10)
     spremi(fig, putanja)
     return sorted(prikazani)
@@ -257,7 +263,7 @@ def main():
         rez["skupovi"][k] = r
         if a.bez_slika:
             continue
-        crtaj_matricu(y[k], p[k], NASLOVI[k], slike / f"matrica_{a.naziv}_{k}.png")
+        crtaj_matricu(y[k], p[k], NASLOVI[k], slike / f"matrica_{a.naziv}_{k}.pdf")
         if k == "test":
             rez["primjeri_izvori"] = crtaj_primjere(dijelovi[k], y[k], p[k], prag, NASLOVI[k],
                                                     slike / f"primjeri_{a.naziv}_{k}.png")
@@ -274,31 +280,34 @@ def main():
     if a.bez_slika:
         return
 
-    fig, ax = plt.subplots(figsize=(5.2, 3.6))
-    for k in ["test", "vanjski_stvarni", "vanjski_usjevi"]:
+    fig, ax = plt.subplots(figsize=(0.7 * SIRINA_TEKSTA, 0.5 * SIRINA_TEKSTA))
+    for k, crta in [("test", "-"), ("vanjski_stvarni", "--"), ("vanjski_usjevi", ":")]:
         if k in lg:
             pok, toc = krivulja(y[k], p[k])
-            ax.plot(pok[10:], toc[10:], label=NASLOVI[k])
+            ax.plot(pok[POKRIVENOST_PRESKOCI:], toc[POKRIVENOST_PRESKOCI:], crta, color="black", lw=1.2,
+                    label=NASLOVI[k])
     ax.set_xlabel("Pokrivenost (udio slika iznad praga)")
     ax.set_ylabel("Točnost na pokrivenim slikama")
     ax.set_ylim(0.4, 1.01)
     ax.grid(alpha=0.3)
-    ax.legend(fontsize=8)
-    spremi(fig, slike / f"pokrivenost_{a.naziv}.png")
+    ax.legend()
+    spremi(fig, slike / f"pokrivenost_{a.naziv}.pdf")
 
-    fig, osi = plt.subplots(1, 2, figsize=(7, 3.4), sharey=True)
+    fig, osi = plt.subplots(1, 2, figsize=(SIRINA_TEKSTA, 0.5 * SIRINA_TEKSTA), sharey=True)
     for ax, k in zip(osi, ["test", "vanjski_stvarni"]):
         if k not in lg:
             continue
-        for pp, oznaka in [(p_sirovo[k], "prije skaliranja"), (p[k], f"nakon (T = {zarez(T, 2)})")]:
-            ax.plot(*kalibracijske_tocke(pp, y[k]), marker="o", label=oznaka)
-        ax.plot([0.5, 1], [0.5, 1], "k--", lw=0.8)
-        ax.set_title(NASLOVI[k], fontsize=9)
+        for pp, oznaka, crta, oblik in [(p_sirovo[k], "prije skaliranja", "--", "o"),
+                                        (p[k], f"nakon (T = {zarez(T, 2)})", "-", "s")]:
+            ax.plot(*kalibracijske_tocke(pp, y[k]), crta, marker=oblik, color="black", lw=1.2, ms=4,
+                    mfc="white" if oblik == "o" else "black", label=oznaka)
+        ax.plot([0.5, 1], [0.5, 1], ":", color="0.5", lw=0.8)
+        ax.set_title(NASLOVI[k])
         ax.set_xlabel("Pouzdanost modela")
         ax.grid(alpha=0.3)
     osi[0].set_ylabel("Točnost")
-    osi[0].legend(fontsize=8)
-    spremi(fig, slike / f"kalibracija_{a.naziv}.png")
+    osi[0].legend()
+    spremi(fig, slike / f"kalibracija_{a.naziv}.pdf")
 
 
 def ispis(T, prag, rez):
